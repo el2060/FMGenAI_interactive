@@ -26,7 +26,7 @@ function DocCard({ doc, placed, draggableProps }) {
       {...(draggableProps?.listeners || {})}
       {...(draggableProps?.attributes || {})}
       style={{ touchAction: 'none' }}
-      className={`select-none cursor-grab active:cursor-grabbing card p-3 flex items-center gap-3 hover:border-L4 hover:-translate-y-0.5 transition ${draggableProps?.isDragging ? 'opacity-0' : ''}`}
+      className={`select-none cursor-grab active:cursor-grabbing card p-3 flex items-center gap-3 hover:border-L5 hover:-translate-y-0.5 transition ${draggableProps?.isDragging ? 'opacity-0' : ''}`}
     >
       <div className="text-2xl shrink-0">{doc.emoji}</div>
       <div className="flex-1 min-w-0">
@@ -48,7 +48,7 @@ function KnowledgeBase({ placed, onRemove }) {
     <div
       ref={setNodeRef}
       className={`rounded-2xl border-2 border-dashed p-4 min-h-[180px] transition ${
-        isOver ? 'border-L4 bg-L5/5' : placed.length > 0 ? 'border-L4/40 bg-L5/[0.03]' : 'border-line bg-white/40'
+        isOver ? 'border-L5 bg-L5/5' : placed.length > 0 ? 'border-L5/40 bg-L5/[0.03]' : 'border-line bg-white/40'
       }`}
     >
       <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-L5 mb-2 flex items-center gap-1.5">
@@ -68,7 +68,7 @@ function KnowledgeBase({ placed, onRemove }) {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0 }}
-              className={`flex items-center gap-2.5 p-2.5 rounded-lg border bg-white ${doc.relevant ? 'border-L4/30' : 'border-L6/40'}`}
+              className={`flex items-center gap-2.5 p-2.5 rounded-lg border bg-white ${doc.relevant ? 'border-L5/30' : 'border-L6/40'}`}
             >
               <span className="text-lg">{doc.emoji}</span>
               <div className="flex-1 min-w-0">
@@ -143,18 +143,13 @@ export default function LevelGrounding({ onComplete }) {
         AI doesn't know your buildings. <span className="text-L5">Until you ground it.</span>
       </h2>
 
-      <ConceptCard accent="L4" icon="📚" title="Grounding (a.k.a. RAG) is how AI uses YOUR data.">
-        Out of the box, AI only knows what's on the public internet — not your
-        BMS logs, vendor reports or tenant records. <strong>Grounding</strong>{' '}
-        means feeding it your real documents at the moment you ask, so the
-        answer is specific and citable. But beware: bad documents poison the
-        output just as easily.
+      <ConceptCard accent="L5" icon="📚" title="Grounding (RAG) feeds AI your data.">
+        AI knows the internet, not your BMS logs. <strong>Grounding</strong> = handing it your real
+        docs at ask-time so answers cite reality. But junk docs poison answers just as fast.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Drag FM documents into the Knowledge Base on the right. Watch the AI's
-        answer transform — and notice what happens if you include irrelevant
-        files.
+        Drag docs into the Knowledge Base. Watch the answer change. Try a wrong one — see the damage.
       </p>
 
       <div className="card-strong p-5 mb-5">
@@ -162,7 +157,7 @@ export default function LevelGrounding({ onComplete }) {
         <div className="text-[15px] font-medium text-ink mb-4">"{QUESTION}"</div>
 
         <div className="grid sm:grid-cols-[1fr_auto] gap-4 items-start">
-          <div className={`rounded-xl p-4 border-2 ${response.grounded ? 'border-L4/30 bg-L5/[0.03]' : placed.length > 0 ? 'border-L6/30 bg-L6/[0.03]' : 'border-line bg-cream'}`}>
+          <div className={`rounded-xl p-4 border-2 ${response.grounded ? 'border-L5/30 bg-L5/[0.03]' : placed.length > 0 ? 'border-L6/30 bg-L6/[0.03]' : 'border-line bg-cream'}`}>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-6 h-6 rounded-md bg-L5 text-white flex items-center justify-center text-[10px] font-bold">AI</div>
               <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-L5">Grounded Response</div>
@@ -199,16 +194,14 @@ export default function LevelGrounding({ onComplete }) {
             </motion.div>
           )}
         </AnimatePresence>
-        <PrimaryButton onClick={onComplete} disabled={!done} accent="L4">Next Level →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!done} accent="L5">Next Level →</PrimaryButton>
       </div>
 
       <TakeawayCard
-        accent="L4"
-        application="Tools like Copilot for Microsoft 365, custom GPTs, and SharePoint-connected chatbots all use grounding. Curate which documents AI can access — irrelevant ones do real damage."
+        accent="L5"
+        application="Copilot, custom GPTs, SharePoint bots — all grounded. Curate what they can read. A stale 2019 memo wrecks a 2026 answer."
       >
-        <strong>Garbage in = garbage out.</strong> Grounding is what makes AI
-        useful for FM, but only if the documents are accurate, current and
-        relevant. A 2019 memo can wreck an answer about 2024 operations.
+        <strong>Rubbish in = rubbish out.</strong> Grounding makes AI useful for FM — but only with clean, current docs.
       </TakeawayCard>
 
       <DragOverlay dropAnimation={{ duration: 200 }}>

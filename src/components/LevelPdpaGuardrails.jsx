@@ -50,21 +50,16 @@ export default function LevelPdpaGuardrails({ onComplete }) {
     <div>
       <LevelHeader level={6} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        AI prompts are not private. <span className="text-L5">Strip the sensitive bits first.</span>
+        AI prompts are not private. <span className="text-L6">Strip the sensitive bits first.</span>
       </h2>
 
-      <ConceptCard accent="L5" icon="🔒" title="PDPA still applies when you talk to AI.">
-        Pasting tenant NRICs, mobile numbers, unit addresses or CCTV references
-        into a public AI tool (ChatGPT, Gemini, Claude.ai) sends that data
-        outside your agency's control. Under Singapore's PDPA, this can be a
-        notifiable data breach. But over-redacting is also wrong — the AI still
-        needs <strong>enough context</strong> to actually help you.
+      <ConceptCard accent="L6" icon="🔒" title="PDPA applies when you talk to AI too.">
+        Pasting NRICs or unit numbers into ChatGPT = data outside your agency. Possible notifiable breach.
+        But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Below is a draft you're about to send to ChatGPT. Toggle the privacy
-        filters to redact what's sensitive — and leave what AI{' '}
-        <em>needs</em> in order to do its job.
+        About to paste this into ChatGPT. Toggle the filters — hide what's sensitive, leave what AI needs.
       </p>
 
       <div className="card-strong p-5 mb-4">
@@ -113,12 +108,12 @@ export default function LevelPdpaGuardrails({ onComplete }) {
                 onClick={() => toggle(f.id)}
                 disabled={sent}
                 className={`text-left p-3 rounded-xl border-2 transition-all ${
-                  on ? 'border-L5 bg-L5/[0.07] shadow-pop' : 'border-line bg-white hover:border-L5/40'
+                  on ? 'border-L6 bg-L6/[0.07] shadow-pop' : 'border-line bg-white hover:border-L6/40'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-lg">{f.icon}</span>
-                  <span className={`w-8 h-4 rounded-full p-0.5 transition ${on ? 'bg-L5' : 'bg-line'}`}>
+                  <span className={`w-8 h-4 rounded-full p-0.5 transition ${on ? 'bg-L6' : 'bg-line'}`}>
                     <motion.span
                       animate={{ x: on ? 16 : 0 }}
                       transition={{ type: 'spring', stiffness: 500, damping: 28 }}
@@ -152,21 +147,19 @@ export default function LevelPdpaGuardrails({ onComplete }) {
           disabled={!safe || sent}
           className={`px-5 py-3 rounded-xl font-semibold text-[15px] transition-all ${
             sent ? 'bg-win/10 text-win border border-win/30 cursor-default' :
-            safe ? 'bg-L5 text-white hover:bg-[#4338CA] shadow-pop ring-pulse-L5' : 'bg-line text-soft cursor-not-allowed'
+            safe ? 'bg-L6 text-white hover:bg-[#0D9488] shadow-pop ring-pulse-L6' : 'bg-line text-soft cursor-not-allowed'
           }`}
         >
           {sent ? '✓ Sent safely to AI' : '🔒 Send to AI'}
         </button>
-        <PrimaryButton onClick={onComplete} disabled={!sent} accent="L5">Next Level →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!sent} accent="L6">Next Level →</PrimaryButton>
       </div>
 
       <TakeawayCard
-        accent="L5"
-        application="Before pasting any FM data to a public AI: replace NRICs with 'tenant', mobiles with 'phone on file', unit numbers with 'a unit on floor X'. Keep the operational context. When unsure, use enterprise AI tools your agency has cleared — not the public chat."
+        accent="L6"
+        application="Replace NRIC with 'tenant', mobile with 'phone on file', #15-23 with 'a unit on floor 15'. When in doubt, use the enterprise AI your agency cleared — not public chat."
       >
-        <strong>Strip identifiers, keep context.</strong> PDPA compliance with
-        AI is not about avoiding AI — it's about feeding it only what it needs.
-        Identifiers go, business problem stays.
+        <strong>Identifiers go. Business problem stays.</strong> PDPA with AI = feed only what's needed.
       </TakeawayCard>
     </div>
   );

@@ -14,13 +14,13 @@ function fireConfetti() {
 }
 
 const TAKEAWAYS = [
-  { lvl: 1, line: 'AI has different types. Gen AI is one tool in a bigger toolbox.' },
-  { lvl: 2, line: 'AI reads tokens — tight prompts cost less and respond faster.' },
-  { lvl: 3, line: 'Temperature is the creativity dial — keep it cool for FM ops.' },
-  { lvl: 4, line: 'Anchor prompts with audience, tone and details.' },
-  { lvl: 5, line: 'Ground AI with your real FM documents — and curate them.' },
-  { lvl: 6, line: 'Strip identifiers, keep context. PDPA still applies to AI.' },
-  { lvl: 7, line: 'AI confidence ≠ AI correctness. Always verify.' },
+  { lvl: 1, line: 'Gen AI is one slice. Pick the right brain for the job.' },
+  { lvl: 2, line: 'Tokens = currency. Tight prompts are cheap and fast.' },
+  { lvl: 3, line: 'Cool temperatures for FM ops. Warm only for brainstorming.' },
+  { lvl: 4, line: 'Anchor every prompt: audience, tone, details.' },
+  { lvl: 5, line: 'Ground AI with clean FM docs. Curate or it poisons.' },
+  { lvl: 6, line: 'Strip identifiers, keep context. PDPA still applies.' },
+  { lvl: 7, line: 'Confidence ≠ correctness. Always verify.' },
 ];
 
 export default function Victory({ onRestart }) {
@@ -64,8 +64,7 @@ export default function Victory({ onRestart }) {
 
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
         className="text-muted text-[15px] max-w-md mx-auto mb-8">
-        Steady lah. You now know how to choose between different AI types and
-        apply Gen AI more safely in Facilities Management.
+        Steady lah. You can now pick the right AI for the job, and use Gen AI safely in FM.
       </motion.p>
 
       <motion.div
