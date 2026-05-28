@@ -29,12 +29,8 @@ export default function Intro({ onStart }) {
         <span className="shimmer-text">made practical for FM.</span>
       </h1>
 
-      <p className="text-muted max-w-xl mx-auto mb-2 text-[15.5px] leading-relaxed">
-        {totalLevels} short levels. Real Singapore FM scenarios.{' '}
-        <span className="font-semibold text-ink">Learn by doing</span> — type, drag, slide, click.
-      </p>
-      <p className="text-soft text-[13px] mb-6">
-        Go at your own pace. No clock, no judgement lah.
+      <p className="text-muted max-w-md mx-auto mb-6 text-[15.5px] leading-relaxed">
+        {totalLevels} bite-sized levels. <span className="font-semibold text-ink">Learn by doing.</span>
       </p>
 
       <motion.div
