@@ -175,6 +175,22 @@ export default function Victory({ elapsedMs = 0 }) {
       >
         🎊 More confetti
       </motion.button>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.3 }}
+        className="mt-12 pt-8 border-t border-line/70 flex flex-col items-center"
+      >
+        <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-soft mb-3">
+          Workshop by
+        </div>
+        <img
+          src="/np-logo.png"
+          alt="Ngee Ann Polytechnic"
+          className="h-10 w-auto opacity-90"
+        />
+      </motion.div>
     </div>
   );
 }

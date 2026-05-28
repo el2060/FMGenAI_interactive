@@ -5,7 +5,23 @@ const ICONS = ['🏗️', '⚡', '🏢', '🤖'];
 
 export default function Intro({ onStart }) {
   return (
-    <div className="pt-8 sm:pt-12 text-center">
+    <div className="pt-6 sm:pt-10 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+        className="flex flex-col items-center mb-10"
+      >
+        <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-soft mb-3">
+          Presented by
+        </div>
+        <img
+          src="/np-logo.png"
+          alt="Ngee Ann Polytechnic"
+          className="h-12 sm:h-14 w-auto"
+        />
+      </motion.div>
+
       <motion.div
         initial="hidden"
         animate="visible"
