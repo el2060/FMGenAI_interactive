@@ -2,9 +2,10 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   safelist: [
-    'bg-L1','bg-L2','bg-L3','bg-L4','bg-L5','bg-L6',
-    'text-L1','text-L2','text-L3','text-L4','text-L5','text-L6',
-    'border-L1','border-L2','border-L3','border-L4','border-L5','border-L6',
+    'bg-L1','bg-L2','bg-L3','bg-L4','bg-L5','bg-L6','bg-L7','bg-L8','bg-L9','bg-L10',
+    'text-L1','text-L2','text-L3','text-L4','text-L5','text-L6','text-L7','text-L8','text-L9','text-L10',
+    'border-L1','border-L2','border-L3','border-L4','border-L5','border-L6','border-L7','border-L8','border-L9','border-L10',
+    'ring-pulse-L1','ring-pulse-L2','ring-pulse-L3','ring-pulse-L4','ring-pulse-L5','ring-pulse-L6','ring-pulse-L7','ring-pulse-L8','ring-pulse-L9','ring-pulse-L10',
   ],
   theme: {
     extend: {
@@ -20,12 +21,16 @@ export default {
         line: '#E7E7DF',
         cream: '#FAFAF5',
         surface: '#FFFFFF',
-        L1: '#7C3AED',
-        L2: '#EC4899',
-        L3: '#F97316',
-        L4: '#14B8A6',
-        L5: '#4F46E5',
-        L6: '#E11D48',
+        L1:  '#7C3AED',
+        L2:  '#EC4899',
+        L3:  '#4F46E5',
+        L4:  '#F59E0B',
+        L5:  '#F97316',
+        L6:  '#14B8A6',
+        L7:  '#3B82F6',
+        L8:  '#10B981',
+        L9:  '#475569',
+        L10: '#E11D48',
         win: '#65A30D',
       },
       boxShadow: {

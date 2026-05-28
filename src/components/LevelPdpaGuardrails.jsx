@@ -48,7 +48,7 @@ export default function LevelPdpaGuardrails({ onComplete }) {
 
   return (
     <div>
-      <LevelHeader level={5} />
+      <LevelHeader level={6} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
         AI prompts are not private. <span className="text-L5">Strip the sensitive bits first.</span>
       </h2>

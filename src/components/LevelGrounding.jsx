@@ -138,7 +138,7 @@ export default function LevelGrounding({ onComplete }) {
 
   return (
     <DndContext sensors={sensors} onDragStart={(e) => setActiveId(e.active.id)} onDragEnd={handleDragEnd}>
-      <LevelHeader level={4} />
+      <LevelHeader level={5} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
         AI doesn't know your buildings. <span className="text-L4">Until you ground it.</span>
       </h2>

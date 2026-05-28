@@ -66,7 +66,7 @@ export default function LevelTemperature({ onComplete }) {
 
   return (
     <div>
-      <LevelHeader level={2} />
+      <LevelHeader level={3} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
         Same prompt. <span className="text-L2">Different vibes.</span>
       </h2>

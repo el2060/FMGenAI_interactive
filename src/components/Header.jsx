@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { LEVEL_META, BG_COLORS } from './Common';
+import { LEVEL_META, CHAPTERS, BG_COLORS } from './Common';
 
 export default function Header({ level }) {
   const meta = LEVEL_META[level];
@@ -21,15 +21,14 @@ export default function Header({ level }) {
 
         <div className="flex-1" />
 
-        <div className="flex items-center gap-2 shrink-0">
-          {[1, 2, 3].map((ch) => (
-            <div key={ch} className="flex gap-1">
-              {[1, 2].map((n) => {
-                const lvl = (ch - 1) * 2 + n;
+        <div className="flex items-center gap-2.5 shrink-0">
+          {CHAPTERS.map((ch) => (
+            <div key={ch.n} className="flex gap-1">
+              {ch.levels.map((lvl) => {
                 const filled = lvl <= level;
                 const m = LEVEL_META[lvl];
                 return (
-                  <div key={lvl} className="h-2 w-7 sm:w-9 rounded-full bg-line overflow-hidden relative">
+                  <div key={lvl} className="h-2 w-4 sm:w-6 rounded-full bg-line overflow-hidden relative">
                     <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: filled ? 1 : 0 }}

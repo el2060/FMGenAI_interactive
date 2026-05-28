@@ -36,7 +36,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
 
   return (
     <div>
-      <LevelHeader level={6} />
+      <LevelHeader level={7} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
         AI is confident. <span className="text-L6">Sometimes wrong.</span>
       </h2>

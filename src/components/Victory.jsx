@@ -14,12 +14,13 @@ function fireConfetti() {
 }
 
 const TAKEAWAYS = [
-  { lvl: 1, line: 'AI reads tokens — tight prompts cost less and respond faster.' },
-  { lvl: 2, line: 'Temperature is the creativity dial — keep it cool for FM ops.' },
-  { lvl: 3, line: 'Anchor prompts with audience, tone and details.' },
-  { lvl: 4, line: 'Ground AI with your real FM documents — and curate them.' },
-  { lvl: 5, line: 'Strip identifiers, keep context. PDPA still applies to AI.' },
-  { lvl: 6, line: 'AI confidence ≠ AI correctness. Always verify.' },
+  { lvl: 1, line: 'AI has different types. Gen AI is one tool in a bigger toolbox.' },
+  { lvl: 2, line: 'AI reads tokens — tight prompts cost less and respond faster.' },
+  { lvl: 3, line: 'Temperature is the creativity dial — keep it cool for FM ops.' },
+  { lvl: 4, line: 'Anchor prompts with audience, tone and details.' },
+  { lvl: 5, line: 'Ground AI with your real FM documents — and curate them.' },
+  { lvl: 6, line: 'Strip identifiers, keep context. PDPA still applies to AI.' },
+  { lvl: 7, line: 'AI confidence ≠ AI correctness. Always verify.' },
 ];
 
 export default function Victory({ onRestart }) {
@@ -58,13 +59,13 @@ export default function Victory({ onRestart }) {
         className="font-display text-3xl sm:text-5xl font-bold tracking-tight mb-3 leading-[1.04]">
         You've covered the
         <br />
-        <span className="shimmer-text">six Gen AI fundamentals</span>
+        <span className="shimmer-text">seven AI foundations</span>
       </motion.h1>
 
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
         className="text-muted text-[15px] max-w-md mx-auto mb-8">
-        Not bad for ten minutes. You now know more about applying Gen AI in
-        Facilities Management than most teams.
+        Steady lah. You now know how to choose between different AI types and
+        apply Gen AI more safely in Facilities Management.
       </motion.p>
 
       <motion.div
@@ -93,7 +94,7 @@ export default function Victory({ onRestart }) {
           <div className="flex-1">
             <div className="font-display font-bold text-ink text-[15px] mb-1">Show this screen to the facilitator</div>
             <div className="text-[13px] text-muted leading-relaxed">
-              The completion code <span className="font-mono font-semibold text-ink">FM-AI-SECURED</span> confirms you've worked through all six levels.
+              The completion code <span className="font-mono font-semibold text-ink">FM-AI-SECURED</span> confirms you've worked through all seven levels.
             </div>
           </div>
         </div>

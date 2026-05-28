@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header.jsx';
 import Intro from './components/Intro.jsx';
+import LevelAiTypes from './components/LevelAiTypes.jsx';
 import LevelTokenizer from './components/LevelTokenizer.jsx';
 import LevelTemperature from './components/LevelTemperature.jsx';
 import LevelContextAnchor from './components/LevelContextAnchor.jsx';
@@ -27,7 +28,7 @@ export default function App() {
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
       <Background />
 
-      {stage > 0 && stage < 7 && <Header level={stage} />}
+      {stage > 0 && stage < 8 && <Header level={stage} />}
 
       <main className="relative z-10 flex-1 w-full max-w-3xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 pb-24">
         <AnimatePresence mode="wait">
@@ -39,13 +40,14 @@ export default function App() {
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           >
             {stage === 0 && <Intro onStart={() => go(1)} />}
-            {stage === 1 && <LevelTokenizer        onComplete={() => go(2)} />}
-            {stage === 2 && <LevelTemperature      onComplete={() => go(3)} />}
-            {stage === 3 && <LevelContextAnchor    onComplete={() => go(4)} />}
-            {stage === 4 && <LevelGrounding        onComplete={() => go(5)} />}
-            {stage === 5 && <LevelPdpaGuardrails   onComplete={() => go(6)} />}
-            {stage === 6 && <LevelHallucinationHunt onComplete={() => go(7)} />}
-            {stage === 7 && <Victory onRestart={() => go(0)} />}
+            {stage === 1 && <LevelAiTypes          onComplete={() => go(2)} />}
+            {stage === 2 && <LevelTokenizer        onComplete={() => go(3)} />}
+            {stage === 3 && <LevelTemperature      onComplete={() => go(4)} />}
+            {stage === 4 && <LevelContextAnchor    onComplete={() => go(5)} />}
+            {stage === 5 && <LevelGrounding        onComplete={() => go(6)} />}
+            {stage === 6 && <LevelPdpaGuardrails   onComplete={() => go(7)} />}
+            {stage === 7 && <LevelHallucinationHunt onComplete={() => go(8)} />}
+            {stage === 8 && <Victory onRestart={() => go(0)} />}
           </motion.div>
         </AnimatePresence>
       </main>

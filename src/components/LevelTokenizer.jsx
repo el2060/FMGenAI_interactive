@@ -19,7 +19,7 @@ export default function LevelTokenizer({ onComplete }) {
 
   return (
     <div>
-      <LevelHeader level={1} />
+      <LevelHeader level={2} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
         AI doesn't read words. <span className="text-L1">It reads tokens.</span>
       </h2>
