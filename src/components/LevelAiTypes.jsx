@@ -1,127 +1,174 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton } from './Common';
 
-const AI_TYPES = [
-  { id: 'rules',      name: 'Rule-Based', emoji: '📏', blurb: 'If-this-then-that. No learning.' },
-  { id: 'predictive', name: 'Predictive', emoji: '📈', blurb: 'Forecasts from past data.' },
-  { id: 'vision',     name: 'Vision',     emoji: '👁️', blurb: 'Reads images & video.' },
-  { id: 'genai',      name: 'Gen AI',     emoji: '✨', blurb: 'Writes new content.' },
-];
+const AI_TYPES = {
+  rules:      { name: 'Rule-Based', emoji: '📏', color: 'L1', blurb: 'If-this-then-that' },
+  predictive: { name: 'Predictive', emoji: '📈', color: 'L2', blurb: 'Forecasts from data' },
+  vision:     { name: 'Vision',     emoji: '👁️', color: 'L3', blurb: 'Reads images' },
+  genai:      { name: 'Gen AI',     emoji: '✨', color: 'L4', blurb: 'Writes content' },
+};
 
-const CARDS = [
+/**
+ * Each ticket proposes an AI type for a job.
+ * `verdict`: true = right fit; false = mismatch.
+ * `realAnswer`: when wrong, this is the AI type that SHOULD do this job.
+ */
+const TICKETS = [
   {
-    id: 's1',
-    location: 'Jurong East',
-    icon: '🌡️',
-    prompt: 'Auto-escalate to technician when the AHU room crosses 30°C for 10 minutes.',
-    answer: 'rules',
-    correct: 'Classic if-this-then-that. Like a very strict auntie — no debate, just action.',
-    wrong: { rules: '', predictive: 'No forecasting here — it just reacts to a threshold.', vision: 'No image involved, just a temperature reading.', genai: 'No writing required — just trigger an alert.' },
-  },
-  {
-    id: 's2',
-    location: 'Punggol',
+    id: 't1',
+    location: 'Punggol DC',
     icon: '❄️',
-    prompt: 'Forecast tomorrow\'s chilled-water demand from weather, occupancy and past logs.',
-    answer: 'predictive',
-    correct: 'Spot on. Pattern-spotting from history. Weather-app energy for your chiller plant.',
-    wrong: { rules: 'Rules can\'t learn from patterns — they only follow fixed thresholds.', predictive: '', vision: 'No images here, just numbers and timestamps.', genai: 'Gen AI writes prose — it doesn\'t forecast load.' },
+    proposed: 'genai',
+    job: 'Forecast tomorrow\'s chilled-water demand from weather and occupancy patterns.',
+    verdict: false,
+    realAnswer: 'predictive',
+    why: 'Gen AI invents prose — it doesn\'t do numerical forecasting. This is pattern-spotting from history → Predictive AI.',
   },
   {
-    id: 's3',
+    id: 't2',
     location: 'Tampines',
     icon: '🗑️',
-    prompt: 'Scan CCTV frames to flag overflowing bins and corridor obstruction.',
-    answer: 'vision',
-    correct: 'Eyes on-site without 200 eyeballs on payroll.',
-    wrong: { rules: 'A rule needs a clean signal — pixels aren\'t one.', predictive: 'Not forecasting — this is detection on live footage.', vision: '', genai: 'Gen AI doesn\'t look at CCTV. It writes text.' },
+    proposed: 'vision',
+    job: 'Scan CCTV frames to flag overflowing bins and corridor obstructions.',
+    verdict: true,
+    why: 'Yup. Pixels in, alerts out. Eyes on-site without 200 eyeballs on payroll.',
   },
   {
-    id: 's4',
+    id: 't3',
     location: 'One-North',
     icon: '✉️',
-    prompt: 'Draft a tenant circular for lift maintenance — concise, polite, professional.',
-    answer: 'genai',
-    correct: 'Yup, Gen AI. It writes. (It does NOT magically verify facts though — that\'s on you.)',
-    wrong: { rules: 'A rule can\'t compose prose.', predictive: 'No forecasting — just drafting copy.', vision: 'No image, just words.', genai: '' },
+    proposed: 'rules',
+    job: 'Draft a polite tenant circular for tomorrow\'s scheduled lift maintenance.',
+    verdict: false,
+    realAnswer: 'genai',
+    why: 'Rules can\'t write prose — they only trigger actions on conditions. Writing words = Gen AI.',
+  },
+  {
+    id: 't4',
+    location: 'Jurong East',
+    icon: '🌡️',
+    proposed: 'rules',
+    job: 'Auto-escalate to a technician when the AHU room crosses 30°C for 10 minutes.',
+    verdict: true,
+    why: 'Classic threshold trigger. Like a very strict auntie — no debate, just action.',
+  },
+  {
+    id: 't5',
+    location: 'CBD Tower',
+    icon: '🔍',
+    proposed: 'genai',
+    job: 'Detect rust spots on chiller pipework from monthly inspection photos.',
+    verdict: false,
+    realAnswer: 'vision',
+    why: 'Gen AI doesn\'t see. Image analysis = Vision AI.',
+  },
+  {
+    id: 't6',
+    location: 'Marina Bay',
+    icon: '⚡',
+    proposed: 'predictive',
+    job: 'Forecast next-month energy usage from 24 months of meter data + tenant load.',
+    verdict: true,
+    why: 'Pattern-spotting at its finest. Predictive thrives on historical signal.',
+  },
+  {
+    id: 't7',
+    location: 'Changi Hub',
+    icon: '🛗',
+    proposed: 'predictive',
+    job: 'Reply to a tenant\'s polite query about Saturday\'s lift maintenance window.',
+    verdict: false,
+    realAnswer: 'genai',
+    why: 'Predictive crunches numbers, not language. Writing a tenant reply = Gen AI.',
+  },
+  {
+    id: 't8',
+    location: 'Woodlands',
+    icon: '🚨',
+    proposed: 'vision',
+    job: 'Trigger fire-zone lockdown the moment smoke detector reads above threshold.',
+    verdict: false,
+    realAnswer: 'rules',
+    why: 'No image involved — just a sensor value. Threshold + action = Rules. (And keep this one hard-coded, not AI-trendy.)',
   },
 ];
 
 export default function LevelAiTypes({ onComplete }) {
   const [idx, setIdx] = useState(0);
-  const [picked, setPicked] = useState(null);
-  const [feedback, setFeedback] = useState(null);
-  const [history, setHistory] = useState([]); // { cardId, firstTry: boolean }
+  const [judgement, setJudgement] = useState(null); // 'right' | 'wrong' | null
+  const [history, setHistory] = useState([]); // { id, correct }
   const [shakeKey, setShakeKey] = useState(0);
 
-  const card = CARDS[idx];
-  const done = idx >= CARDS.length;
+  const ticket = TICKETS[idx];
+  const done = idx >= TICKETS.length;
+  const proposed = ticket && AI_TYPES[ticket.proposed];
 
-  function choose(typeId) {
-    if (picked) return;
-    const isCorrect = typeId === card.answer;
-    setPicked(typeId);
-    setFeedback({ correct: isCorrect, message: isCorrect ? card.correct : card.wrong[typeId] });
-    if (!isCorrect) {
-      setShakeKey((k) => k + 1);
-    }
+  const correctSoFar = history.filter((h) => h.correct).length;
+
+  const accent = useMemo(() => {
+    if (!judgement) return null;
+    const userSaidRight = judgement === 'right';
+    return userSaidRight === ticket.verdict ? 'correct' : 'wrong';
+  }, [judgement, ticket]);
+
+  function judge(call) {
+    if (judgement) return;
+    const userSaidRight = call === 'right';
+    const isCorrect = userSaidRight === ticket.verdict;
+    setJudgement(call);
+    if (!isCorrect) setShakeKey((k) => k + 1);
   }
 
-  function next() {
-    const wasFirstTry = picked === card.answer && !history.find((h) => h.cardId === card.id);
-    setHistory((h) => [...h, { cardId: card.id, firstTry: wasFirstTry, choice: card.answer }]);
-    setPicked(null);
-    setFeedback(null);
+  function advance() {
+    setHistory((h) => [...h, { id: ticket.id, correct: accent === 'correct' }]);
+    setJudgement(null);
     setIdx((i) => i + 1);
   }
-
-  function tryAgain() {
-    setPicked(null);
-    setFeedback(null);
-  }
-
-  const firstTryCount = history.filter((h) => h.firstTry).length;
 
   return (
     <div>
       <LevelHeader level={1} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Not all AI is Gen AI. <span className="text-L1">Pick the right brain.</span>
+        Not all AI is Gen AI. <span className="text-L1">Spot the mismatches.</span>
       </h2>
 
       <ConceptCard accent="L1" icon="🧭" title="AI is a toolbox, not one magic button.">
-        Rules for triggers. Predictive for forecasting. Vision for eyes. Gen AI for words.
-        <strong> Pick the right one.</strong>
+        Rules trigger. Predictive forecasts. Vision sees. Gen AI writes.
+        <strong> Wrong tool, wrong outcome.</strong>
       </ConceptCard>
 
-      {/* Type legend — compact horizontal */}
+      {/* Compact type legend */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
-        {AI_TYPES.map((t) => (
-          <div key={t.id} className="rounded-xl border border-line bg-white p-2.5">
-            <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="text-base">{t.emoji}</span>
-              <span className="font-semibold text-[12.5px] text-ink">{t.name}</span>
+        {Object.entries(AI_TYPES).map(([k, t]) => (
+          <div key={k} className="rounded-xl border border-line bg-white p-2.5 flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg bg-${t.color}/10 flex items-center justify-center text-base shrink-0`}>
+              {t.emoji}
             </div>
-            <div className="text-[11px] text-muted leading-snug">{t.blurb}</div>
+            <div className="min-w-0">
+              <div className={`font-semibold text-[12.5px] text-${t.color} leading-tight`}>{t.name}</div>
+              <div className="text-[10.5px] text-muted leading-tight truncate">{t.blurb}</div>
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Progress */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">
-          Scenario {Math.min(idx + 1, CARDS.length)} of {CARDS.length}
+      {/* Score strip */}
+      <div className="flex items-center justify-between mb-3 px-1">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted font-mono">
+          Ticket {Math.min(idx + 1, TICKETS.length)} / {TICKETS.length}
         </div>
-        <div className="flex items-center gap-1.5">
-          {CARDS.map((c, i) => {
-            const past = history.find((h) => h.cardId === c.id);
+        <div className="flex items-center gap-1">
+          {TICKETS.map((t, i) => {
+            const past = history.find((h) => h.id === t.id);
             return (
-              <div
-                key={c.id}
+              <motion.div
+                key={t.id}
+                animate={{ scale: past ? [1, 1.4, 1] : 1 }}
+                transition={{ duration: 0.35 }}
                 className={`h-1.5 rounded-full transition-all ${
-                  past ? (past.firstTry ? 'bg-win w-6' : 'bg-L3 w-6') :
-                  i === idx ? 'bg-L1 w-8' : 'bg-line w-4'
+                  past ? (past.correct ? 'bg-win w-5' : 'bg-L6 w-5') :
+                  i === idx ? 'bg-L1 w-7' : 'bg-line w-3'
                 }`}
               />
             );
@@ -130,110 +177,148 @@ export default function LevelAiTypes({ onComplete }) {
       </div>
 
       {/* Card stack */}
-      <div className="relative" style={{ minHeight: 340 }}>
+      <div className="relative" style={{ minHeight: 380 }}>
+        {/* ghost cards behind (peek effect) */}
+        {!done && idx < TICKETS.length - 1 && (
+          <>
+            <div className="absolute inset-x-3 top-2 h-full card opacity-50 scale-[0.97] origin-top" style={{ zIndex: 0 }} />
+            {idx < TICKETS.length - 2 && (
+              <div className="absolute inset-x-6 top-4 h-full card opacity-25 scale-[0.94] origin-top" style={{ zIndex: -1 }} />
+            )}
+          </>
+        )}
+
         <AnimatePresence mode="wait">
           {!done && (
             <motion.div
-              key={card.id + '-' + shakeKey}
+              key={ticket.id + '-' + shakeKey}
               initial={{ opacity: 0, y: 30, scale: 0.94 }}
               animate={{
                 opacity: 1, y: 0, scale: 1,
-                x: feedback && !feedback.correct ? [0, -8, 8, -6, 6, 0] : 0,
+                x: accent === 'wrong' ? [0, -10, 10, -8, 8, 0] : 0,
               }}
-              exit={{ opacity: 0, y: -40, scale: 0.96, transition: { duration: 0.28 } }}
-              transition={{ type: 'spring', stiffness: 220, damping: 22 }}
+              exit={{
+                opacity: 0,
+                x: accent === 'correct' ? (ticket.verdict ? 400 : -400) : 0,
+                rotate: accent === 'correct' ? (ticket.verdict ? 15 : -15) : 0,
+                transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+              }}
+              transition={{ type: 'spring', stiffness: 230, damping: 22 }}
               className="card-strong p-5 sm:p-6 relative overflow-hidden"
+              style={{ zIndex: 10 }}
             >
-              {/* decorative gradient */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-L1 via-L2 to-L3" />
+              {/* top color bar reflects proposed AI type */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-${proposed.color}`} />
 
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-cream border border-line flex items-center justify-center text-2xl sm:text-3xl shrink-0">
-                  {card.icon}
-                </div>
-                <div className="flex-1 min-w-0 pt-1">
-                  <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-soft">FM Scenario</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-cream border border-line text-muted font-semibold">
-                      🇸🇬 {card.location}
-                    </span>
-                  </div>
-                  <div className="text-[15px] sm:text-[16px] text-ink leading-relaxed font-medium">
-                    "{card.prompt}"
-                  </div>
+              {/* Ticket header */}
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-soft font-mono">
+                  FM Ticket #{ticket.id.toUpperCase()}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-cream border border-line text-muted font-semibold">
+                  🇸🇬 {ticket.location}
+                </span>
+                <span className="ml-auto text-[10px] font-mono text-soft flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-win animate-pulse" />
+                  live
+                </span>
+              </div>
+
+              {/* Job */}
+              <div className="rounded-xl bg-cream border border-line p-3.5 mb-4 flex items-start gap-3">
+                <div className="text-3xl shrink-0">{ticket.icon}</div>
+                <div className="text-[14.5px] text-ink leading-relaxed">
+                  {ticket.job}
                 </div>
               </div>
 
-              {/* Choice chips */}
-              {!feedback && (
+              {/* Proposed AI */}
+              <div className="mb-5">
+                <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-muted mb-1.5">
+                  Proposed solution
+                </div>
+                <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-${proposed.color}/10 border-2 border-${proposed.color}/40`}>
+                  <span className="text-xl">{proposed.emoji}</span>
+                  <span className={`font-bold text-[14px] text-${proposed.color}`}>{proposed.name}</span>
+                  <span className="text-soft text-[12px]">— {proposed.blurb}</span>
+                </div>
+              </div>
+
+              {/* Judgement pad */}
+              {!judgement && (
                 <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted mb-2.5 text-center">
-                    👇 Which AI fits?
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted mb-2 text-center">
+                    Your call?
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {AI_TYPES.map((t) => (
-                      <motion.button
-                        key={t.id}
-                        whileHover={{ y: -2 }}
-                        whileTap={{ scale: 0.96 }}
-                        onClick={() => choose(t.id)}
-                        className="rounded-xl px-2 py-3 border-2 border-line bg-white text-ink font-semibold text-[12.5px] hover:border-L1 hover:bg-L1/5 transition flex flex-col items-center gap-1"
-                      >
-                        <span className="text-xl">{t.emoji}</span>
-                        <span>{t.name}</span>
-                      </motion.button>
-                    ))}
+                  <div className="grid grid-cols-2 gap-3">
+                    <motion.button
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => judge('wrong')}
+                      className="rounded-xl px-4 py-3.5 border-2 border-L6/30 bg-white hover:bg-L6/5 hover:border-L6 transition flex items-center justify-center gap-2 group"
+                    >
+                      <span className="text-2xl group-hover:scale-110 transition">✗</span>
+                      <span className="font-bold text-[14px] text-L6">Wrong tool</span>
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => judge('right')}
+                      className="rounded-xl px-4 py-3.5 border-2 border-win/30 bg-white hover:bg-win/5 hover:border-win transition flex items-center justify-center gap-2 group"
+                    >
+                      <span className="text-2xl group-hover:scale-110 transition">✓</span>
+                      <span className="font-bold text-[14px] text-win">Right fit</span>
+                    </motion.button>
                   </div>
                 </div>
               )}
 
-              {/* Feedback */}
+              {/* Verdict feedback */}
               <AnimatePresence>
-                {feedback && (
+                {judgement && (
                   <motion.div
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
                     className={`rounded-xl border-2 p-3.5 ${
-                      feedback.correct ? 'border-win/40 bg-win/[0.07]' : 'border-L3/40 bg-L3/[0.06]'
+                      accent === 'correct' ? 'border-win/40 bg-win/[0.07]' : 'border-L6/40 bg-L6/[0.06]'
                     }`}
                   >
                     <div className="flex items-start gap-2.5">
-                      <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white text-sm font-bold ${
-                        feedback.correct ? 'bg-win' : 'bg-L3'
+                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white text-base font-bold ${
+                        accent === 'correct' ? 'bg-win' : 'bg-L6'
                       }`}>
-                        {feedback.correct ? '✓' : '↻'}
+                        {accent === 'correct' ? '✓' : '✗'}
                       </div>
-                      <div className="flex-1">
-                        <div className={`text-[10.5px] font-bold uppercase tracking-[0.16em] mb-0.5 ${
-                          feedback.correct ? 'text-win' : 'text-L3'
+                      <div className="flex-1 min-w-0">
+                        <div className={`text-[10.5px] font-bold uppercase tracking-[0.16em] mb-1 ${
+                          accent === 'correct' ? 'text-win' : 'text-L6'
                         }`}>
-                          {feedback.correct ? 'Got it' : 'Try again'}
+                          {accent === 'correct'
+                            ? (ticket.verdict ? 'Right call — it IS a fit' : 'Right call — it\'s a mismatch')
+                            : (ticket.verdict ? 'Actually a fit' : 'Actually a mismatch')}
                         </div>
                         <div className="text-[13.5px] text-ink/85 leading-relaxed">
-                          {feedback.correct
-                            ? feedback.message
-                            : <>That's <strong>{AI_TYPES.find((t) => t.id === picked).name}</strong> territory. {feedback.message}</>
-                          }
+                          {ticket.why}
                         </div>
+                        {!ticket.verdict && (
+                          <div className="mt-2 inline-flex items-center gap-2 text-[12.5px] bg-white border border-line rounded-lg px-2.5 py-1.5">
+                            <span className="text-soft">Better fit:</span>
+                            <span className="text-base">{AI_TYPES[ticket.realAnswer].emoji}</span>
+                            <span className={`font-bold text-${AI_TYPES[ticket.realAnswer].color}`}>
+                              {AI_TYPES[ticket.realAnswer].name}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="flex justify-end mt-3">
-                      {feedback.correct ? (
-                        <button
-                          onClick={next}
-                          className="px-4 py-2 rounded-lg bg-ink text-white font-semibold text-[13px] hover:bg-black transition shadow-pop"
-                        >
-                          {idx === CARDS.length - 1 ? 'Finish →' : 'Next scenario →'}
-                        </button>
-                      ) : (
-                        <button
-                          onClick={tryAgain}
-                          className="px-4 py-2 rounded-lg bg-L3 text-white font-semibold text-[13px] hover:bg-[#4338CA] transition shadow-pop"
-                        >
-                          ↻ Try again
-                        </button>
-                      )}
+                      <button
+                        onClick={advance}
+                        className="px-4 py-2 rounded-lg bg-ink text-white font-semibold text-[13px] hover:bg-black transition shadow-pop"
+                      >
+                        {idx === TICKETS.length - 1 ? 'See your score →' : 'Next ticket →'}
+                      </button>
                     </div>
                   </motion.div>
                 )}
@@ -247,21 +332,33 @@ export default function LevelAiTypes({ onComplete }) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-              className="card-strong p-6 text-center relative overflow-hidden"
+              className="card-strong p-6 sm:p-7 text-center relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-win to-L1" />
-              <div className="text-5xl mb-3">🎉</div>
-              <div className="font-display font-bold text-2xl mb-1">All four sorted.</div>
-              <div className="text-muted text-[14px] mb-4">
-                {firstTryCount === CARDS.length
-                  ? 'Clean sweep — first try on every one. Pro.'
-                  : firstTryCount >= CARDS.length - 1
-                  ? 'Almost a clean sweep. Well done.'
-                  : 'Sorted. That second-try learning sticks too.'}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-win via-L1 to-L4" />
+              <div className="text-5xl mb-3">
+                {correctSoFar === TICKETS.length ? '🎯' : correctSoFar >= TICKETS.length - 2 ? '👏' : '📚'}
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream border border-line text-[12px] font-mono">
-                <span className="text-soft">First-try score:</span>
-                <span className="font-bold text-ink">{firstTryCount} / {CARDS.length}</span>
+              <div className="font-display font-bold text-2xl mb-1">
+                {correctSoFar} / {TICKETS.length} tickets cleared
+              </div>
+              <div className="text-muted text-[14px] mb-4 max-w-sm mx-auto">
+                {correctSoFar === TICKETS.length
+                  ? 'Flawless. You can smell a mismatched AI a block away.'
+                  : correctSoFar >= TICKETS.length - 2
+                  ? 'Strong. A couple of sneaky ones got past, but the pattern is clear.'
+                  : 'Got the basics. The wrong-tool examples are the ones to remember.'}
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-1.5">
+                {history.map((h) => (
+                  <div
+                    key={h.id}
+                    className={`w-7 h-7 rounded-md flex items-center justify-center text-white text-xs font-bold ${
+                      h.correct ? 'bg-win' : 'bg-L6'
+                    }`}
+                  >
+                    {h.correct ? '✓' : '✗'}
+                  </div>
+                ))}
               </div>
             </motion.div>
           )}

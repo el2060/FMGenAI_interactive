@@ -3,8 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   safelist: [
     'bg-L1','bg-L2','bg-L3','bg-L4','bg-L5','bg-L6','bg-L7','bg-L8','bg-L9','bg-L10',
+    'bg-L1/10','bg-L2/10','bg-L3/10','bg-L4/10','bg-L5/10','bg-L6/10','bg-L7/10','bg-L8/10','bg-L9/10','bg-L10/10',
     'text-L1','text-L2','text-L3','text-L4','text-L5','text-L6','text-L7','text-L8','text-L9','text-L10',
     'border-L1','border-L2','border-L3','border-L4','border-L5','border-L6','border-L7','border-L8','border-L9','border-L10',
+    'border-L1/40','border-L2/40','border-L3/40','border-L4/40','border-L5/40','border-L6/40','border-L7/40','border-L8/40','border-L9/40','border-L10/40',
     'ring-pulse-L1','ring-pulse-L2','ring-pulse-L3','ring-pulse-L4','ring-pulse-L5','ring-pulse-L6','ring-pulse-L7','ring-pulse-L8','ring-pulse-L9','ring-pulse-L10',
   ],
   theme: {
