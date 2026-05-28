@@ -49,14 +49,13 @@ export default function Intro({ onStart }) {
         transition={{ delay: 0.2 }}
         className="card max-w-3xl mx-auto p-4 sm:p-5 mb-10 text-left"
       >
-        <div className="flex items-stretch gap-2 sm:gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
           {CHAPTERS.map((ch, ci) => {
             const headColor = LEVEL_META[ch.levels[0]].color;
             return (
               <div
                 key={ch.n}
                 className="rounded-xl border border-line bg-cream/50 p-3 flex flex-col"
-                style={{ flex: ch.levels.length }}
               >
                 <div className="flex items-baseline gap-1.5 mb-2">
                   <span className={`text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded ${BG_COLORS[headColor]} text-white tracking-wider`}>
@@ -65,23 +64,22 @@ export default function Intro({ onStart }) {
                   <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-soft">{ch.subtitle}</span>
                 </div>
                 <div className="font-display font-bold text-[14px] leading-tight mb-3 text-ink">{ch.title}</div>
-                <div className="flex flex-wrap gap-1.5 mt-auto">
+                <div className="flex flex-col gap-1 mt-auto">
                   {ch.levels.map((lvl) => {
                     const m = LEVEL_META[lvl];
                     return (
                       <motion.div
                         key={lvl}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, x: -6 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.25 + ci * 0.06 + lvl * 0.02 }}
-                        className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white border border-line"
-                        title={m.name}
+                        className="flex items-center gap-1.5 px-1.5 py-1 rounded-md bg-white border border-line/70"
                       >
                         <span className={`w-4 h-4 rounded ${BG_COLORS[m.color]} text-white font-mono font-bold text-[9px] flex items-center justify-center shrink-0`}>
                           {lvl}
                         </span>
-                        <span className="text-[13px]">{m.emoji}</span>
-                        <span className={`font-semibold text-[11.5px] ${TEXT_COLORS[m.color]}`}>{m.name}</span>
+                        <span className="text-[12px] shrink-0">{m.emoji}</span>
+                        <span className={`font-semibold text-[11px] ${TEXT_COLORS[m.color]} truncate`}>{m.name}</span>
                       </motion.div>
                     );
                   })}

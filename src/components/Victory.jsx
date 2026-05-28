@@ -14,13 +14,17 @@ function fireConfetti() {
 }
 
 const TAKEAWAYS = [
-  { lvl: 1, line: 'Gen AI is one slice. Pick the right brain for the job.' },
-  { lvl: 2, line: 'Tokens = currency. Tight prompts are cheap and fast.' },
-  { lvl: 3, line: 'Cool temperatures for FM ops. Warm only for brainstorming.' },
-  { lvl: 4, line: 'Anchor every prompt: audience, tone, details.' },
-  { lvl: 5, line: 'Ground AI with clean FM docs. Curate or it poisons.' },
-  { lvl: 6, line: 'Strip identifiers, keep context. PDPA still applies.' },
-  { lvl: 7, line: 'Confidence ≠ correctness. Always verify.' },
+  { lvl: 1,  line: 'Gen AI is one slice. Pick the right brain for the job.' },
+  { lvl: 2,  line: 'Tokens = currency. Tight prompts are cheap and fast.' },
+  { lvl: 3,  line: 'Cool temperatures for FM ops. Warm only for brainstorming.' },
+  { lvl: 4,  line: 'Cast a persona before the prompt. Same facts, different voice.' },
+  { lvl: 5,  line: 'Anchor every prompt: audience, tone, details.' },
+  { lvl: 6,  line: 'Ground AI with clean FM docs. Curate or it poisons.' },
+  { lvl: 7,  line: 'Refine, don\'t restart. Each follow-up sharpens the draft.' },
+  { lvl: 8,  line: 'Specify the output shape — tables, bullets, checklists.' },
+  { lvl: 9,  line: 'Strip identifiers, keep context. PDPA still applies.' },
+  { lvl: 10, line: 'Confidence ≠ correctness. Always verify hallucinations.' },
+  { lvl: 11, line: 'AI accelerates. Humans authorise. Know where the line sits.' },
 ];
 
 export default function Victory({ onRestart }) {
@@ -57,9 +61,9 @@ export default function Victory({ onRestart }) {
 
       <motion.h1 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
         className="font-display text-3xl sm:text-5xl font-bold tracking-tight mb-3 leading-[1.04]">
-        You've covered the
+        You've covered all
         <br />
-        <span className="shimmer-text">seven AI foundations</span>
+        <span className="shimmer-text">eleven Gen AI levels</span>
       </motion.h1>
 
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
@@ -93,7 +97,7 @@ export default function Victory({ onRestart }) {
           <div className="flex-1">
             <div className="font-display font-bold text-ink text-[15px] mb-1">Show this screen to the facilitator</div>
             <div className="text-[13px] text-muted leading-relaxed">
-              The completion code <span className="font-mono font-semibold text-ink">FM-AI-SECURED</span> confirms you've worked through all seven levels.
+              The completion code <span className="font-mono font-semibold text-ink">FM-AI-SECURED</span> confirms you've worked through all 11 levels.
             </div>
           </div>
         </div>

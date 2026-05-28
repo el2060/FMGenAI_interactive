@@ -5,7 +5,7 @@ import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton } from './Common'
 const HALLUCINATIONS = ['h1', 'h2', 'h3'];
 
 const RESPONSE = [
-  { text: "Hi! I've reviewed the chilled water plant efficiency drop you reported at Block 79. Here are the recommended diagnostic steps:\n\n" },
+  { text: "Hi! I've reviewed the chilled water plant efficiency drop you reported at Block 71. Here are the recommended diagnostic steps:\n\n" },
   { text: '1. ' },
   { text: 'Verify chilled water supply and return temperatures against design conditions (typically 7°C supply, 12.5°C return).\n' },
   { text: '2. ' },
@@ -36,19 +36,19 @@ export default function LevelHallucinationHunt({ onComplete }) {
 
   return (
     <div>
-      <LevelHeader level={7} />
+      <LevelHeader level={10} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        AI is confident. <span className="text-L7">Sometimes wrong.</span>
+        AI is confident. <span className="text-L10">Sometimes wrong.</span>
       </h2>
 
-      <ConceptCard accent="L7" icon="🎯" title="AI bluffs with full conviction.">
+      <ConceptCard accent="L10" icon="🎯" title="AI bluffs with full conviction.">
         It invents regulations, part numbers, procedures — all sounding legit. Only defence:
         a <strong>human in the loop</strong> who actually knows the domain.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
         Three steps below sound right but are{' '}
-        <span className="text-L7 font-semibold">dangerously wrong</span>. Find and tap them.
+        <span className="text-L10 font-semibold">dangerously wrong</span>. Find and tap them.
       </p>
 
       <div className="card-strong p-0 mb-5 overflow-hidden">
@@ -74,7 +74,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
                 disabled={isFound}
                 onClick={() => handleClick(seg)}
                 className={`inline text-left align-baseline px-1 -mx-1 py-0.5 rounded transition-all ${
-                  isFound ? 'bg-L7/15 text-L7 line-through decoration-L7/60' : 'cursor-pointer hover:bg-yellow-100 hover:shadow-sm'
+                  isFound ? 'bg-L10/15 text-L10 line-through decoration-L10/60' : 'cursor-pointer hover:bg-yellow-100 hover:shadow-sm'
                 }`}
               >
                 {seg.text}
@@ -93,13 +93,13 @@ export default function LevelHallucinationHunt({ onComplete }) {
                 initial={{ opacity: 0, x: 30, scale: 0.96 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-                className="rounded-xl border-2 border-L7/30 bg-gradient-to-r from-L6/5 to-transparent p-4 flex gap-3"
+                className="rounded-xl border-2 border-L10/30 bg-gradient-to-r from-L6/5 to-transparent p-4 flex gap-3"
               >
-                <div className="shrink-0 w-9 h-9 rounded-lg bg-L7 text-white flex items-center justify-center font-bold text-sm shadow-pop">⚠</div>
+                <div className="shrink-0 w-9 h-9 rounded-lg bg-L10 text-white flex items-center justify-center font-bold text-sm shadow-pop">⚠</div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <div className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-L7">Hallucination caught</div>
-                    <div className="text-[10.5px] font-semibold text-L7 bg-L7/10 px-2 py-0.5 rounded-full">{seg.why}</div>
+                    <div className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-L10">Hallucination caught</div>
+                    <div className="text-[10.5px] font-semibold text-L10 bg-L10/10 px-2 py-0.5 rounded-full">{seg.why}</div>
                   </div>
                   <div className="text-[13.5px] text-ink/85 leading-relaxed">{seg.correction}</div>
                 </div>
@@ -113,22 +113,22 @@ export default function LevelHallucinationHunt({ onComplete }) {
         <div className="flex items-center gap-3">
           <div className="flex items-baseline gap-1.5">
             <span className="text-muted text-sm">Found</span>
-            <motion.span key={Object.keys(found).length} initial={{ scale: 1.3 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className={`font-mono text-2xl font-extrabold tabular-nums ${allFound ? 'text-win' : 'text-L7'}`}>
+            <motion.span key={Object.keys(found).length} initial={{ scale: 1.3 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className={`font-mono text-2xl font-extrabold tabular-nums ${allFound ? 'text-win' : 'text-L10'}`}>
               {Object.keys(found).length}
             </motion.span>
             <span className="text-soft text-sm font-mono">/ 3</span>
           </div>
           <div className="flex gap-1.5">
             {HALLUCINATIONS.map((h) => (
-              <motion.div key={h} animate={{ scale: found[h] ? [1, 1.4, 1] : 1 }} transition={{ duration: 0.4 }} className={`w-3 h-3 rounded-full transition ${found[h] ? 'bg-L7' : 'bg-line border border-line'}`} />
+              <motion.div key={h} animate={{ scale: found[h] ? [1, 1.4, 1] : 1 }} transition={{ duration: 0.4 }} className={`w-3 h-3 rounded-full transition ${found[h] ? 'bg-L10' : 'bg-line border border-line'}`} />
             ))}
           </div>
         </div>
-        <PrimaryButton onClick={onComplete} disabled={!allFound} accent="L7">🏆 Complete Workshop →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!allFound} accent="L10">🏆 Complete Workshop →</PrimaryButton>
       </div>
 
       <TakeawayCard
-        accent="L7"
+        accent="L10"
         application="AI SOPs and procedures? Cross-check vendor manuals, BCA/SS, and a senior engineer before acting. AI fast ≠ AI right."
       >
         <strong>Confidence ≠ correctness.</strong> The reasonable-sounding ones bite hardest. Verify.

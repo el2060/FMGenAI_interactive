@@ -1,30 +1,42 @@
+// Recurring fictional anchor — the same building threads through every level.
+export const SITE = {
+  name: 'JTC Block 71',
+  area: 'Jurong East',
+  blurb: 'Mixed-use light-industrial / office tower. ~200 tenants. The recurring building for every level.',
+};
+
 export const LEVEL_META = {
-  1: { chapter: 1, chapterTitle: 'AI Foundations', name: 'Types of AI',      emoji: '🧭', color: 'L1' },
-  2: { chapter: 1, chapterTitle: 'AI Foundations', name: 'Tokens',           emoji: '🔤', color: 'L2' },
-  3: { chapter: 1, chapterTitle: 'AI Foundations', name: 'Temperature',      emoji: '🎲', color: 'L3' },
-  4: { chapter: 1, chapterTitle: 'AI Foundations', name: 'Context Anchoring', emoji: '⚓', color: 'L4' },
-  5: { chapter: 2, chapterTitle: 'Prompting in FM', name: 'Grounding',       emoji: '📚', color: 'L5' },
-  6: { chapter: 3, chapterTitle: 'Safety & Risk', name: 'PDPA Guardrails',   emoji: '🔒', color: 'L6' },
-  7: { chapter: 3, chapterTitle: 'Safety & Risk', name: 'Hallucinations',    emoji: '🎯', color: 'L7' },
+  1:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Types of AI',       emoji: '🧭', color: 'L1'  },
+  2:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Tokens',            emoji: '🔤', color: 'L2'  },
+  3:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Temperature',       emoji: '🎲', color: 'L3'  },
+  4:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Persona',           emoji: '🎭', color: 'L4'  },
+  5:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Context Anchoring', emoji: '⚓', color: 'L5'  },
+  6:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Grounding',         emoji: '📚', color: 'L6'  },
+  7:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Iterate & Refine',  emoji: '🔁', color: 'L7'  },
+  8:  { chapter: 3, chapterTitle: 'Shape the Output',    name: 'Structured Output', emoji: '📋', color: 'L8'  },
+  9:  { chapter: 4, chapterTitle: 'Use it Safely',       name: 'PDPA Guardrails',   emoji: '🔒', color: 'L9'  },
+  10: { chapter: 4, chapterTitle: 'Use it Safely',       name: 'Hallucinations',    emoji: '🎯', color: 'L10' },
+  11: { chapter: 4, chapterTitle: 'Use it Safely',       name: 'When NOT to Use AI', emoji: '🛑', color: 'L11' },
 };
 
 export const CHAPTERS = [
-  { n: 1, title: 'AI Foundations', subtitle: 'Orient', levels: [1, 2, 3, 4] },
-  { n: 2, title: 'Prompting in FM', subtitle: 'Craft', levels: [5] },
-  { n: 3, title: 'Safety & Risk', subtitle: 'Defend', levels: [6, 7] },
+  { n: 1, title: 'Meet the AI',      subtitle: 'Orient', levels: [1, 2, 3] },
+  { n: 2, title: 'Talk to the AI',   subtitle: 'Craft',  levels: [4, 5, 6, 7] },
+  { n: 3, title: 'Shape the Output', subtitle: 'Apply',  levels: [8] },
+  { n: 4, title: 'Use it Safely',    subtitle: 'Defend', levels: [9, 10, 11] },
 ];
 
 const TOTAL_LEVELS = Object.keys(LEVEL_META).length;
 
-const TEXT_COLORS    = { L1:'text-L1', L2:'text-L2', L3:'text-L3', L4:'text-L4', L5:'text-L5', L6:'text-L6', L7:'text-L7', L8:'text-L8', L9:'text-L9', L10:'text-L10', muted:'text-muted' };
-const BG_COLORS      = { L1:'bg-L1',   L2:'bg-L2',   L3:'bg-L3',   L4:'bg-L4',   L5:'bg-L5',   L6:'bg-L6',   L7:'bg-L7',   L8:'bg-L8',   L9:'bg-L9',   L10:'bg-L10'   };
-const BORDER_COLORS  = { L1:'border-L1', L2:'border-L2', L3:'border-L3', L4:'border-L4', L5:'border-L5', L6:'border-L6', L7:'border-L7', L8:'border-L8', L9:'border-L9', L10:'border-L10' };
-const RING_PULSE     = { L1:'ring-pulse-L1', L2:'ring-pulse-L2', L3:'ring-pulse-L3', L4:'ring-pulse-L4', L5:'ring-pulse-L5', L6:'ring-pulse-L6', L7:'ring-pulse-L7', L8:'ring-pulse-L8', L9:'ring-pulse-L9', L10:'ring-pulse-L10' };
+const TEXT_COLORS    = { L1:'text-L1', L2:'text-L2', L3:'text-L3', L4:'text-L4', L5:'text-L5', L6:'text-L6', L7:'text-L7', L8:'text-L8', L9:'text-L9', L10:'text-L10', L11:'text-L11', muted:'text-muted' };
+const BG_COLORS      = { L1:'bg-L1',   L2:'bg-L2',   L3:'bg-L3',   L4:'bg-L4',   L5:'bg-L5',   L6:'bg-L6',   L7:'bg-L7',   L8:'bg-L8',   L9:'bg-L9',   L10:'bg-L10', L11:'bg-L11' };
+const BORDER_COLORS  = { L1:'border-L1', L2:'border-L2', L3:'border-L3', L4:'border-L4', L5:'border-L5', L6:'border-L6', L7:'border-L7', L8:'border-L8', L9:'border-L9', L10:'border-L10', L11:'border-L11' };
+const RING_PULSE     = { L1:'ring-pulse-L1', L2:'ring-pulse-L2', L3:'ring-pulse-L3', L4:'ring-pulse-L4', L5:'ring-pulse-L5', L6:'ring-pulse-L6', L7:'ring-pulse-L7', L8:'ring-pulse-L8', L9:'ring-pulse-L9', L10:'ring-pulse-L10', L11:'ring-pulse-L11' };
 const HOVER_BG = {
   L1:'hover:bg-[#6D28D9]', L2:'hover:bg-[#DB2777]', L3:'hover:bg-[#4338CA]',
   L4:'hover:bg-[#D97706]', L5:'hover:bg-[#EA580C]', L6:'hover:bg-[#0D9488]',
   L7:'hover:bg-[#2563EB]', L8:'hover:bg-[#059669]', L9:'hover:bg-[#334155]',
-  L10:'hover:bg-[#BE123C]', win:'hover:bg-[#4D7C0F]', ink:'hover:bg-black',
+  L10:'hover:bg-[#BE123C]', L11:'hover:bg-[#4C1D95]', win:'hover:bg-[#4D7C0F]', ink:'hover:bg-black',
 };
 
 export function Eyebrow({ children, color = 'muted' }) {
@@ -39,6 +51,7 @@ export function LevelHeader({ level }) {
   const m = LEVEL_META[level];
   return (
     <div className="mb-5">
+      <ChapterIntro level={level} />
       <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-3 flex-wrap">
         <span className={`${BG_COLORS[m.color]} text-white px-2 py-0.5 rounded-md font-mono tracking-normal`}>
           CH {m.chapter}
@@ -46,6 +59,9 @@ export function LevelHeader({ level }) {
         <span className="text-ink/70">{m.chapterTitle}</span>
         <span className="text-soft">·</span>
         <span className="text-soft font-mono tracking-normal">L{level}/{TOTAL_LEVELS}</span>
+        <span className="ml-auto inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-cream border border-line text-[9.5px] font-semibold normal-case tracking-normal text-soft">
+          🏢 <span className="font-mono">{SITE.name}, {SITE.area}</span>
+        </span>
       </div>
       <div className="flex items-center gap-3 mb-1">
         <div className={`w-11 h-11 rounded-2xl ${BG_COLORS[m.color]} text-white flex items-center justify-center text-xl shadow-pop`}>
@@ -110,7 +126,7 @@ export function PrimaryButton({ children, disabled, onClick, accent = 'ink', cla
   const accents = {
     ink:'bg-ink text-white', L1:'bg-L1 text-white', L2:'bg-L2 text-white', L3:'bg-L3 text-white',
     L4:'bg-L4 text-white', L5:'bg-L5 text-white', L6:'bg-L6 text-white', L7:'bg-L7 text-white',
-    L8:'bg-L8 text-white', L9:'bg-L9 text-white', L10:'bg-L10 text-white', win:'bg-win text-white',
+    L8:'bg-L8 text-white', L9:'bg-L9 text-white', L10:'bg-L10 text-white', L11:'bg-L11 text-white', win:'bg-win text-white',
   };
   return (
     <button
@@ -133,6 +149,40 @@ export function Background() {
       <div className="bg-blob blob-b" style={{ background: '#FFC9A3', width: 460, height: 460, top: 160, right: -160 }} />
       <div className="bg-blob blob-c" style={{ background: '#A7E9DF', width: 420, height: 420, bottom: -180, left: '30%' }} />
     </>
+  );
+}
+
+// A subtle inline chip placeholder. Used inside scenarios to visually
+// link every level back to the same recurring building.
+export function SiteChip({ floor }) {
+  return (
+    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-cream border border-line text-[11px] font-semibold text-ink/80 align-baseline">
+      <span>🏢</span>
+      <span className="font-mono tracking-tight">{SITE.name}</span>
+      {floor && <span className="text-soft font-mono">· {floor}</span>}
+    </span>
+  );
+}
+
+// Tiny eyebrow that appears once at the top of every chapter's first level.
+// Reinforces narrative threading.
+export function ChapterIntro({ level }) {
+  const m = LEVEL_META[level];
+  if (!m) return null;
+  const chap = CHAPTERS.find((c) => c.n === m.chapter);
+  if (!chap || chap.levels[0] !== level) return null;
+  return (
+    <div className={`mb-4 rounded-xl border ${BORDER_COLORS[m.color]}/40 bg-gradient-to-r from-${m.color}/10 to-transparent p-3 flex items-center gap-3`}>
+      <div className={`shrink-0 w-9 h-9 rounded-lg ${BG_COLORS[m.color]} text-white flex items-center justify-center text-[13px] font-bold font-mono`}>
+        CH{chap.n}
+      </div>
+      <div className="min-w-0">
+        <div className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${TEXT_COLORS[m.color]}`}>
+          Chapter {chap.n} · {chap.subtitle}
+        </div>
+        <div className="font-display font-bold text-[15px] text-ink leading-tight">{chap.title}</div>
+      </div>
+    </div>
   );
 }
 

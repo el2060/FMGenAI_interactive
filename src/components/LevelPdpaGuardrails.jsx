@@ -44,16 +44,16 @@ export default function LevelPdpaGuardrails({ onComplete }) {
   if (filters.topic) score -= 1;
   const scoreMax = 4;
   const scoreLabel = score < 0 ? 'Broken (over-redacted)' : score === 0 ? 'Risky' : score <= 2 ? 'Improving' : score === 3 ? 'Almost safe' : safe ? 'PDPA Safe ✓' : 'Almost safe';
-  const scoreColor = score < 0 ? 'text-L6' : score === 0 ? 'text-L6' : score <= 2 ? 'text-L3' : score === 3 ? 'text-L2' : safe ? 'text-win' : 'text-L2';
+  const scoreColor = score < 0 ? 'text-L9' : score === 0 ? 'text-L9' : score <= 2 ? 'text-L3' : score === 3 ? 'text-L2' : safe ? 'text-win' : 'text-L2';
 
   return (
     <div>
-      <LevelHeader level={6} />
+      <LevelHeader level={9} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        AI prompts are not private. <span className="text-L6">Strip the sensitive bits first.</span>
+        AI prompts are not private. <span className="text-L9">Strip the sensitive bits first.</span>
       </h2>
 
-      <ConceptCard accent="L6" icon="🔒" title="PDPA applies when you talk to AI too.">
+      <ConceptCard accent="L9" icon="🔒" title="PDPA applies when you talk to AI too.">
         Pasting NRICs or unit numbers into ChatGPT = data outside your agency. Possible notifiable breach.
         But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
       </ConceptCard>
@@ -89,7 +89,7 @@ export default function LevelPdpaGuardrails({ onComplete }) {
               );
             }
             return (
-              <span key={i} className={`font-mono px-1.5 py-0.5 rounded ${p.sensitive ? 'bg-L6/10 text-L6 font-semibold' : 'bg-L4/10 text-L4 font-semibold'}`}>
+              <span key={i} className={`font-mono px-1.5 py-0.5 rounded ${p.sensitive ? 'bg-L9/10 text-L9 font-semibold' : 'bg-L4/10 text-L4 font-semibold'}`}>
                 {p.text}
               </span>
             );
@@ -108,12 +108,12 @@ export default function LevelPdpaGuardrails({ onComplete }) {
                 onClick={() => toggle(f.id)}
                 disabled={sent}
                 className={`text-left p-3 rounded-xl border-2 transition-all ${
-                  on ? 'border-L6 bg-L6/[0.07] shadow-pop' : 'border-line bg-white hover:border-L6/40'
+                  on ? 'border-L9 bg-L9/[0.07] shadow-pop' : 'border-line bg-white hover:border-L9/40'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-lg">{f.icon}</span>
-                  <span className={`w-8 h-4 rounded-full p-0.5 transition ${on ? 'bg-L6' : 'bg-line'}`}>
+                  <span className={`w-8 h-4 rounded-full p-0.5 transition ${on ? 'bg-L9' : 'bg-line'}`}>
                     <motion.span
                       animate={{ x: on ? 16 : 0 }}
                       transition={{ type: 'spring', stiffness: 500, damping: 28 }}
@@ -147,16 +147,16 @@ export default function LevelPdpaGuardrails({ onComplete }) {
           disabled={!safe || sent}
           className={`px-5 py-3 rounded-xl font-semibold text-[15px] transition-all ${
             sent ? 'bg-win/10 text-win border border-win/30 cursor-default' :
-            safe ? 'bg-L6 text-white hover:bg-[#0D9488] shadow-pop ring-pulse-L6' : 'bg-line text-soft cursor-not-allowed'
+            safe ? 'bg-L9 text-white hover:bg-[#0D9488] shadow-pop ring-pulse-L9' : 'bg-line text-soft cursor-not-allowed'
           }`}
         >
           {sent ? '✓ Sent safely to AI' : '🔒 Send to AI'}
         </button>
-        <PrimaryButton onClick={onComplete} disabled={!sent} accent="L6">Next Level →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!sent} accent="L9">Next Level →</PrimaryButton>
       </div>
 
       <TakeawayCard
-        accent="L6"
+        accent="L9"
         application="Replace NRIC with 'tenant', mobile with 'phone on file', #15-23 with 'a unit on floor 15'. When in doubt, use the enterprise AI your agency cleared — not public chat."
       >
         <strong>Identifiers go. Business problem stays.</strong> PDPA with AI = feed only what's needed.

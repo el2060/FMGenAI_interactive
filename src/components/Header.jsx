@@ -9,7 +9,7 @@ export default function Header({ level }) {
         <div className="flex items-center gap-2 shrink-0">
           <img src="/np-logo.png" alt="NP" className="h-6 w-auto" />
           <div className="hidden sm:block h-4 w-px bg-line" />
-          <span className="hidden sm:inline font-display font-bold text-[14px] tracking-tight">FM AI Foundations</span>
+          <span className="hidden sm:inline font-display font-bold text-[14px] tracking-tight">Gen AI for FM</span>
         </div>
 
         <div className="hidden md:flex items-baseline gap-1.5 text-[12px] text-muted shrink-0 ml-2">
@@ -28,7 +28,7 @@ export default function Header({ level }) {
                 const filled = lvl <= level;
                 const m = LEVEL_META[lvl];
                 return (
-                  <div key={lvl} className="h-2 w-4 sm:w-6 rounded-full bg-line overflow-hidden relative">
+                  <div key={lvl} className="h-2 w-3 sm:w-5 rounded-full bg-line overflow-hidden relative">
                     <motion.div
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: filled ? 1 : 0 }}
