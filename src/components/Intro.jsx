@@ -43,56 +43,62 @@ export default function Intro({ onStart }) {
         <div className="absolute inset-0 bg-gradient-to-t from-cream to-transparent pointer-events-none" />
       </motion.div>
 
-      <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-10 text-left">
-        {CHAPTERS.map((ch, i) => (
-          <motion.div
-            key={ch.n}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18 + i * 0.07 }}
-            className="card p-5 flex flex-col"
-          >
-            <div className="flex items-baseline gap-2 mb-2">
-              <div className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-soft font-mono">
-                Ch {ch.n}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="card max-w-3xl mx-auto p-4 sm:p-5 mb-10 text-left"
+      >
+        <div className="flex items-stretch gap-2 sm:gap-3">
+          {CHAPTERS.map((ch, ci) => {
+            const headColor = LEVEL_META[ch.levels[0]].color;
+            return (
+              <div
+                key={ch.n}
+                className="rounded-xl border border-line bg-cream/50 p-3 flex flex-col"
+                style={{ flex: ch.levels.length }}
+              >
+                <div className="flex items-baseline gap-1.5 mb-2">
+                  <span className={`text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded ${BG_COLORS[headColor]} text-white tracking-wider`}>
+                    CH {ch.n}
+                  </span>
+                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-soft">{ch.subtitle}</span>
+                </div>
+                <div className="font-display font-bold text-[14px] leading-tight mb-3 text-ink">{ch.title}</div>
+                <div className="flex flex-wrap gap-1.5 mt-auto">
+                  {ch.levels.map((lvl) => {
+                    const m = LEVEL_META[lvl];
+                    return (
+                      <motion.div
+                        key={lvl}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.25 + ci * 0.06 + lvl * 0.02 }}
+                        className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white border border-line"
+                        title={m.name}
+                      >
+                        <span className={`w-4 h-4 rounded ${BG_COLORS[m.color]} text-white font-mono font-bold text-[9px] flex items-center justify-center shrink-0`}>
+                          {lvl}
+                        </span>
+                        <span className="text-[13px]">{m.emoji}</span>
+                        <span className={`font-semibold text-[11.5px] ${TEXT_COLORS[m.color]}`}>{m.name}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-soft">· {ch.subtitle}</div>
-            </div>
-            <div className="font-display font-bold text-[17px] leading-tight mb-3">{ch.title}</div>
-            <div className="space-y-1.5 mt-auto">
-              {ch.levels.map((lvl) => {
-                const m = LEVEL_META[lvl];
-                return (
-                  <div key={lvl} className="flex items-center gap-2 text-[12.5px]">
-                    <span className={`w-5 h-5 rounded ${BG_COLORS[m.color]} text-white font-mono font-bold text-[10px] flex items-center justify-center shrink-0`}>
-                      {lvl}
-                    </span>
-                    <span className="text-base">{m.emoji}</span>
-                    <span className={`font-semibold ${TEXT_COLORS[m.color]}`}>{m.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="card max-w-2xl mx-auto p-4 text-left mb-10">
-        <div className="grid sm:grid-cols-3 gap-3 text-[13px]">
-          <div className="flex items-start gap-2.5">
-            <span className="text-lg shrink-0">💡</span>
-            <div><span className="font-semibold text-ink">Read</span> <span className="text-muted">the quick concept.</span></div>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-lg shrink-0">🎮</span>
-            <div><span className="font-semibold text-ink">Try</span> <span className="text-muted">the interaction.</span></div>
-          </div>
-          <div className="flex items-start gap-2.5">
-            <span className="text-lg shrink-0">🎯</span>
-            <div><span className="font-semibold text-ink">Lock in</span> <span className="text-muted">the takeaway.</span></div>
-          </div>
+            );
+          })}
         </div>
-      </div>
+
+        <div className="flex items-center justify-center gap-5 sm:gap-7 mt-4 pt-3.5 border-t border-line/70 text-[12px] text-muted">
+          <span className="flex items-center gap-1.5"><span>💡</span><span className="font-semibold text-ink">Read</span></span>
+          <span className="text-soft">→</span>
+          <span className="flex items-center gap-1.5"><span>🎮</span><span className="font-semibold text-ink">Try</span></span>
+          <span className="text-soft">→</span>
+          <span className="flex items-center gap-1.5"><span>🎯</span><span className="font-semibold text-ink">Lock in</span></span>
+        </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}
