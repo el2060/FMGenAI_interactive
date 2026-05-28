@@ -3,6 +3,7 @@ import { PrimaryButton, LEVEL_META, CHAPTERS, BG_COLORS, TEXT_COLORS } from './C
 import { SgSkyline } from './SgVisuals';
 
 export default function Intro({ onStart }) {
+  const totalLevels = CHAPTERS.reduce((sum, ch) => sum + ch.levels.length, 0);
   return (
     <div className="pt-2 sm:pt-6 text-center">
       <motion.div
@@ -29,12 +30,11 @@ export default function Intro({ onStart }) {
       </h1>
 
       <p className="text-muted max-w-xl mx-auto mb-2 text-[15.5px] leading-relaxed">
-        A self-paced workshop in <span className="font-semibold text-ink">seven short levels</span>{' '}
-        across <span className="font-semibold text-ink">three chapters</span>. Type, drag, slide,
-        click and match your way through real Singapore FM scenarios. Learn by doing.
+        {totalLevels} short levels. Real Singapore FM scenarios.{' '}
+        <span className="font-semibold text-ink">Learn by doing</span> — type, drag, slide, click.
       </p>
       <p className="text-soft text-[13px] mb-6">
-        Take as long as you need on each level. There's no clock.
+        Go at your own pace. No clock, no judgement lah.
       </p>
 
       <motion.div
@@ -47,7 +47,7 @@ export default function Intro({ onStart }) {
         <div className="absolute inset-0 bg-gradient-to-t from-cream to-transparent pointer-events-none" />
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto mb-10 text-left">
+      <div className="grid sm:grid-cols-3 gap-3 max-w-3xl mx-auto mb-10 text-left">
         {CHAPTERS.map((ch, i) => (
           <motion.div
             key={ch.n}
@@ -81,20 +81,19 @@ export default function Intro({ onStart }) {
         ))}
       </div>
 
-      <div className="card max-w-2xl mx-auto p-5 text-left mb-10">
-        <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-3">📚 How this works</div>
-        <div className="grid sm:grid-cols-3 gap-4 text-[13.5px]">
-          <div>
-            <div className="font-semibold text-ink mb-1">1. Read the concept</div>
-            <div className="text-muted leading-relaxed">Every level opens with a short plain-English explainer.</div>
+      <div className="card max-w-2xl mx-auto p-4 text-left mb-10">
+        <div className="grid sm:grid-cols-3 gap-3 text-[13px]">
+          <div className="flex items-start gap-2.5">
+            <span className="text-lg shrink-0">💡</span>
+            <div><span className="font-semibold text-ink">Read</span> <span className="text-muted">the quick concept.</span></div>
           </div>
-          <div>
-            <div className="font-semibold text-ink mb-1">2. Try the interaction</div>
-            <div className="text-muted leading-relaxed">Type, drag, click or slide your way through real FM scenarios.</div>
+          <div className="flex items-start gap-2.5">
+            <span className="text-lg shrink-0">🎮</span>
+            <div><span className="font-semibold text-ink">Try</span> <span className="text-muted">the interaction.</span></div>
           </div>
-          <div>
-            <div className="font-semibold text-ink mb-1">3. Lock in the takeaway</div>
-            <div className="text-muted leading-relaxed">Each level closes with what to remember and how to apply it.</div>
+          <div className="flex items-start gap-2.5">
+            <span className="text-lg shrink-0">🎯</span>
+            <div><span className="font-semibold text-ink">Lock in</span> <span className="text-muted">the takeaway.</span></div>
           </div>
         </div>
       </div>

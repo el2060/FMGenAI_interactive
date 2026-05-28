@@ -47,7 +47,7 @@ function TagChip({ tag, placed, draggableProps }) {
       {...(draggableProps?.listeners || {})}
       {...(draggableProps?.attributes || {})}
       style={{ touchAction: 'none' }}
-      className={`${baseCls} bg-white border-ink/15 text-ink shadow-pop cursor-grab active:cursor-grabbing hover:border-L5 hover:-translate-y-0.5 ${draggableProps?.isDragging ? 'opacity-0' : ''}`}
+      className={`${baseCls} bg-white border-ink/15 text-ink shadow-pop cursor-grab active:cursor-grabbing hover:border-L4 hover:-translate-y-0.5 ${draggableProps?.isDragging ? 'opacity-0' : ''}`}
     >
       <span className="text-base">{tag.emoji}</span>
       <span>{tag.label}</span>
@@ -71,7 +71,7 @@ function DropSlot({ slot, placedTag, onClear, locked }) {
         transition={{ type: 'spring', stiffness: 360, damping: 20 }}
         onClick={() => onClear(slot.id)}
         disabled={locked}
-        className="group inline-flex items-center gap-1.5 align-baseline mx-0.5 my-0.5 px-2.5 py-1 rounded-lg bg-L5/10 border-2 border-L5 text-L5 text-[13.5px] font-semibold hover:bg-L5/15 transition"
+        className="group inline-flex items-center gap-1.5 align-baseline mx-0.5 my-0.5 px-2.5 py-1 rounded-lg bg-L4/10 border-2 border-L4 text-L4 text-[13.5px] font-semibold hover:bg-L4/15 transition"
         title={locked ? '' : 'Click to remove'}
       >
         <span>{placedTag.emoji}</span><span>{placedTag.short}</span>
@@ -83,7 +83,7 @@ function DropSlot({ slot, placedTag, onClear, locked }) {
     <span
       ref={setNodeRef}
       className={`inline-flex items-center align-baseline mx-0.5 px-3 py-1 rounded-lg text-[13.5px] font-mono transition-all ${
-        isOver ? 'bg-L5/15 border-2 border-solid border-L5 text-L5 scale-110' : 'border-2 border-dashed border-line text-soft bg-white/60'
+        isOver ? 'bg-L4/15 border-2 border-solid border-L4 text-L4 scale-110' : 'border-2 border-dashed border-line text-soft bg-white/60'
       }`}
     >
       [{slot.placeholder}]
@@ -142,19 +142,16 @@ export default function LevelContextAnchor({ onComplete }) {
     <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <LevelHeader level={4} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Vague prompts give junk. <span className="text-L5">Anchor it.</span>
+        Vague prompts give junk. <span className="text-L4">Anchor it.</span>
       </h2>
 
-      <ConceptCard accent="L5" icon="⚓" title="Prompts need anchors.">
-        AI can write almost anything, but without specifics it defaults to
-        generic, flowery filler. The fix: tell it{' '}
-        <strong>who, in what tone, about what</strong>. These are the three
-        anchors that turn an AI dump into a usable SOP.
+      <ConceptCard accent="L4" icon="⚓" title="Prompts need anchors.">
+        Without specifics, AI defaults to flowery filler. Tell it <strong>who, what tone, about what</strong>.
+        Three anchors turn AI dump into usable SOP.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Watch the difference: a vague prompt on the left, your anchored prompt
-        on the right. Drag each tag into the slot where it belongs.
+        Vague on the left. Anchored on the right. Drag each tag into its slot.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-3 mb-4">
@@ -174,9 +171,9 @@ export default function LevelContextAnchor({ onComplete }) {
         </div>
 
         <div className="card-strong p-5 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-L5" />
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-L4" />
           <div className="flex items-center gap-2 mb-3">
-            <div className="px-2 py-0.5 rounded-md bg-L5/10 text-L5 text-[10.5px] font-bold uppercase tracking-[0.15em]">Anchored</div>
+            <div className="px-2 py-0.5 rounded-md bg-L4/10 text-L4 text-[10.5px] font-bold uppercase tracking-[0.15em]">Anchored</div>
           </div>
           <div className="text-[13.5px] bg-cream rounded-lg p-3 border border-line leading-[2.2]">
             <span>Write an email to </span>
@@ -202,13 +199,13 @@ export default function LevelContextAnchor({ onComplete }) {
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.4 }} className="overflow-hidden mb-5">
             <div className="card-strong overflow-hidden">
               <div className="flex items-center gap-2.5 px-5 py-3 border-b border-line bg-gradient-to-r from-L5/5 to-transparent">
-                <div className="w-7 h-7 rounded-lg bg-L5 text-white flex items-center justify-center text-[11px] font-bold">AI</div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-L5">Streaming output</div>
+                <div className="w-7 h-7 rounded-lg bg-L4 text-white flex items-center justify-center text-[11px] font-bold">AI</div>
+                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-L4">Streaming output</div>
                 <div className="ml-auto flex items-center gap-1 text-[10px] text-soft font-mono">
                   <span className="w-1.5 h-1.5 rounded-full bg-win animate-pulse" />live
                 </div>
               </div>
-              <pre className="whitespace-pre-wrap font-sans text-[14.5px] leading-relaxed text-ink p-5 text-L5 caret">
+              <pre className="whitespace-pre-wrap font-sans text-[14.5px] leading-relaxed text-ink p-5 text-L4 caret">
                 <span className="text-ink">{generatedText}</span>
               </pre>
             </div>
@@ -221,27 +218,25 @@ export default function LevelContextAnchor({ onComplete }) {
           disabled={!allPlaced || generated}
           onClick={handleGenerate}
           className={`px-5 py-3 rounded-xl font-semibold text-[15px] transition-all ${
-            allPlaced && !generated ? 'bg-L5 text-white hover:bg-[#EA580C] shadow-pop ring-pulse-L5' :
+            allPlaced && !generated ? 'bg-L4 text-white hover:bg-[#D97706] shadow-pop ring-pulse-L4' :
             generated ? 'bg-win/10 text-win border border-win/30 cursor-default' : 'bg-line text-soft cursor-not-allowed'
           }`}
         >
           {generated ? '✓ Generated' : '⚡ Generate Tenant Circular'}
         </button>
-        <PrimaryButton onClick={onComplete} disabled={!generated} accent="L5">Next Level →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!generated} accent="L4">Next Level →</PrimaryButton>
       </div>
 
       <TakeawayCard
-        accent="L5"
-        application="Before pasting any prompt to ChatGPT or Copilot, ask: who reads this, in what tone, about what specifically? Three lines of context save you a full round of edits."
+        accent="L4"
+        application="Before hitting send to ChatGPT: who reads it, what tone, what details? Three anchors save you three rewrites."
       >
-        <strong>Anchor every prompt with audience, tone and details.</strong>{' '}
-        AI mirrors the specificity you give it. Generic in → generic out.
-        Anchored in → ready-to-send out.
+        <strong>Anchor with audience, tone, details.</strong> Generic in → generic out. Anchored in → ready-to-send out.
       </TakeawayCard>
 
       <DragOverlay dropAnimation={{ duration: 200, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>
         {activeTag ? (
-          <div className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold bg-white border-2 border-L5 text-ink shadow-ring rotate-[-2deg] cursor-grabbing">
+          <div className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-[14px] font-semibold bg-white border-2 border-L4 text-ink shadow-ring rotate-[-2deg] cursor-grabbing">
             <span className="text-base">{activeTag.emoji}</span><span>{activeTag.label}</span>
           </div>
         ) : null}

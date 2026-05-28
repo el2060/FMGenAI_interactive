@@ -71,17 +71,13 @@ export default function LevelTemperature({ onComplete }) {
         Same prompt. <span className="text-L2">Different vibes.</span>
       </h2>
 
-      <ConceptCard accent="L2" icon="🎲" title="Temperature is AI's creativity dial.">
-        Low temperature (near 0) → AI picks the most likely next word every
-        time. Predictable, formulaic, repeatable. High temperature (near 1) →
-        AI gets adventurous and picks less likely words. Creative, varied,
-        sometimes weird. For FM ops you almost always want it{' '}
-        <strong>between 0.2 and 0.5</strong>.
+      <ConceptCard accent="L2" icon="🎲" title="Temperature = AI's chill dial.">
+        Low (≈0): boring but predictable. High (≈1): creative but cuckoo. For FM circulars,
+        stay <strong>0.2–0.5</strong>. Save the wild stuff for marketing slogans.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        The prompt below is fixed. Slide the temperature dial and watch how the
-        three "draft replies" change. Find the professional sweet spot.
+        Same prompt, different vibes. Slide the dial. Find the sweet spot.
       </p>
 
       <div className="card p-5 mb-4 bg-white">
@@ -169,12 +165,9 @@ export default function LevelTemperature({ onComplete }) {
 
       <TakeawayCard
         accent="L2"
-        application="When using ChatGPT / Copilot for FM circulars, SOPs or incident notes, lower the temperature (or pick 'precise' / 'balanced' mode in the UI). Save high temperatures for brainstorming names, slogans or marketing copy."
+        application="In ChatGPT / Copilot, pick 'precise' or 'balanced' for SOPs and circulars. 'Creative' is for brainstorming, not tenant comms."
       >
-        <strong>Match temperature to the job.</strong> Operational FM writing
-        needs consistency and professionalism — that's the cool zone. Wild
-        creativity is fun but inappropriate for tenant comms or technical
-        procedures.
+        <strong>Match temperature to the task.</strong> Ops writing = cool. Brainstorm = warm.
       </TakeawayCard>
     </div>
   );

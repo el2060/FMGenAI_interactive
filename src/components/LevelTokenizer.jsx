@@ -25,16 +25,13 @@ export default function LevelTokenizer({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L1" icon="🧠" title="Tokens are AI's units of thought.">
-        Before AI can reply to you, it breaks every word into small pieces called{' '}
-        <strong>tokens</strong> (roughly ~4 characters each). Every token costs
-        compute, time and money — so leaner prompts mean faster, cheaper, more
-        focused responses.
+        AI chops your text into <strong>tokens</strong> (~4 chars each) before reading. Every token
+        burns time and money. Leaner prompts → faster, cheaper, sharper replies.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Try it yourself. Type a real FM update below and aim for{' '}
-        <span className="font-semibold text-ink">exactly {TARGET} tokens</span>.
-        Watch how each word breaks apart.
+        Type an FM update below. Aim for{' '}
+        <span className="font-semibold text-ink">exactly {TARGET} tokens</span>. Watch them snap apart.
       </p>
 
       <div className="card-strong p-5 sm:p-6 mb-3">
@@ -133,12 +130,9 @@ export default function LevelTokenizer({ onComplete }) {
 
       <TakeawayCard
         accent="L1"
-        application="Tight, technical prompts cost less and respond faster. Cut filler words. Skip pleasantries. Lead with the equipment, block and action."
+        application="Skip 'please' and 'kindly.' Lead with the block, equipment and action. AI doesn't have feelings — save the tokens."
       >
-        <strong>Tokens = AI's currency.</strong> Long FM jargon like
-        <em> "refrigerant"</em> or <em>"replacement"</em> burns multiple tokens
-        each. Writing concisely isn't just style — it directly affects speed,
-        cost and quality of the answer you get back.
+        <strong>Tokens = AI currency.</strong> Concise prompts = cheaper, faster, better answers.
       </TakeawayCard>
     </div>
   );

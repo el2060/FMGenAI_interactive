@@ -81,14 +81,12 @@ export default function LevelAiTypes({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L1" icon="🧭" title="AI is a toolbox, not one magic button.">
-        Before prompting anything, know <strong>which type of AI</strong> fits the job. In FM work,
-        you will usually combine multiple types: rules for safety triggers,
-        predictive models for demand planning, vision for inspections, and Gen AI for communication.
+        Different jobs, different brains. Rules for triggers, predictive for forecasting,
+        vision for eyes, Gen AI for words. <strong>Pick the right one.</strong>
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Match each Singapore FM scenario to the best AI type. If your choice is wrong,
-        no worries lah, just click again.
+        Match each scenario to its AI type. Wrong? Just tap again — no scorecard, no shame.
       </p>
 
       <div className="card p-5 mb-5">
@@ -192,10 +190,9 @@ export default function LevelAiTypes({ onComplete }) {
 
       <TakeawayCard
         accent="L1"
-        application="In FM workflows, choose AI by task type first. Use predictive/vision/rules for operational decisions, and Gen AI for communication and drafting. That is how you avoid using a Swiss Army knife to tighten a bolt."
+        application="Predictive/vision/rules for ops decisions. Gen AI for words. Don't use a chainsaw to butter toast."
       >
-        <strong>Gen AI is one AI type, not the whole AI universe.</strong> The best teams combine types
-        intentionally. Choose the right brain for the right job.
+        <strong>Gen AI is one slice of the AI pie.</strong> Right brain, right job.
       </TakeawayCard>
     </div>
   );

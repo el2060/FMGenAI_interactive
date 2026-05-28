@@ -48,10 +48,10 @@ function KnowledgeBase({ placed, onRemove }) {
     <div
       ref={setNodeRef}
       className={`rounded-2xl border-2 border-dashed p-4 min-h-[180px] transition ${
-        isOver ? 'border-L4 bg-L4/5' : placed.length > 0 ? 'border-L4/40 bg-L4/[0.03]' : 'border-line bg-white/40'
+        isOver ? 'border-L4 bg-L5/5' : placed.length > 0 ? 'border-L4/40 bg-L5/[0.03]' : 'border-line bg-white/40'
       }`}
     >
-      <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-L4 mb-2 flex items-center gap-1.5">
+      <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-L5 mb-2 flex items-center gap-1.5">
         <span>📚 Knowledge Base</span>
         <span className="text-soft font-mono">({placed.length})</span>
       </div>
@@ -140,7 +140,7 @@ export default function LevelGrounding({ onComplete }) {
     <DndContext sensors={sensors} onDragStart={(e) => setActiveId(e.active.id)} onDragEnd={handleDragEnd}>
       <LevelHeader level={5} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        AI doesn't know your buildings. <span className="text-L4">Until you ground it.</span>
+        AI doesn't know your buildings. <span className="text-L5">Until you ground it.</span>
       </h2>
 
       <ConceptCard accent="L4" icon="📚" title="Grounding (a.k.a. RAG) is how AI uses YOUR data.">
@@ -162,10 +162,10 @@ export default function LevelGrounding({ onComplete }) {
         <div className="text-[15px] font-medium text-ink mb-4">"{QUESTION}"</div>
 
         <div className="grid sm:grid-cols-[1fr_auto] gap-4 items-start">
-          <div className={`rounded-xl p-4 border-2 ${response.grounded ? 'border-L4/30 bg-L4/[0.03]' : placed.length > 0 ? 'border-L6/30 bg-L6/[0.03]' : 'border-line bg-cream'}`}>
+          <div className={`rounded-xl p-4 border-2 ${response.grounded ? 'border-L4/30 bg-L5/[0.03]' : placed.length > 0 ? 'border-L6/30 bg-L6/[0.03]' : 'border-line bg-cream'}`}>
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-6 h-6 rounded-md bg-L4 text-white flex items-center justify-center text-[10px] font-bold">AI</div>
-              <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-L4">Grounded Response</div>
+              <div className="w-6 h-6 rounded-md bg-L5 text-white flex items-center justify-center text-[10px] font-bold">AI</div>
+              <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-L5">Grounded Response</div>
               {response.grounded && <span className="ml-auto text-[10px] font-bold text-win bg-win/10 px-2 py-0.5 rounded-full uppercase tracking-wider">✓ verified</span>}
               {!response.grounded && placed.length > 0 && <span className="ml-auto text-[10px] font-bold text-L6 bg-L6/10 px-2 py-0.5 rounded-full uppercase tracking-wider">⚠ polluted</span>}
             </div>
