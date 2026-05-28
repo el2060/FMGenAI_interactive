@@ -5,7 +5,11 @@ import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton } from './Common'
 
 const SAMPLE = 'Aircon compressor at Block 71 requires top-up of R410A refrigerant and filter replacement.';
 const TARGET = 25;
-const COST_PER_TOKEN = 0.000003;
+// Claude Opus 4.7 input pricing: USD 15 per 1M tokens → 0.000015 per token.
+// Frontier-tier reasoning model; FM teams typically use Sonnet/Haiku for
+// routine drafting (cheaper), but Opus is the "ceiling" reference point.
+const MODEL_NAME = 'Claude Opus 4.7';
+const COST_PER_TOKEN = 0.000015;
 
 export default function LevelTokenizer({ onComplete }) {
   const [text, setText] = useState('');
@@ -88,7 +92,7 @@ export default function LevelTokenizer({ onComplete }) {
           </div>
         </div>
         <div className="card p-4">
-          <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-soft mb-1">Est. Cost (GPT-4o)</div>
+          <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-soft mb-1">Est. Cost ({MODEL_NAME})</div>
           <div className="font-mono text-3xl font-extrabold tabular-nums">${cost}</div>
         </div>
         <div className="card p-4">
