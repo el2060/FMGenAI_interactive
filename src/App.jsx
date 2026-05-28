@@ -34,7 +34,9 @@ export default function App() {
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
       <Background />
 
-      {stage > 0 && stage <= TOTAL_LEVELS && <Header level={stage} />}
+      {stage > 0 && stage <= TOTAL_LEVELS && (
+        <Header level={stage} onHome={() => go(0)} onJump={(lvl) => go(lvl)} />
+      )}
 
       <main className="relative z-10 flex-1 w-full max-w-3xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 pb-24">
         <AnimatePresence mode="wait">
