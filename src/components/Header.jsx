@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LEVEL_META, CHAPTERS } from './Common';
+import { LEVEL_META, MODULES } from './Common';
 
 export default function Header({ level, onHome, onJump }) {
   const meta = LEVEL_META[level];
@@ -57,21 +57,21 @@ export default function Header({ level, onHome, onJump }) {
           </span>
         </button>
 
-        {/* Current chapter + level — clickable dropdown for level jumping */}
+        {/* Current module + level — clickable dropdown for level jumping */}
         <div className="hidden md:flex items-baseline gap-1.5 text-[12px] text-zinc-500 shrink-0">
-          <span className="px-1.5 py-0.5 rounded font-mono font-bold bg-zinc-100 border border-zinc-200 text-zinc-900 text-[10px]">CH{meta.chapter}</span>
-          <span className="font-medium text-zinc-800">{meta.chapterTitle}</span>
+          <span className="px-1.5 py-0.5 rounded font-mono font-bold bg-zinc-100 border border-zinc-200 text-zinc-900 text-[10px]">MOD{meta.module}</span>
+          <span className="font-medium text-zinc-800">{meta.moduleTitle}</span>
           <span className="text-zinc-400 px-1">·</span>
           <span className="text-zinc-400">{meta.name}</span>
         </div>
 
         <div className="flex-1" />
 
-        {/* Chapter-grouped progress with optional jump */}
+        {/* Module-grouped progress with optional jump */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          {CHAPTERS.map((ch) => (
-            <div key={ch.n} className="flex gap-1">
-              {ch.levels.map((lvl) => {
+          {MODULES.map((mod) => (
+            <div key={mod.n} className="flex gap-1">
+              {mod.levels.map((lvl) => {
                 const filled = lvl <= level;
                 const isCurrent = lvl === level;
                 const m = LEVEL_META[lvl];

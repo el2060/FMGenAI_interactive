@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { tokenSegments } from '../utils/tokenize';
-import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton } from './Common';
+import { LevelHeader, TakeawayCard, PrimaryButton } from './Common';
 
 const SAMPLE = 'Aircon compressor at Block 71 requires top-up of R410A refrigerant and filter replacement.';
 const TARGET = 25;
