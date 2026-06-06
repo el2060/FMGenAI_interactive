@@ -31,7 +31,7 @@ export default function App() {
   }, [stage]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-zinc-900">
       <Background />
 
       {stage > 0 && stage <= TOTAL_LEVELS && (

@@ -17,20 +17,20 @@ export default function Header({ level, onHome, onJump }) {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-cream/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white">
       <div className="max-w-3xl mx-auto px-5 sm:px-8 py-3 flex items-center gap-3 sm:gap-4">
         {/* Brand — click to go home */}
         <button
           onClick={handleHome}
-          className="group flex items-center gap-2 shrink-0 rounded-lg px-1.5 py-1 -ml-1.5 hover:bg-ink/[0.04] active:bg-ink/[0.07] transition"
+          className="group flex items-center gap-2 shrink-0 rounded-md px-1.5 py-1 -ml-1.5 hover:bg-zinc-50 active:bg-zinc-100 transition"
           title={confirming ? 'Click again to confirm — restart module' : 'Restart module'}
         >
-          <img src="/np-logo.png" alt="NP" className="h-6 w-auto" />
-          <div className="hidden sm:block h-4 w-px bg-line" />
-          <span className="hidden sm:inline font-display font-bold text-[14px] tracking-tight text-ink group-hover:text-ink/70 transition">
+          <img src="/np-logo.png" alt="NP" className="h-5 w-auto opacity-75 grayscale" />
+          <div className="hidden sm:block h-3.5 w-px bg-zinc-200" />
+          <span className="hidden sm:inline font-semibold text-[13.5px] tracking-tight text-zinc-800 group-hover:text-zinc-500 transition">
             Gen AI for FM
           </span>
-          <span className="hidden sm:inline-flex items-center gap-1 ml-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-soft group-hover:text-ink/70 transition">
+          <span className="hidden sm:inline-flex items-center gap-1 ml-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400 group-hover:text-zinc-600 transition">
             <span>↺</span>
             <AnimatePresence mode="wait">
               {confirming ? (
