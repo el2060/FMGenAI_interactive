@@ -145,11 +145,11 @@ export default function LevelGrounding({ onComplete }) {
   return (
     <DndContext sensors={sensors} onDragStart={(e) => setActiveId(e.active.id)} onDragEnd={handleDragEnd}>
       <LevelHeader level={6} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
         AI doesn't know your buildings. <span className="text-zinc-500">Until you ground it.</span>
       </h2>
 
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Paste the relevant SOP text to ground the AI so it doesn't invent answers.
       </p>
 

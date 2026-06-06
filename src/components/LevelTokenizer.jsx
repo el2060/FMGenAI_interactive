@@ -24,11 +24,10 @@ export default function LevelTokenizer({ onComplete }) {
   return (
     <div>
       <LevelHeader level={2} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        AI doesn't read words. <span className="text-zinc-500">It reads tokens.</span>
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
+        AI doesn't read words. <span className="text-zinc-400">It reads tokens.</span>
       </h2>
-
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Type a prompt that is exactly 25 tokens long to see how AI breaks down text.
       </p>
 

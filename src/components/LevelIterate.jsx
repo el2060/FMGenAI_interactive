@@ -130,11 +130,11 @@ export default function LevelIterate({ onComplete }) {
   return (
     <div>
       <LevelHeader level={7} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
         First draft is a starting point. <span className="text-zinc-500">Refine, don't restart.</span>
       </h2>
 
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Chat with the AI and refine its draft at least 3 times instead of starting over.
       </p>
 

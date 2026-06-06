@@ -69,11 +69,10 @@ export default function LevelPersona({ onComplete }) {
   return (
     <div>
       <LevelHeader level={4} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Cast the role. <span className="text-zinc-500">Watch the voice flip.</span>
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
+        Give the AI a job. <span className="text-zinc-400">Set the Persona.</span>
       </h2>
-
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Toggle the role, audience, and tone modifiers to see how the AI's persona shifts. Same prompt, totally different tone. The cheapest prompting upgrade you can make.
       </p>
 
@@ -138,9 +137,11 @@ export default function LevelPersona({ onComplete }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />live
               </div>
             </div>
-            <div className="p-4 sm:p-5">
-              <div className="text-[13.5px] leading-relaxed text-zinc-900 whitespace-pre-wrap min-h-[80px] caret">
-                {streamed}
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex-1 rounded-md bg-zinc-50 border border-zinc-200 p-6">
+                <div className="text-[13.5px] leading-relaxed text-zinc-900 whitespace-pre-wrap min-h-[80px] caret">
+                  {streamed}
+                </div>
               </div>
               {streamed === current.output && (
                 <motion.div

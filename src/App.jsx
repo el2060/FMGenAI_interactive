@@ -38,7 +38,7 @@ export default function App() {
         <Header level={stage} onHome={() => go(0)} onJump={(lvl) => go(lvl)} />
       )}
 
-      <main className="relative z-10 flex-1 w-full max-w-3xl mx-auto px-5 sm:px-8 pt-6 sm:pt-10 pb-24">
+      <main className="relative z-10 flex-1 w-full max-w-3xl mx-auto px-5 sm:px-8 pt-10 sm:pt-16 pb-32">
         <AnimatePresence mode="wait">
           <motion.div
             key={stage}

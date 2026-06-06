@@ -46,7 +46,7 @@ export function LevelHeader({ level }) {
       <div className="w-8 h-8 rounded-md bg-zinc-100 border border-zinc-200 text-zinc-900 flex items-center justify-center">
         <Icon size={16} strokeWidth={2.5} />
       </div>
-      <div className="text-[12px] font-bold uppercase tracking-[0.15em] text-zinc-900">
+      <div className="text-[14px] font-bold uppercase tracking-[0.15em] text-zinc-900">
         LEVEL {level} · {m.name}
       </div>
       <div className="ml-auto">
@@ -58,7 +58,7 @@ export function LevelHeader({ level }) {
 
 export function TakeawayCard({ application, children }) {
   return (
-    <div className="rounded-md border border-zinc-200 bg-zinc-50/50 p-5 mt-6 flex gap-4">
+    <div className="rounded-md border border-zinc-200 bg-zinc-50/50 p-6 sm:p-8 mt-8 flex gap-4 sm:gap-5">
       <div className="shrink-0 w-8 h-8 rounded border border-zinc-200 text-zinc-600 bg-white flex items-center justify-center shadow-sm">
         <Sparkles size={16} />
       </div>
@@ -66,11 +66,11 @@ export function TakeawayCard({ application, children }) {
         <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-zinc-500 mb-1.5">
           Key Takeaway
         </div>
-        <div className="text-[14px] text-zinc-900 leading-relaxed mb-3">
+        <div className="text-[15.5px] text-zinc-900 leading-relaxed mb-4">
           {children}
         </div>
         {application && (
-          <div className="text-[13px] text-zinc-600 bg-white rounded-md p-2.5 border border-zinc-200 leading-relaxed">
+          <div className="text-[14.5px] text-zinc-700 bg-white rounded-md p-3 sm:p-4 border border-zinc-200 leading-relaxed">
             <span className="font-semibold text-zinc-900">In your FM work: </span>
             {application}
           </div>
@@ -85,7 +85,7 @@ export function PrimaryButton({ children, disabled, onClick, className = '' }) {
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`h-9 px-4 rounded-md font-medium text-[13px] transition-all inline-flex items-center justify-center ${
+      className={`h-11 px-5 rounded-md font-semibold text-[14.5px] transition-all inline-flex items-center justify-center ${
         disabled 
           ? 'bg-zinc-50 text-zinc-400 border border-zinc-200 cursor-not-allowed' 
           : 'bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm'

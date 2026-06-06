@@ -68,17 +68,16 @@ export default function LevelTemperature({ onComplete }) {
   return (
     <div>
       <LevelHeader level={3} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Same prompt. <span className="text-zinc-500">Different vibes.</span>
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
+        Control the chaos. <span className="text-zinc-400">Dial the Temperature.</span>
       </h2>
-
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Adjust the temperature slider to see how randomness changes the AI's output.
       </p>
 
       <div className="card p-5 mb-4 bg-white shadow-sm border border-zinc-200 rounded-md">
         <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-zinc-500 mb-2">📝 Fixed Prompt</div>
-        <div className="font-mono text-[13.5px] bg-zinc-50 rounded-md p-3 border border-zinc-200 text-zinc-800">
+        <div className="text-[17px] text-zinc-900 bg-zinc-50 p-6 rounded-md border border-zinc-200">
           "{PROMPT}"
         </div>
       </div>

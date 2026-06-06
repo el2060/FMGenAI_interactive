@@ -108,11 +108,11 @@ export default function LevelHumanInLoop({ onComplete }) {
   return (
     <div>
       <LevelHeader level={11} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
         Speed of AI ≠ rightness of AI. <span className="text-zinc-500">Some inboxes belong to humans.</span>
       </h2>
 
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Route each inbox item to the correct lane: safe for AI drafting, or human-only.
       </p>
 

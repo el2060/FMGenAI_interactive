@@ -144,11 +144,10 @@ export default function LevelContextAnchor({ onComplete }) {
   return (
     <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <LevelHeader level={5} />
-      <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Vague prompts give junk. <span className="text-zinc-500">Anchor it.</span>
+      <h2 className="font-display text-4xl sm:text-[44px] font-bold tracking-tight mb-4 leading-[1.05] text-zinc-900">
+        Ground it in reality. <span className="text-zinc-400">Use Context Anchors.</span>
       </h2>
-
-      <p className="text-muted text-[15px] max-w-2xl mb-6">
+      <p className="text-zinc-500 text-[17px] max-w-2xl mb-10 leading-relaxed">
         Provide specific equipment and location details to anchor the AI's response.
       </p>
 
