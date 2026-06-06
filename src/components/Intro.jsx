@@ -45,22 +45,22 @@ export default function Intro({ onStart }) {
         transition={{ delay: 0.2 }}
         className="card max-w-3xl mx-auto p-4 sm:p-5 mb-10 text-left"
       >
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {CHAPTERS.map((ch, ci) => {
             const headColor = LEVEL_META[ch.levels[0]].color;
             return (
               <div
                 key={ch.n}
-                className="rounded-xl border border-line bg-cream/50 p-3 flex flex-col"
+                className="rounded-2xl border border-line bg-white shadow-sm hover:shadow-md transition-all p-4 sm:p-5 flex flex-col group hover:-translate-y-1"
               >
-                <div className="flex items-baseline gap-1.5 mb-2">
+                <div className="flex items-baseline gap-2 mb-3">
                   <span className={`text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded ${BG_COLORS[headColor]} text-white tracking-wider`}>
                     CH {ch.n}
                   </span>
                   <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-soft">{ch.subtitle}</span>
                 </div>
-                <div className="font-display font-bold text-[14px] leading-tight mb-3 text-ink">{ch.title}</div>
-                <div className="flex flex-col gap-1 mt-auto">
+                <div className="font-display font-bold text-[16px] leading-tight mb-4 text-ink">{ch.title}</div>
+                <div className="flex flex-col gap-1.5 mt-auto">
                   {ch.levels.map((lvl) => {
                     const m = LEVEL_META[lvl];
                     return (
@@ -75,7 +75,7 @@ export default function Intro({ onStart }) {
                           {lvl}
                         </span>
                         <span className="text-[12px] shrink-0">{m.emoji}</span>
-                        <span className={`font-semibold text-[11px] ${TEXT_COLORS[m.color]} truncate`}>{m.name}</span>
+                        <span className={`font-semibold text-[11.5px] ${TEXT_COLORS[m.color]} leading-tight`}>{m.name}</span>
                       </motion.div>
                     );
                   })}
