@@ -207,7 +207,7 @@ export default function LevelGrounding({ onComplete }) {
             <strong>Rubbish in = rubbish out.</strong> Grounding works, but only with clean docs.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Topic →</PrimaryButton>
           </div>
         </>
       )}

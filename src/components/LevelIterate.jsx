@@ -245,7 +245,7 @@ export default function LevelIterate({ onComplete }) {
             <strong>Iterate, don't restart.</strong> Five quick turns beats five fresh prompts.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete Module & Return →</PrimaryButton>
           </div>
         </>
       )}

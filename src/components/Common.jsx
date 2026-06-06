@@ -10,20 +10,20 @@ export const SITE = {
 };
 
 export const LEVEL_META = {
-  1:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Types of AI',       icon: Cpu  },
-  2:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Tokens',            icon: Type  },
-  3:  { chapter: 1, chapterTitle: 'Meet the AI',         name: 'Temperature',       icon: Dices  },
-  4:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Persona',           icon: VenetianMask  },
-  5:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Context Anchoring', icon: Anchor  },
-  6:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Grounding',         icon: BookOpen  },
-  7:  { chapter: 2, chapterTitle: 'Talk to the AI',      name: 'Iterate & Refine',  icon: Repeat  },
-  8:  { chapter: 3, chapterTitle: 'Shape the Output',    name: 'Structured Output', icon: ClipboardList  },
-  9:  { chapter: 4, chapterTitle: 'Use it Safely',       name: 'PDPA Guardrails',   icon: Lock  },
-  10: { chapter: 4, chapterTitle: 'Use it Safely',       name: 'Hallucinations',    icon: Target },
-  11: { chapter: 4, chapterTitle: 'Use it Safely',       name: 'When NOT to Use AI', icon: Ban },
+  1:  { module: 1, moduleTitle: 'Meet the AI',         name: 'Types of AI',       icon: Cpu  },
+  2:  { module: 1, moduleTitle: 'Meet the AI',         name: 'Tokens',            icon: Type  },
+  3:  { module: 1, moduleTitle: 'Meet the AI',         name: 'Temperature',       icon: Dices  },
+  4:  { module: 2, moduleTitle: 'Talk to the AI',      name: 'Persona',           icon: VenetianMask  },
+  5:  { module: 2, moduleTitle: 'Talk to the AI',      name: 'Context Anchoring', icon: Anchor  },
+  6:  { module: 2, moduleTitle: 'Talk to the AI',      name: 'Grounding',         icon: BookOpen  },
+  7:  { module: 2, moduleTitle: 'Talk to the AI',      name: 'Iterate & Refine',  icon: Repeat  },
+  8:  { module: 3, moduleTitle: 'Shape the Output',    name: 'Structured Output', icon: ClipboardList  },
+  9:  { module: 4, moduleTitle: 'Use it Safely',       name: 'PDPA Guardrails',   icon: Lock  },
+  10: { module: 4, moduleTitle: 'Use it Safely',       name: 'Hallucinations',    icon: Target },
+  11: { module: 4, moduleTitle: 'Use it Safely',       name: 'When NOT to Use AI', icon: Ban },
 };
 
-export const CHAPTERS = [
+export const MODULES = [
   { n: 1, title: 'Meet the AI',      subtitle: 'Orient', levels: [1, 2, 3] },
   { n: 2, title: 'Talk to the AI',   subtitle: 'Craft',  levels: [4, 5, 6, 7] },
   { n: 3, title: 'Shape the Output', subtitle: 'Apply',  levels: [8] },

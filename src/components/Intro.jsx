@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
-import { PrimaryButton, LEVEL_META, CHAPTERS } from './Common';
+import { LEVEL_META, MODULES } from './Common';
 
 export default function Intro({ onStart, onJump, completed = [] }) {
-  const totalLevels = CHAPTERS.reduce((sum, ch) => sum + ch.levels.length, 0);
+  const totalLevels = MODULES.reduce((sum, mod) => sum + mod.levels.length, 0);
   return (
     <div className="pt-2 sm:pt-6 text-center">
       <motion.div
@@ -33,69 +33,49 @@ export default function Intro({ onStart, onJump, completed = [] }) {
         className="card max-w-3xl mx-auto p-5 sm:p-8 mb-12 text-left"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-          {CHAPTERS.map((ch, ci) => {
-            const isChapterDone = ch.levels.every((l) => completed.includes(l));
-            const headColor = LEVEL_META[ch.levels[0]].color;
+          {MODULES.map((mod, ci) => {
+            const isModuleDone = mod.levels.every((l) => completed.includes(l));
             return (
-              <div
-                key={ch.n}
-                className="rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-all p-5 sm:p-7 flex flex-col group hover:-translate-y-1"
+              <motion.button
+                key={mod.n}
+                onClick={() => onJump(mod.levels[0])}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                className="rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md hover:border-zinc-300 transition-all p-5 sm:p-7 flex flex-col group text-left w-full h-full"
               >
-                <div className="flex items-center gap-2 mb-4 flex-wrap">
+                <div className="flex items-center gap-2 mb-4 flex-wrap w-full">
                   <span className="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-900 tracking-wider">
-                    CH {ch.n}
+                    MOD {mod.n}
                   </span>
-                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-zinc-500">{ch.subtitle}</span>
-                  {isChapterDone && (
+                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-zinc-500">{mod.subtitle}</span>
+                  {isModuleDone && (
                     <span className="ml-auto flex items-center gap-1 text-[9.5px] font-bold uppercase tracking-wider text-green-700 bg-green-50 border border-green-200 px-1.5 py-0.5 rounded">
-                      <CheckCircle2 size={10} strokeWidth={3} /> COMPLETED
+                      <CheckCircle2 size={10} strokeWidth={3} /> DONE
                     </span>
                   )}
                 </div>
-                <div className="font-display font-bold text-xl leading-tight mb-5 text-zinc-900">{ch.title}</div>
-                <div className="flex flex-col gap-2 mt-auto">
-                  {ch.levels.map((lvl) => {
+                <div className="font-display font-bold text-xl leading-tight mb-4 text-zinc-900">{mod.title}</div>
+                <div className="mt-auto pt-2 border-t border-zinc-100 flex flex-wrap gap-2 w-full">
+                  {mod.levels.map((lvl) => {
                     const m = LEVEL_META[lvl];
                     const Icon = m.icon;
                     return (
-                      <motion.button
-                        key={lvl}
-                        onClick={() => onJump(lvl)}
-                        initial={{ opacity: 0, x: -6 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ delay: 0.25 + ci * 0.06 + lvl * 0.02 }}
-                        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white border border-zinc-200 shadow-sm hover:border-zinc-300 hover:bg-zinc-50 text-left cursor-pointer group"
-                      >
-                        <span className="w-4 h-4 rounded bg-zinc-100 border border-zinc-200 text-zinc-900 font-mono font-bold text-[9px] flex items-center justify-center shrink-0">
-                          {lvl}
-                        </span>
-                        <span className="text-zinc-500 shrink-0"><Icon size={14} strokeWidth={2.5} /></span>
-                        <span className="font-semibold text-[13px] text-zinc-900 leading-tight flex-1">{m.name}</span>
-                        {completed.includes(lvl) && (
-                          <CheckCircle2 size={16} strokeWidth={2.5} className="text-green-600 shrink-0" />
-                        )}
-                      </motion.button>
+                      <div key={lvl} className="inline-flex items-center gap-1.5 text-zinc-500 group-hover:text-zinc-600">
+                        <Icon size={12} strokeWidth={2.5} />
+                        <span className="text-[12px] font-medium leading-tight">{m.name}</span>
+                        {lvl !== mod.levels[mod.levels.length - 1] && <span className="text-zinc-300 mx-1">•</span>}
+                      </div>
                     );
                   })}
                 </div>
-              </div>
+              </motion.button>
             );
           })}
         </div>
 
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <PrimaryButton onClick={onStart} className="px-10 h-14 text-[17px] font-bold">
-          Begin Chapter 1 →
-        </PrimaryButton>
-      </motion.div>
+
     </div>
   );
 }

@@ -134,7 +134,7 @@ export default function LevelTokenizer({ onComplete }) {
             <strong>Tokens = AI currency.</strong> Concise prompts save costs and time.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Topic →</PrimaryButton>
           </div>
         </>
       )}

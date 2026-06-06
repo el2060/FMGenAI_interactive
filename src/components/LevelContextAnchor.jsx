@@ -231,7 +231,7 @@ export default function LevelContextAnchor({ onComplete }) {
             <strong>Anchor with audience, tone, details.</strong> Vague in = vague out. Anchored in = ready to use.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Topic →</PrimaryButton>
           </div>
         </>
       )}

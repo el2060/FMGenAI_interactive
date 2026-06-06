@@ -133,7 +133,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
             <strong>Confidence ≠ correctness.</strong> The reasonable-sounding ones bite hardest. Verify.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Topic →</PrimaryButton>
           </div>
         </>
       )}
