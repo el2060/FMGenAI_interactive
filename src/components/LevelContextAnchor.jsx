@@ -146,7 +146,7 @@ export default function LevelContextAnchor({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Prompts need anchors.</strong> Without specifics, AI writes flowery filler. Specify who, tone, and what. Three anchors turn an AI dump into a usable SOP.
+        Provide specific equipment and location details to anchor the AI's response.
       </p>
 
 

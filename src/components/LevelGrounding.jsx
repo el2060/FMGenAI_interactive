@@ -144,7 +144,7 @@ export default function LevelGrounding({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Grounding (RAG) feeds AI your data.</strong> AI knows the internet, not your BMS logs. Grounding means feeding it your real docs so answers cite reality. But junk docs poison the answers.
+        Paste the relevant SOP text to ground the AI so it doesn't invent answers.
       </p>
 
 

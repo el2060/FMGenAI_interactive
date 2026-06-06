@@ -72,7 +72,7 @@ export default function LevelTemperature({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Temperature is the creativity dial.</strong> Low (≈0): strict and repetitive. High (≈1): creative and wild. For FM docs, use 0.2–0.5.
+        Adjust the temperature slider to see how randomness changes the AI's output.
       </p>
 
 

@@ -118,7 +118,7 @@ export default function LevelHumanInLoop({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Triage every task. Not everything is for AI.</strong> AI accelerates routine work, but it also accelerates mistakes in high-stakes tasks (legal, life-safety, PDPA). Keep humans in the loop.
+        Route each inbox item to the correct lane: safe for AI drafting, or human-only.
       </p>
 
       <div className="flex items-center justify-between mb-3 px-1">

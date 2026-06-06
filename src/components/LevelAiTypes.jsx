@@ -134,7 +134,7 @@ export default function LevelAiTypes({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>AI is a toolbox, not one magic button.</strong> Rules trigger. Predictive forecasts. Vision sees. Gen AI writes. Wrong tool, wrong outcome.
+        Match the correct AI type to each facility management job below.
       </p>
 
       {/* Compact type legend */}

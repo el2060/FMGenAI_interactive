@@ -42,7 +42,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>AI bluffs with full conviction.</strong> AI invents regulations and procedures that sound legit. Your only defence: a human in the loop.
+        Find and click the 3 hallucinated, dangerous facts in the AI's response.
       </p>
 
 

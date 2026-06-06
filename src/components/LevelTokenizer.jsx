@@ -29,7 +29,7 @@ export default function LevelTokenizer({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Tokens are AI's reading blocks.</strong> AI breaks text into tokens (~4 chars each) to read. Every token costs time and money. Lean prompts = faster, cheaper answers.
+        Type a prompt that is exactly 25 tokens long to see how AI breaks down text.
       </p>
 
 

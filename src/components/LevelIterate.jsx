@@ -136,7 +136,7 @@ export default function LevelIterate({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Prompting is a conversation.</strong> New users accept the first draft and complain. Pros nudge the AI: "shorter", "drop jargon", "add SLA". Refining is faster than starting over.
+        Chat with the AI and refine its draft at least 3 times instead of starting over.
       </p>
 
       <div className="text-[11.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-2 flex items-center gap-2">

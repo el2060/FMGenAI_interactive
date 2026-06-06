@@ -96,7 +96,7 @@ export default function LevelStructuredOutput({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Shape is half the prompt.</strong> Same data, four shapes. Prose for managers, bullets for teams, tables for trackers. Specify the format, don't just default.
+        Click through all 4 output formats to see how specifying the shape changes utility.
       </p>
 
       {/* Source */}

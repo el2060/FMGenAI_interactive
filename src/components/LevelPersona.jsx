@@ -84,7 +84,7 @@ export default function LevelPersona({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>Persona is a simple tweak with a huge impact.</strong> Tell AI <em>who</em> it should be. Same prompt, totally different tone. The cheapest prompting upgrade you can make.
+        Toggle the role, audience, and tone modifiers to see how the AI's persona shifts. Same prompt, totally different tone. The cheapest prompting upgrade you can make.
       </p>
 
       <div className="card-strong p-4 sm:p-5 mb-4">

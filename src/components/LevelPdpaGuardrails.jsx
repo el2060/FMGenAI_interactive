@@ -54,7 +54,7 @@ export default function LevelPdpaGuardrails({ onComplete }) {
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
-        <strong>PDPA applies when you talk to AI.</strong> Pasting NRICs into ChatGPT = data leak. But over-redact and AI can't help. Strip identifiers, keep context.
+        Toggle the privacy filters to strip sensitive identifiers before sending to the AI.
       </p>
 
 
