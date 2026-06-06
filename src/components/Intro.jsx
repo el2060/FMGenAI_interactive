@@ -12,16 +12,8 @@ export default function Intro({ onStart }) {
         transition={{ duration: 0.45 }}
         className="flex flex-col items-center mb-8"
       >
-        <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-soft mb-3">
-          A learning workshop by
-        </div>
         <img src="https://www.np.edu.sg/_next/image?url=https%3A%2F%2Fassets.app.optical.gov.sg%2Fnp%2Fproduction%2Fpublished%2Fcollections%2Fpages%2F17c64bb4-8632-49e9-af16-047f7cabe99a%2Fab16008f-a6a0-466e-9193-e16e947261b0.png&w=1080&q=75" alt="Ngee Ann Polytechnic" className="h-12 sm:h-14 w-auto" />
       </motion.div>
-
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line bg-white/80 backdrop-blur text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-5">
-        <span>🇸🇬</span>
-        <span>For Singapore FM teams</span>
-      </div>
 
       <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-8">
         Generative AI,
