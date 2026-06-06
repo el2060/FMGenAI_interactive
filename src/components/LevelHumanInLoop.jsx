@@ -296,7 +296,7 @@ export default function LevelHumanInLoop({ onComplete }) {
             <strong>AI accelerates. Humans authorise.</strong> Knowing the line is a crucial skill.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Complete Module →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
           </div>
         </>
       )}

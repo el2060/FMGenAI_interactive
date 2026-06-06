@@ -186,7 +186,7 @@ export default function LevelPersona({ onComplete }) {
             <strong>Persona before instruction.</strong> Cast the role on purpose.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
           </div>
         </>
       )}

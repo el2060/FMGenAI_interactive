@@ -20,10 +20,26 @@ const TOTAL_LEVELS = 11;
 
 export default function App() {
   const [stage, setStage] = useState(0);
+  const [completed, setCompleted] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('fmgenai_completed') || '[]');
+    } catch {
+      return [];
+    }
+  });
 
   function go(next) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setStage(next);
+  }
+
+  function handleComplete(currentLevel, nextLevel) {
+    if (!completed.includes(currentLevel)) {
+      const newCompleted = [...completed, currentLevel];
+      setCompleted(newCompleted);
+      localStorage.setItem('fmgenai_completed', JSON.stringify(newCompleted));
+    }
+    go(nextLevel);
   }
 
   useEffect(() => {
@@ -47,18 +63,18 @@ export default function App() {
             exit={{ opacity: 0, y: -14, scale: 0.985 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           >
-            {stage === 0  && <Intro onStart={() => go(1)} />}
-            {stage === 1  && <LevelAiTypes           onComplete={() => go(2)} />}
-            {stage === 2  && <LevelTokenizer         onComplete={() => go(3)} />}
-            {stage === 3  && <LevelTemperature       onComplete={() => go(4)} />}
-            {stage === 4  && <LevelPersona           onComplete={() => go(5)} />}
-            {stage === 5  && <LevelContextAnchor     onComplete={() => go(6)} />}
-            {stage === 6  && <LevelGrounding         onComplete={() => go(7)} />}
-            {stage === 7  && <LevelIterate           onComplete={() => go(8)} />}
-            {stage === 8  && <LevelStructuredOutput  onComplete={() => go(9)} />}
-            {stage === 9  && <LevelPdpaGuardrails    onComplete={() => go(10)} />}
-            {stage === 10 && <LevelHallucinationHunt onComplete={() => go(11)} />}
-            {stage === 11 && <LevelHumanInLoop       onComplete={() => go(12)} />}
+            {stage === 0  && <Intro onStart={() => go(1)} onJump={(lvl) => go(lvl)} completed={completed} />}
+            {stage === 1  && <LevelAiTypes           onComplete={() => handleComplete(1, 2)} />}
+            {stage === 2  && <LevelTokenizer         onComplete={() => handleComplete(2, 3)} />}
+            {stage === 3  && <LevelTemperature       onComplete={() => handleComplete(3, 4)} />}
+            {stage === 4  && <LevelPersona           onComplete={() => handleComplete(4, 5)} />}
+            {stage === 5  && <LevelContextAnchor     onComplete={() => handleComplete(5, 6)} />}
+            {stage === 6  && <LevelGrounding         onComplete={() => handleComplete(6, 7)} />}
+            {stage === 7  && <LevelIterate           onComplete={() => handleComplete(7, 8)} />}
+            {stage === 8  && <LevelStructuredOutput  onComplete={() => handleComplete(8, 9)} />}
+            {stage === 9  && <LevelPdpaGuardrails    onComplete={() => handleComplete(9, 10)} />}
+            {stage === 10 && <LevelHallucinationHunt onComplete={() => handleComplete(10, 11)} />}
+            {stage === 11 && <LevelHumanInLoop       onComplete={() => handleComplete(11, 12)} />}
             {stage === 12 && <Victory onRestart={() => go(0)} />}
           </motion.div>
         </AnimatePresence>

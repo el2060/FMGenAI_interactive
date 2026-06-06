@@ -220,7 +220,7 @@ export default function LevelStructuredOutput({ onComplete }) {
             <strong>Specify the shape.</strong> Tables for tracking, bullets for teams.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
           </div>
         </>
       )}

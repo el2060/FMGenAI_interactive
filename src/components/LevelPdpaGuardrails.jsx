@@ -161,7 +161,7 @@ export default function LevelPdpaGuardrails({ onComplete }) {
             <strong>Identifiers go. Context stays.</strong> Feed AI only what it needs.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
           </div>
         </>
       )}

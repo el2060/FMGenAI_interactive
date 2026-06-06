@@ -162,7 +162,7 @@ export default function LevelTemperature({ onComplete }) {
             <strong>Match temperature to the task.</strong> Ops = cool. Brainstorm = warm.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete & Return →</PrimaryButton>
           </div>
         </>
       )}

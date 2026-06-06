@@ -326,7 +326,7 @@ export default function LevelAiTypes({ onComplete }) {
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
             <PrimaryButton onClick={onComplete}>
-              Next Level →
+              Complete & Return →
             </PrimaryButton>
           </div>
         </motion.div>
