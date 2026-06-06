@@ -1,16 +1,12 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { LevelHeader, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { MessageSquare, AlertTriangle, FileText, BellRing, PartyPopper, Octagon, Calendar, Scale, Bot, UserCheck, Check, X, ShieldAlert } from 'lucide-react';
 
-/**
- * The "AI Safe Lane" calls:
- * - 'ai-safe' = OK to draft with AI (still review before sending)
- * - 'human'   = Human-only. AI not appropriate.
- */
 const ITEMS = [
   {
     id: 'i1',
-    icon: '💬',
+    icon: MessageSquare,
     from: 'Mr Tan (Tenant, #08-21)',
     subject: 'Hot office on level 8 — can someone check the aircon?',
     verdict: 'ai-safe',
@@ -19,7 +15,7 @@ const ITEMS = [
   },
   {
     id: 'i2',
-    icon: '⚠️',
+    icon: AlertTriangle,
     from: 'BCA / regulator',
     subject: 'Sign-off required: fire-safety variation for new partition layout in #15-23',
     verdict: 'human',
@@ -28,7 +24,7 @@ const ITEMS = [
   },
   {
     id: 'i3',
-    icon: '📑',
+    icon: FileText,
     from: 'Procurement team',
     subject: 'Compare these 3 chiller maintenance quotes — which gives best value?',
     verdict: 'ai-safe',
@@ -37,7 +33,7 @@ const ITEMS = [
   },
   {
     id: 'i4',
-    icon: '🚨',
+    icon: ShieldAlert,
     from: 'PDPC notification queue',
     subject: 'Draft the breach notification — tenant CCTV footage leaked via misconfigured cloud share',
     verdict: 'human',
@@ -46,7 +42,7 @@ const ITEMS = [
   },
   {
     id: 'i5',
-    icon: '🎉',
+    icon: PartyPopper,
     from: 'Tenant engagement WG',
     subject: 'Brainstorm names for the Block 71 wellness corner',
     verdict: 'ai-safe',
@@ -55,7 +51,7 @@ const ITEMS = [
   },
   {
     id: 'i6',
-    icon: '🛑',
+    icon: Octagon,
     from: 'Duty officer (after-hours)',
     subject: 'Authorise emergency shutdown of B1 chiller — coolant leak suspected',
     verdict: 'human',
@@ -64,7 +60,7 @@ const ITEMS = [
   },
   {
     id: 'i7',
-    icon: '🗓️',
+    icon: Calendar,
     from: 'Tenant relations',
     subject: 'Draft the monthly tenant newsletter — events, maintenance updates, reminders',
     verdict: 'ai-safe',
@@ -73,7 +69,7 @@ const ITEMS = [
   },
   {
     id: 'i8',
-    icon: '⚖️',
+    icon: Scale,
     from: 'Legal',
     subject: 'Final language for the tenancy renewal agreement clause 14.2',
     verdict: 'human',
@@ -90,7 +86,6 @@ export default function LevelHumanInLoop({ onComplete }) {
 
   const item = ITEMS[idx];
   const done = idx >= ITEMS.length;
-
   const correctSoFar = history.filter((h) => h.correct).length;
 
   const accent = useMemo(() => {
@@ -114,7 +109,7 @@ export default function LevelHumanInLoop({ onComplete }) {
     <div>
       <LevelHeader level={11} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Speed of AI ≠ rightness of AI. <span className="text-L11">Some inboxes belong to humans.</span>
+        Speed of AI ≠ rightness of AI. <span className="text-zinc-500">Some inboxes belong to humans.</span>
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
@@ -122,7 +117,7 @@ export default function LevelHumanInLoop({ onComplete }) {
       </p>
 
       <div className="flex items-center justify-between mb-3 px-1">
-        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted font-mono">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500 font-mono">
           Inbox · {Math.min(idx + 1, ITEMS.length)} / {ITEMS.length}
         </div>
         <div className="flex items-center gap-1">
@@ -132,8 +127,8 @@ export default function LevelHumanInLoop({ onComplete }) {
               <div
                 key={it.id}
                 className={`h-1.5 rounded-full transition-all ${
-                  past ? (past.correct ? 'bg-win w-5' : 'bg-L10 w-5') :
-                  i === idx ? 'bg-L11 w-7' : 'bg-line w-3'
+                  past ? (past.correct ? 'bg-zinc-800 w-5' : 'bg-red-500 w-5') :
+                  i === idx ? 'bg-zinc-800 w-7' : 'bg-zinc-200 w-3'
                 }`}
               />
             );
@@ -143,116 +138,116 @@ export default function LevelHumanInLoop({ onComplete }) {
 
       <div className="relative" style={{ minHeight: 380 }}>
         <AnimatePresence mode="wait">
-          {!done && (
-            <motion.div
-              key={item.id + '-' + shakeKey}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={{
-                opacity: 1, y: 0, scale: 1,
-                x: accent === 'wrong' ? [0, -10, 10, -8, 8, 0] : 0,
-              }}
-              exit={{
-                opacity: 0,
-                x: accent === 'correct' ? (item.verdict === 'ai-safe' ? 400 : -400) : 0,
-                transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-              }}
-              transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-              className="card-strong p-5 sm:p-6 relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-L11" />
+          {!done && (() => {
+            const ItemIcon = item.icon;
+            return (
+              <motion.div
+                key={item.id + '-' + shakeKey}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{
+                  opacity: 1, y: 0, scale: 1,
+                  x: accent === 'wrong' ? [0, -10, 10, -8, 8, 0] : 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  x: accent === 'correct' ? (item.verdict === 'ai-safe' ? 400 : -400) : 0,
+                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                }}
+                transition={{ type: 'spring', stiffness: 220, damping: 22 }}
+                className="bg-white border border-zinc-200 shadow-sm rounded-md p-5 sm:p-6 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-zinc-800" />
 
-              {/* email-like header */}
-              <div className="flex items-center gap-2 mb-3 flex-wrap">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-soft font-mono">FM Inbox · #{item.id.toUpperCase()}</span>
-                <SiteChip />
-              </div>
-
-              <div className="rounded-xl border border-line bg-cream/60 p-4 mb-4">
-                <div className="flex items-center gap-2 text-[11px] mb-2">
-                  <span className="text-soft">From:</span>
-                  <span className="font-semibold text-ink">{item.from}</span>
+                {/* email-like header */}
+                <div className="flex items-center gap-2 mb-3 flex-wrap">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 font-mono">FM Inbox · #{item.id.toUpperCase()}</span>
+                  <SiteChip />
                 </div>
-                <div className="flex items-start gap-2.5">
-                  <div className="text-3xl shrink-0">{item.icon}</div>
+
+                <div className="rounded-md border border-zinc-200 bg-zinc-50 p-4 mb-4">
+                  <div className="flex items-center gap-2 text-[11px] mb-3">
+                    <span className="text-zinc-500">From:</span>
+                    <span className="font-semibold text-zinc-900">{item.from}</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="text-zinc-500 shrink-0 mt-0.5"><ItemIcon size={24} strokeWidth={1.5} /></div>
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500 mb-1">Subject</div>
+                      <div className="text-[14px] text-zinc-900 leading-relaxed font-medium">{item.subject}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {!pick && (
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-soft mb-0.5">Subject</div>
-                    <div className="text-[14.5px] text-ink leading-relaxed font-medium">{item.subject}</div>
-                  </div>
-                </div>
-              </div>
-
-              {!pick && (
-                <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted mb-2 text-center">
-                    Route this where?
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <motion.button
-                      whileHover={{ y: -2 }}
-                      whileTap={{ scale: 0.96 }}
-                      onClick={() => decide('ai-safe')}
-                      className="rounded-xl p-3.5 border-2 border-L8/30 bg-white hover:bg-L8/5 hover:border-L8 transition flex flex-col items-center gap-1 group"
-                    >
-                      <span className="text-2xl group-hover:scale-110 transition">🤖</span>
-                      <span className="font-bold text-[13px] text-L8">Draft with AI</span>
-                      <span className="text-[10.5px] text-soft text-center">routine · low stakes · I review before sending</span>
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ y: -2 }}
-                      whileTap={{ scale: 0.96 }}
-                      onClick={() => decide('human')}
-                      className="rounded-xl p-3.5 border-2 border-L11/30 bg-white hover:bg-L11/5 hover:border-L11 transition flex flex-col items-center gap-1 group"
-                    >
-                      <span className="text-2xl group-hover:scale-110 transition">🧑‍⚖️</span>
-                      <span className="font-bold text-[13px] text-L11">Human only</span>
-                      <span className="text-[10.5px] text-soft text-center">statutory · legal · life-safety · PDPA</span>
-                    </motion.button>
-                  </div>
-                </div>
-              )}
-
-              <AnimatePresence>
-                {pick && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className={`rounded-xl border-2 p-3.5 ${
-                      accent === 'correct' ? 'border-win/40 bg-win/[0.07]' : 'border-L10/40 bg-L10/[0.06]'
-                    }`}
-                  >
-                    <div className="flex items-start gap-2.5">
-                      <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white text-base font-bold ${
-                        accent === 'correct' ? 'bg-win' : 'bg-L10'
-                      }`}>
-                        {accent === 'correct' ? '✓' : '!'}
-                      </div>
-                      <div className="flex-1">
-                        <div className={`text-[10.5px] font-bold uppercase tracking-[0.16em] mb-1 ${
-                          accent === 'correct' ? 'text-win' : 'text-L10'
-                        }`}>
-                          {accent === 'correct' ? 'Right call' : 'Reconsider'}
-                          <span className="ml-2 text-soft">→ {item.verdict === 'ai-safe' ? 'AI-safe lane' : 'Human only'}</span>
-                        </div>
-                        <div className="text-[13.5px] text-ink/85 leading-relaxed mb-1.5">{item.why}</div>
-                        <div className="text-[12px] text-muted italic flex gap-1.5">
-                          <span>💭</span><span>{item.nuance}</span>
-                        </div>
-                      </div>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500 mb-2 text-center">
+                      Route this where?
                     </div>
-                    <div className="flex justify-end mt-3">
-                      <button
-                        onClick={next}
-                        className="px-4 py-2 rounded-lg bg-ink text-white font-semibold text-[13px] hover:bg-black transition shadow-pop"
+                    <div className="grid grid-cols-2 gap-3">
+                      <motion.button
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.96 }}
+                        onClick={() => decide('ai-safe')}
+                        className="rounded-md p-3.5 border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 transition flex flex-col items-center gap-1.5 group shadow-sm"
                       >
-                        {idx === ITEMS.length - 1 ? 'See your judgement →' : 'Next inbox item →'}
-                      </button>
+                        <Bot size={24} className="text-zinc-500 group-hover:scale-110 transition" />
+                        <span className="font-bold text-[13px] text-zinc-900">Draft with AI</span>
+                        <span className="text-[10.5px] text-zinc-500 text-center">routine · low stakes · I review before sending</span>
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.96 }}
+                        onClick={() => decide('human')}
+                        className="rounded-md p-3.5 border border-zinc-200 bg-white hover:bg-zinc-50 hover:border-zinc-300 transition flex flex-col items-center gap-1.5 group shadow-sm"
+                      >
+                        <UserCheck size={24} className="text-zinc-500 group-hover:scale-110 transition" />
+                        <span className="font-bold text-[13px] text-zinc-900">Human only</span>
+                        <span className="text-[10.5px] text-zinc-500 text-center">statutory · legal · life-safety · PDPA</span>
+                      </motion.button>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
-            </motion.div>
-          )}
+
+                <AnimatePresence>
+                  {pick && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className={`rounded-md border p-4 mt-2 ${
+                        accent === 'correct' ? 'border-zinc-200 bg-zinc-50' : 'border-red-200 bg-red-50'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white text-base font-bold ${
+                          accent === 'correct' ? 'bg-zinc-800' : 'bg-red-500'
+                        }`}>
+                          {accent === 'correct' ? <Check size={16} /> : <X size={16} />}
+                        </div>
+                        <div className="flex-1">
+                          <div className={`text-[10.5px] font-bold uppercase tracking-[0.16em] mb-1.5 ${
+                            accent === 'correct' ? 'text-zinc-900' : 'text-red-700'
+                          }`}>
+                            {accent === 'correct' ? 'Right call' : 'Reconsider'}
+                            <span className="ml-2 text-zinc-500">→ {item.verdict === 'ai-safe' ? 'AI-safe lane' : 'Human only'}</span>
+                          </div>
+                          <div className="text-[13px] text-zinc-800 leading-relaxed mb-2">{item.why}</div>
+                          <div className="text-[11.5px] text-zinc-500 flex items-start gap-1.5 bg-white border border-zinc-200 px-2.5 py-1.5 rounded-sm">
+                            <span className="font-semibold text-zinc-700 shrink-0">Note:</span><span>{item.nuance}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-end mt-4">
+                        <PrimaryButton onClick={next}>
+                          {idx === ITEMS.length - 1 ? 'See your judgement →' : 'Next inbox item →'}
+                        </PrimaryButton>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })()}
 
           {done && (
             <motion.div
@@ -260,16 +255,16 @@ export default function LevelHumanInLoop({ onComplete }) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-              className="card-strong p-6 text-center relative overflow-hidden"
+              className="bg-white border border-zinc-200 shadow-sm rounded-md p-6 sm:p-8 text-center relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-L11 via-L10 to-win" />
-              <div className="text-5xl mb-3">
-                {correctSoFar === ITEMS.length ? '🛡️' : correctSoFar >= ITEMS.length - 2 ? '👍' : '🤔'}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-zinc-800" />
+              <div className="flex justify-center mb-4 text-zinc-800">
+                {correctSoFar === ITEMS.length ? <ShieldAlert size={48} strokeWidth={1.5} /> : correctSoFar >= ITEMS.length - 2 ? <UserCheck size={48} strokeWidth={1.5} /> : <AlertTriangle size={48} strokeWidth={1.5} />}
               </div>
-              <div className="font-display font-bold text-2xl mb-1">
+              <div className="font-display font-bold text-2xl mb-1 text-zinc-900">
                 {correctSoFar} / {ITEMS.length} routed correctly
               </div>
-              <div className="text-muted text-[14px] mb-4 max-w-sm mx-auto">
+              <div className="text-zinc-500 text-[14px] mb-5 max-w-sm mx-auto">
                 {correctSoFar === ITEMS.length
                   ? 'Your judgement on what AI should and shouldn\'t touch is sharp.'
                   : correctSoFar >= ITEMS.length - 2
@@ -281,10 +276,10 @@ export default function LevelHumanInLoop({ onComplete }) {
                   <div
                     key={h.id}
                     className={`w-7 h-7 rounded-md flex items-center justify-center text-white text-xs font-bold ${
-                      h.correct ? 'bg-win' : 'bg-L10'
+                      h.correct ? 'bg-zinc-800' : 'bg-red-500'
                     }`}
                   >
-                    {h.correct ? '✓' : '✗'}
+                    {h.correct ? <Check size={14} strokeWidth={3} /> : <X size={14} strokeWidth={3} />}
                   </div>
                 ))}
               </div>
@@ -296,13 +291,12 @@ export default function LevelHumanInLoop({ onComplete }) {
       {done && (
         <>
           <TakeawayCard
-            accent="L11"
             application="Ask: is this routine + low-stakes? If yes, draft with AI. If it's legal, life-safety, or PDPA-sensitive → human owns it."
           >
             <strong>AI accelerates. Humans authorise.</strong> Knowing the line is a crucial skill.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete} accent="L11">🎓 Complete Module →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Complete Module →</PrimaryButton>
           </div>
         </>
       )}

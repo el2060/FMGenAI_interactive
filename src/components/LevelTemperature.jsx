@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton } from './Common';
+import { LevelHeader, TakeawayCard, PrimaryButton } from './Common';
+import { Check } from 'lucide-react';
 
 const PROMPT = 'Acknowledge a tenant complaint about a faulty aircon at Block 71.';
 const TARGET_MIN = 0.2;
@@ -37,10 +38,10 @@ function bucket(t) {
 }
 
 const BUCKET_LABEL = {
-  cold: { label: 'Robotic',     color: 'text-sky-600',   tint: 'bg-sky-50' },
-  cool: { label: 'Professional', color: 'text-L2',        tint: 'bg-L2/5' },
-  warm: { label: 'Casual',      color: 'text-L3',        tint: 'bg-L3/5' },
-  hot:  { label: 'Wild',        color: 'text-L6',        tint: 'bg-L6/5' },
+  cold: { label: 'Robotic',     color: 'text-zinc-400',   tint: 'bg-zinc-50 border border-zinc-200' },
+  cool: { label: 'Professional', color: 'text-zinc-600',   tint: 'bg-zinc-50 border border-zinc-200' },
+  warm: { label: 'Casual',      color: 'text-zinc-800',   tint: 'bg-zinc-50 border border-zinc-200' },
+  hot:  { label: 'Wild',        color: 'text-zinc-950',   tint: 'bg-zinc-50 border border-zinc-200' },
 };
 
 export default function LevelTemperature({ onComplete }) {
@@ -68,32 +69,30 @@ export default function LevelTemperature({ onComplete }) {
     <div>
       <LevelHeader level={3} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Same prompt. <span className="text-L2">Different vibes.</span>
+        Same prompt. <span className="text-zinc-500">Different vibes.</span>
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
         Adjust the temperature slider to see how randomness changes the AI's output.
       </p>
 
-
-
-      <div className="card p-5 mb-4 bg-white">
-        <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-soft mb-2">📝 Fixed Prompt</div>
-        <div className="font-mono text-[13.5px] bg-cream rounded-lg p-3 border border-line text-ink/85">
+      <div className="card p-5 mb-4 bg-white shadow-sm border border-zinc-200 rounded-md">
+        <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-zinc-500 mb-2">📝 Fixed Prompt</div>
+        <div className="font-mono text-[13.5px] bg-zinc-50 rounded-md p-3 border border-zinc-200 text-zinc-800">
           "{PROMPT}"
         </div>
       </div>
 
-      <div className="card-strong p-5 sm:p-6 mb-4">
+      <div className="bg-white border border-zinc-200 rounded-md shadow-sm p-5 sm:p-6 mb-4">
         <div className="flex items-baseline justify-between mb-3">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Temperature</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500">Temperature</div>
           <div className="flex items-baseline gap-2">
             <motion.span
               key={temp.toFixed(1)}
               initial={{ scale: 1.3 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-              className={`font-mono text-3xl font-extrabold tabular-nums ${inSweet ? 'text-win' : 'text-ink'}`}
+              className={`font-mono text-3xl font-extrabold tabular-nums ${inSweet ? 'text-zinc-900' : 'text-zinc-400'}`}
             >
               {temp.toFixed(2)}
             </motion.span>
@@ -105,7 +104,7 @@ export default function LevelTemperature({ onComplete }) {
 
         <div className="relative mb-2">
           <div
-            className="absolute h-3.5 bg-win/20 border-y-2 border-win rounded pointer-events-none"
+            className="absolute h-3.5 bg-zinc-200 border-y-2 border-zinc-300 rounded pointer-events-none"
             style={{ left: `${TARGET_MIN * 100}%`, width: `${(TARGET_MAX - TARGET_MIN) * 100}%`, top: 5 }}
           />
           <input
@@ -117,22 +116,22 @@ export default function LevelTemperature({ onComplete }) {
             className="temp-slider w-full relative z-10"
           />
         </div>
-        <div className="flex justify-between text-[10.5px] font-mono text-soft px-0.5">
+        <div className="flex justify-between text-[10.5px] font-mono text-zinc-400 px-0.5">
           <span>0.0 · cold</span>
-          <span className="text-win font-bold">sweet spot</span>
+          <span className="text-zinc-900 font-bold">sweet spot</span>
           <span>1.0 · wild</span>
         </div>
 
         <AnimatePresence>
           {inSweet && !locked && (
-            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 flex items-center gap-2 text-[13px] text-win font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-win animate-pulse" />
+            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 flex items-center gap-2 text-[13px] text-zinc-900 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-zinc-900 animate-pulse" />
               Hold for {Math.max(0, Math.ceil((1200 - dwellMs) / 100) / 10).toFixed(1)}s to lock in…
             </motion.div>
           )}
           {locked && (
-            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-3 flex items-center gap-2 text-[13px] text-win font-semibold">
-              <span className="w-6 h-6 rounded-full bg-win text-white text-xs flex items-center justify-center">✓</span>
+            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-3 flex items-center gap-2 text-[13px] text-zinc-900 font-semibold">
+              <span className="w-5 h-5 rounded-full bg-zinc-900 text-white flex items-center justify-center"><Check size={12} /></span>
               Locked in — perfect professional setting.
             </motion.div>
           )}
@@ -146,12 +145,12 @@ export default function LevelTemperature({ onComplete }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
-            className={`card p-4 ${BUCKET_LABEL[b].tint}`}
+            className={`p-4 rounded-md shadow-sm ${BUCKET_LABEL[b].tint}`}
           >
             <div className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-1.5 ${BUCKET_LABEL[b].color}`}>
               Draft {i + 1}
             </div>
-            <div className="text-[13px] text-ink leading-relaxed">{o}</div>
+            <div className="text-[13px] text-zinc-900 leading-relaxed">{o}</div>
           </motion.div>
         ))}
       </div>
@@ -159,13 +158,12 @@ export default function LevelTemperature({ onComplete }) {
       {locked && (
         <>
           <TakeawayCard
-            accent="L2"
             application="In ChatGPT/Copilot, choose 'precise' for SOPs and circulars. Avoid 'creative' for tenant comms."
           >
             <strong>Match temperature to the task.</strong> Ops = cool. Brainstorm = warm.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete} accent="L2">Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
           </div>
         </>
       )}

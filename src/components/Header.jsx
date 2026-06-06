@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LEVEL_META, CHAPTERS, BG_COLORS } from './Common';
+import { LEVEL_META, CHAPTERS } from './Common';
 
 export default function Header({ level, onHome, onJump }) {
   const meta = LEVEL_META[level];
@@ -39,7 +39,7 @@ export default function Header({ level, onHome, onJump }) {
                   initial={{ opacity: 0, x: -4 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 4 }}
-                  className="text-L10"
+                  className="text-red-500"
                 >
                   Confirm?
                 </motion.span>
@@ -58,11 +58,11 @@ export default function Header({ level, onHome, onJump }) {
         </button>
 
         {/* Current chapter + level — clickable dropdown for level jumping */}
-        <div className="hidden md:flex items-baseline gap-1.5 text-[12px] text-muted shrink-0">
-          <span className={`px-1.5 py-0.5 rounded font-mono font-bold text-white text-[10px] ${BG_COLORS[meta.color]}`}>CH{meta.chapter}</span>
-          <span className="font-medium text-ink/80">{meta.chapterTitle}</span>
-          <span className="text-soft px-1">·</span>
-          <span className="text-soft">{meta.name}</span>
+        <div className="hidden md:flex items-baseline gap-1.5 text-[12px] text-zinc-500 shrink-0">
+          <span className="px-1.5 py-0.5 rounded font-mono font-bold bg-zinc-100 border border-zinc-200 text-zinc-900 text-[10px]">CH{meta.chapter}</span>
+          <span className="font-medium text-zinc-800">{meta.chapterTitle}</span>
+          <span className="text-zinc-400 px-1">·</span>
+          <span className="text-zinc-400">{meta.name}</span>
         </div>
 
         <div className="flex-1" />
@@ -90,7 +90,7 @@ export default function Header({ level, onHome, onJump }) {
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: filled ? 1 : 0 }}
                       transition={{ duration: 0.5, ease: 'easeOut' }}
-                      className={`absolute inset-0 origin-left rounded-full ${BG_COLORS[m.color]}`}
+                      className="absolute inset-0 origin-left rounded-full bg-zinc-800"
                     />
                   </button>
                 );

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { PrimaryButton, LEVEL_META, CHAPTERS, BG_COLORS, TEXT_COLORS } from './Common';
+import { PrimaryButton, LEVEL_META, CHAPTERS } from './Common';
 
 export default function Intro({ onStart }) {
   const totalLevels = CHAPTERS.reduce((sum, ch) => sum + ch.levels.length, 0);
@@ -35,28 +35,29 @@ export default function Intro({ onStart }) {
                 className="rounded-2xl border border-line bg-white shadow-sm hover:shadow-md transition-all p-4 sm:p-5 flex flex-col group hover:-translate-y-1"
               >
                 <div className="flex items-baseline gap-2 mb-3">
-                  <span className={`text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded ${BG_COLORS[headColor]} text-white tracking-wider`}>
+                  <span className="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-100 border border-zinc-200 text-zinc-900 tracking-wider">
                     CH {ch.n}
                   </span>
-                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-soft">{ch.subtitle}</span>
+                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-zinc-500">{ch.subtitle}</span>
                 </div>
                 <div className="font-display font-bold text-[16px] leading-tight mb-4 text-ink">{ch.title}</div>
                 <div className="flex flex-col gap-1.5 mt-auto">
                   {ch.levels.map((lvl) => {
                     const m = LEVEL_META[lvl];
+                    const Icon = m.icon;
                     return (
                       <motion.div
                         key={lvl}
                         initial={{ opacity: 0, x: -6 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.25 + ci * 0.06 + lvl * 0.02 }}
-                        className="flex items-center gap-1.5 px-1.5 py-1 rounded-md bg-white border border-line/70"
+                        className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-white border border-zinc-200 shadow-sm"
                       >
-                        <span className={`w-4 h-4 rounded ${BG_COLORS[m.color]} text-white font-mono font-bold text-[9px] flex items-center justify-center shrink-0`}>
+                        <span className="w-4 h-4 rounded bg-zinc-100 border border-zinc-200 text-zinc-900 font-mono font-bold text-[9px] flex items-center justify-center shrink-0">
                           {lvl}
                         </span>
-                        <span className="text-[12px] shrink-0">{m.emoji}</span>
-                        <span className={`font-semibold text-[11.5px] ${TEXT_COLORS[m.color]} leading-tight`}>{m.name}</span>
+                        <span className="text-zinc-500 shrink-0"><Icon size={14} strokeWidth={2.5} /></span>
+                        <span className="font-semibold text-[11.5px] text-zinc-900 leading-tight">{m.name}</span>
                       </motion.div>
                     );
                   })}

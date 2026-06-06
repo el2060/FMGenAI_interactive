@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { LevelHeader, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { List, Scissors, Clock, BookOpen, AlertTriangle, Lightbulb, Check } from 'lucide-react';
 
 const FIRST_DRAFT = `Dear Tenant,
 
@@ -13,7 +14,7 @@ const REFINEMENTS = [
   {
     id: 'bullets',
     label: 'Make it 3 bullets',
-    icon: '📍',
+    icon: List,
     follow: 'Reformat as 3 short bullet points. Skip the salutation block.',
     output: `• Lift maintenance tomorrow 0900–1100. Plan around it.
 • Power off during this window — save your work in advance.
@@ -23,7 +24,7 @@ const REFINEMENTS = [
   {
     id: 'shorter',
     label: 'Cut by half',
-    icon: '✂️',
+    icon: Scissors,
     follow: 'Cut this in half. Keep facts, drop pleasantries.',
     output: `Lift maintenance at Block 71 tomorrow, 0900–1100. Power off in that window — save your work. Helpdesk: 6XXX-XXXX.`,
     why: 'Pure information density. Use this for SMS or Telegram broadcasts.',
@@ -31,7 +32,7 @@ const REFINEMENTS = [
   {
     id: 'singlish',
     label: 'Add an SLA line',
-    icon: '⏱️',
+    icon: Clock,
     follow: 'Add a clear "we will respond within 4 working hours" service-level line at the end.',
     output: `Dear Tenant,
 
@@ -46,7 +47,7 @@ FM Team`,
   {
     id: 'plain',
     label: 'Remove jargon',
-    icon: '📖',
+    icon: BookOpen,
     follow: 'Rewrite for a non-technical tenant. No FM jargon.',
     output: `Hi everyone,
 
@@ -61,7 +62,7 @@ FM Team`,
   {
     id: 'urgent',
     label: 'Make it more urgent',
-    icon: '🚨',
+    icon: AlertTriangle,
     follow: 'Rewrite with urgency — this affects critical lab equipment in two units.',
     output: `URGENT — power shutdown tomorrow
 
@@ -100,9 +101,7 @@ export default function LevelIterate({ onComplete }) {
   function applyRefinement(r) {
     if (active) return;
     setActive(r.id);
-    // Push the user's follow-up turn
     setTurns((t) => [...t, { role: 'user', text: r.follow }]);
-    // Stream the new draft
     clearInterval(intervalRef.current);
     setDraft(r.output);
     setStreaming('');
@@ -132,21 +131,21 @@ export default function LevelIterate({ onComplete }) {
     <div>
       <LevelHeader level={7} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        First draft is a starting point. <span className="text-L7">Refine, don't restart.</span>
+        First draft is a starting point. <span className="text-zinc-500">Refine, don't restart.</span>
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
         Chat with the AI and refine its draft at least 3 times instead of starting over.
       </p>
 
-      <div className="text-[11.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-2 flex items-center gap-2">
-        <span>💬 Chat with AI</span>
+      <div className="text-[11.5px] font-semibold uppercase tracking-[0.22em] text-zinc-500 mb-2 flex items-center gap-2">
+        <span>Chat with AI</span>
         <SiteChip />
       </div>
 
-      <div className="card-strong overflow-hidden mb-4">
+      <div className="bg-white border border-zinc-200 rounded-md shadow-sm overflow-hidden mb-4">
         {/* Chat scroll */}
-        <div ref={scrollerRef} className="max-h-[420px] overflow-y-auto p-4 space-y-3 bg-cream/40">
+        <div ref={scrollerRef} className="max-h-[420px] overflow-y-auto p-4 space-y-3 bg-zinc-50/50">
           {turns.map((t, i) => {
             const isAi = t.role === 'ai';
             const isLast = i === turns.length - 1;
@@ -160,13 +159,13 @@ export default function LevelIterate({ onComplete }) {
                 transition={{ duration: 0.25 }}
                 className={`flex gap-2.5 ${isAi ? '' : 'flex-row-reverse'}`}
               >
-                <div className={`shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold ${
-                  isAi ? 'bg-L7 text-white' : 'bg-ink text-white'
+                <div className={`shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-[11px] font-bold ${
+                  isAi ? 'bg-zinc-800 text-white' : 'bg-zinc-200 text-zinc-600'
                 }`}>
                   {isAi ? 'AI' : 'You'}
                 </div>
-                <div className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed whitespace-pre-wrap ${
-                  isAi ? 'bg-white border border-line text-ink' : 'bg-ink text-white'
+                <div className={`max-w-[85%] rounded-lg px-3.5 py-2.5 text-[13px] leading-relaxed whitespace-pre-wrap ${
+                  isAi ? 'bg-white border border-zinc-200 text-zinc-800 shadow-sm' : 'bg-zinc-100 text-zinc-800 border border-zinc-200 shadow-sm'
                 } ${isStreaming ? 'caret' : ''}`}>
                   {text}
                 </div>
@@ -174,8 +173,8 @@ export default function LevelIterate({ onComplete }) {
             );
           })}
           {active && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-[11px] text-soft pl-9">
-              <span className="w-1.5 h-1.5 rounded-full bg-L7 animate-pulse" />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2 text-[11px] text-zinc-500 pl-9">
+              <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-pulse" />
               <span>AI is refining…</span>
             </motion.div>
           )}
@@ -188,22 +187,23 @@ export default function LevelIterate({ onComplete }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="border-t border-line bg-L7/5 px-4 py-2.5 text-[12.5px] text-ink/85 flex gap-2"
+              className="border-t border-zinc-200 bg-zinc-50 px-4 py-3 text-[12.5px] text-zinc-800 flex gap-2.5 items-start overflow-hidden"
             >
-              <span>💡</span>
-              <span><span className="font-semibold">Why this works: </span>{lastWhy}</span>
+              <Lightbulb size={16} className="text-zinc-500 shrink-0 mt-0.5" />
+              <div><span className="font-semibold text-zinc-900">Why this works: </span>{lastWhy}</div>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Quick-action chips */}
-        <div className="border-t border-line p-3 bg-white">
-          <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-muted mb-2">
+        <div className="border-t border-zinc-200 p-3 bg-white">
+          <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-zinc-500 mb-2">
             Quick refinements
           </div>
           <div className="flex flex-wrap gap-2">
             {REFINEMENTS.map((r) => {
               const isUsed = used.has(r.id);
+              const RIcon = r.icon;
               return (
                 <motion.button
                   key={r.id}
@@ -211,13 +211,13 @@ export default function LevelIterate({ onComplete }) {
                   whileTap={{ scale: 0.96 }}
                   disabled={!!active}
                   onClick={() => applyRefinement(r)}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-semibold border transition disabled:opacity-50 ${
-                    isUsed ? 'border-line bg-cream text-soft' : 'border-L7/30 bg-white text-L7 hover:bg-L7/5 hover:border-L7'
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[12px] font-semibold border transition disabled:opacity-50 ${
+                    isUsed ? 'border-zinc-200 bg-zinc-50 text-zinc-400' : 'border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50 hover:border-zinc-400 shadow-sm'
                   }`}
                 >
-                  <span>{r.icon}</span>
+                  <RIcon size={14} />
                   <span>{r.label}</span>
-                  {isUsed && <span className="text-win text-[10px]">✓</span>}
+                  {isUsed && <Check size={12} className="text-green-600 ml-0.5" />}
                 </motion.button>
               );
             })}
@@ -225,14 +225,14 @@ export default function LevelIterate({ onComplete }) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between flex-wrap gap-2 text-[12px] text-muted mb-3">
+      <div className="flex items-center justify-between flex-wrap gap-2 text-[12px] text-zinc-500 mb-3">
         <span>
           Try at least 3 refinements —{' '}
-          <span className="font-semibold text-ink font-mono">{usedCount} / {REFINEMENTS.length}</span> tried
+          <span className="font-semibold text-zinc-900 font-mono">{usedCount} / {REFINEMENTS.length}</span> tried
         </span>
         <div className="flex gap-1">
           {REFINEMENTS.map((r) => (
-            <div key={r.id} className={`w-2 h-2 rounded-full ${used.has(r.id) ? 'bg-L7' : 'bg-line'}`} />
+            <div key={r.id} className={`w-2 h-2 rounded-full ${used.has(r.id) ? 'bg-zinc-800' : 'bg-zinc-200'}`} />
           ))}
         </div>
       </div>
@@ -240,13 +240,12 @@ export default function LevelIterate({ onComplete }) {
       {usedCount >= 3 && (
         <>
           <TakeawayCard
-            accent="L7"
             application='Stop rewriting. Send the draft back: "shorter", "direct", "no jargon".'
           >
             <strong>Iterate, don't restart.</strong> Five quick turns beats five fresh prompts.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete} accent="L7">Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
           </div>
         </>
       )}

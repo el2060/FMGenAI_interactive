@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LevelHeader, ConceptCard, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { LevelHeader, TakeawayCard, PrimaryButton, SiteChip } from './Common';
+import { FileText, List, TableProperties, CheckSquare, Check, Lightbulb, Copy, CheckCircle2 } from 'lucide-react';
 
 const SOURCE = `Quarterly inspection — Block 71, Jurong East
 Inspector: K. Ramesh   |   Date: 28 Mar 2026
@@ -17,7 +18,7 @@ const FORMATS = [
   {
     id: 'prose',
     label: 'Prose summary',
-    icon: '📝',
+    icon: FileText,
     sub: '"Summarise in a short paragraph."',
     output: `Block 71 Q1 inspection identified one minor refrigerant under-charge on AHU-3 (level 6) requiring vendor top-up within 7 days, and two water-stained ceiling tiles in the level 1 lift lobby pending repair before the next quarterly. Chiller plant and fire alarm panel were both within parameters; spare smoke detector stock is 2 units below buffer target.`,
     why: 'Good for executive emails. Bad for action tracking — you can\'t tick off a paragraph.',
@@ -26,7 +27,7 @@ const FORMATS = [
   {
     id: 'bullets',
     label: 'Action bullets',
-    icon: '•',
+    icon: List,
     sub: '"List as action items, one per line."',
     output: `• Top-up AHU-3 refrigerant (level 6) — vendor visit within 7 days
 • Open up & repair 2 ceiling tiles in level 1 lift lobby — 2 hours work
@@ -38,7 +39,7 @@ const FORMATS = [
   {
     id: 'table',
     label: 'Action table',
-    icon: '▦',
+    icon: TableProperties,
     sub: '"Format as a table: Asset · Issue · Action · Due."',
     table: {
       headers: ['Asset', 'Issue', 'Action', 'Due'],
@@ -55,7 +56,7 @@ const FORMATS = [
   {
     id: 'checklist',
     label: 'Tomorrow\'s checklist',
-    icon: '☑',
+    icon: CheckSquare,
     sub: '"Give me a checklist of things to do tomorrow."',
     output: `□ 0830 — Call HVAC vendor, schedule AHU-3 refrigerant top-up by 4 Apr
 □ 0900 — Site walk to level 1 lift lobby, photograph the 2 stained tiles
@@ -92,7 +93,7 @@ export default function LevelStructuredOutput({ onComplete }) {
     <div>
       <LevelHeader level={8} />
       <h2 className="font-display text-3xl sm:text-[38px] font-bold tracking-tight mb-3 leading-[1.05]">
-        Don't just ask. <span className="text-L8">Tell AI the shape.</span>
+        Don't just ask. <span className="text-zinc-500">Tell AI the shape.</span>
       </h2>
 
       <p className="text-muted text-[15px] max-w-2xl mb-6">
@@ -102,35 +103,36 @@ export default function LevelStructuredOutput({ onComplete }) {
       {/* Source */}
       <div className="card p-4 mb-4">
         <div className="flex items-center gap-2 mb-2 flex-wrap">
-          <span className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-soft font-mono">Source · Inspection Report</span>
+          <span className="text-[10.5px] font-bold uppercase tracking-[0.2em] text-zinc-500 font-mono">Source · Inspection Report</span>
           <SiteChip />
         </div>
-        <div className="bg-cream rounded-lg p-3 border border-line text-[12.5px] text-ink/75 leading-relaxed max-h-[180px] overflow-y-auto whitespace-pre-wrap font-mono">
+        <div className="bg-zinc-50 rounded-md p-3 border border-zinc-200 text-[12.5px] text-zinc-700 leading-relaxed max-h-[180px] overflow-y-auto whitespace-pre-wrap font-mono shadow-inner">
           {SOURCE}
         </div>
       </div>
 
       {/* Shape selector */}
-      <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-2">
-        🎯 Tell AI the output shape
+      <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-500 mb-2">
+        Tell AI the output shape
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
         {FORMATS.map((f) => {
           const active = picked === f.id;
           const wasSeen = seen.has(f.id);
+          const FIcon = f.icon;
           return (
             <motion.button
               key={f.id}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => choose(f.id)}
-              className={`rounded-xl p-3 border-2 text-left transition-all ${
-                active ? 'border-L8 bg-L8/[0.07] shadow-pop' : 'border-line bg-white hover:border-L8/40'
+              className={`rounded-md p-3 border text-left transition-all shadow-sm ${
+                active ? 'border-zinc-800 bg-zinc-100 text-zinc-900' : 'border-zinc-200 bg-white hover:border-zinc-400 text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xl">{f.icon}</span>
-                {wasSeen && !active && <span className="text-[10px] text-win font-bold">✓</span>}
+              <div className="flex items-center justify-between mb-2">
+                <FIcon size={20} strokeWidth={2} />
+                {wasSeen && !active && <Check size={14} className="text-zinc-400" strokeWidth={3} />}
               </div>
               <div className="font-semibold text-[12.5px] leading-tight">{f.label}</div>
             </motion.button>
@@ -146,19 +148,20 @@ export default function LevelStructuredOutput({ onComplete }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.22 }}
-          className="card-strong overflow-hidden mb-4"
+          className="bg-white border border-zinc-200 rounded-md shadow-sm overflow-hidden mb-4"
         >
-          <div className="px-4 py-3 border-b border-line bg-gradient-to-r from-L8/5 to-transparent flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-L8 text-white flex items-center justify-center text-[11px] font-bold">AI</div>
+          <div className="px-4 py-3 border-b border-zinc-200 bg-zinc-50 flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-md bg-zinc-800 text-white flex items-center justify-center text-[11px] font-bold">AI</div>
             <div className="min-w-0">
-              <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-L8">Output as {current.label}</div>
-              <div className="text-[10.5px] text-soft truncate">{current.sub}</div>
+              <div className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-zinc-900">Output as {current.label}</div>
+              <div className="text-[10.5px] text-zinc-500 truncate">{current.sub}</div>
             </div>
             <button
               onClick={copyOutput}
-              className="ml-auto text-[11px] font-semibold text-muted hover:text-ink transition px-2 py-1 rounded border border-line bg-white"
+              className="ml-auto text-[11px] font-semibold text-zinc-600 hover:text-zinc-900 transition px-2 py-1.5 rounded-md border border-zinc-200 bg-white shadow-sm flex items-center gap-1.5"
             >
-              {copied ? '✓ copied' : '📋 copy'}
+              {copied ? <CheckCircle2 size={14} className="text-green-600" /> : <Copy size={14} />}
+              {copied ? 'Copied' : 'Copy'}
             </button>
           </div>
 
@@ -167,17 +170,17 @@ export default function LevelStructuredOutput({ onComplete }) {
               <div className="overflow-x-auto">
                 <table className="w-full text-[12.5px]">
                   <thead>
-                    <tr className="bg-cream border-b border-line">
+                    <tr className="bg-zinc-50 border-b border-zinc-200">
                       {current.table.headers.map((h) => (
-                        <th key={h} className="text-left px-2.5 py-2 font-semibold text-ink uppercase tracking-wider text-[10.5px]">{h}</th>
+                        <th key={h} className="text-left px-2.5 py-2 font-semibold text-zinc-900 uppercase tracking-wider text-[10.5px]">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {current.table.rows.map((row, ri) => (
-                      <tr key={ri} className={ri % 2 ? 'bg-white' : 'bg-cream/40'}>
+                      <tr key={ri} className={ri % 2 ? 'bg-white' : 'bg-zinc-50/50'}>
                         {row.map((cell, ci) => (
-                          <td key={ci} className="px-2.5 py-2 align-top border-b border-line/60">{cell}</td>
+                          <td key={ci} className="px-2.5 py-2 align-top border-b border-zinc-100 text-zinc-800">{cell}</td>
                         ))}
                       </tr>
                     ))}
@@ -185,24 +188,26 @@ export default function LevelStructuredOutput({ onComplete }) {
                 </table>
               </div>
             ) : (
-              <div className="text-[13.5px] leading-relaxed whitespace-pre-wrap text-ink">{current.output}</div>
+              <div className="text-[13.5px] leading-relaxed whitespace-pre-wrap text-zinc-800">{current.output}</div>
             )}
           </div>
 
-          <div className="border-t border-line bg-cream/40 px-4 py-2.5 text-[12px] text-ink/85 flex gap-2">
-            <span>💡</span>
-            <span><span className="font-semibold">Why it works: </span>{current.why} <span className="text-soft">— {current.note}</span></span>
+          <div className="border-t border-zinc-200 bg-zinc-50 px-4 py-3 text-[12px] text-zinc-800 flex gap-2.5 items-start">
+            <Lightbulb size={16} className="text-zinc-500 shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold">Why it works: </span>{current.why} <span className="text-zinc-500">— {current.note}</span>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex items-center justify-between flex-wrap gap-2 text-[12px] text-muted mb-3">
+      <div className="flex items-center justify-between flex-wrap gap-2 text-[12px] text-zinc-500 mb-3">
         <span>
-          Try all 4 shapes — <span className="font-semibold text-ink font-mono">{seen.size} / {FORMATS.length}</span>
+          Try all 4 shapes — <span className="font-semibold text-zinc-900 font-mono">{seen.size} / {FORMATS.length}</span>
         </span>
         <div className="flex gap-1">
           {FORMATS.map((f) => (
-            <div key={f.id} className={`w-2 h-2 rounded-full ${seen.has(f.id) ? 'bg-L8' : 'bg-line'}`} />
+            <div key={f.id} className={`w-2 h-2 rounded-full ${seen.has(f.id) ? 'bg-zinc-800' : 'bg-zinc-200'}`} />
           ))}
         </div>
       </div>
@@ -210,13 +215,12 @@ export default function LevelStructuredOutput({ onComplete }) {
       {seen.size >= FORMATS.length && (
         <>
           <TakeawayCard
-            accent="L8"
             application='Add format rules: "Table with these columns" or "5-bullet list".'
           >
             <strong>Specify the shape.</strong> Tables for tracking, bullets for teams.
           </TakeawayCard>
           <div className="flex justify-end mt-5 mb-8">
-            <PrimaryButton onClick={onComplete} accent="L8">Next Level →</PrimaryButton>
+            <PrimaryButton onClick={onComplete}>Next Level →</PrimaryButton>
           </div>
         </>
       )}
