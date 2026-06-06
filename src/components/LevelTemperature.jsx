@@ -76,9 +76,7 @@ export default function LevelTemperature({ onComplete }) {
         use <strong>0.2–0.5</strong>.
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Same prompt, different vibes. Slide the dial. Find the sweet spot.
-      </p>
+
 
       <div className="card p-5 mb-4 bg-white">
         <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-soft mb-2">📝 Fixed Prompt</div>

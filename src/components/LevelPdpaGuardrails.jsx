@@ -57,9 +57,7 @@ export default function LevelPdpaGuardrails({ onComplete }) {
         Pasting NRICs into ChatGPT = data leak. But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        About to paste this into ChatGPT. Toggle the filters — hide what's sensitive, leave what AI needs.
-      </p>
+
 
       <div className="card-strong p-5 mb-4">
         <div className="flex items-center gap-2 mb-3">

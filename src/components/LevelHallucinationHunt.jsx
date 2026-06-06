@@ -46,10 +46,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
         a <strong>human in the loop</strong>.
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Three steps below sound right but are{' '}
-        <span className="text-L10 font-semibold">dangerously wrong</span>. Find and tap them.
-      </p>
+
 
       <div className="card-strong p-0 mb-5 overflow-hidden">
         <div className="px-5 py-3.5 border-b border-line flex items-center gap-3 bg-gradient-to-r from-ink/5 to-transparent">

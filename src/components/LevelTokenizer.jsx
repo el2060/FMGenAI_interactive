@@ -33,10 +33,7 @@ export default function LevelTokenizer({ onComplete }) {
         costs time and money. Lean prompts = faster, cheaper answers.
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Type an FM update below. Try to hit{' '}
-        <span className="font-semibold text-ink">exactly {TARGET} tokens</span>.
-      </p>
+
 
       <div className="card-strong p-5 sm:p-6 mb-3">
         <div className="flex items-center justify-between mb-3">

@@ -15,7 +15,7 @@ export default function Intro({ onStart }) {
         <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-soft mb-3">
           A learning workshop by
         </div>
-        <img src="/np-logo.png" alt="Ngee Ann Polytechnic" className="h-12 sm:h-14 w-auto" />
+        <img src="https://www.np.edu.sg/_next/image?url=https%3A%2F%2Fassets.app.optical.gov.sg%2Fnp%2Fproduction%2Fpublished%2Fcollections%2Fpages%2F17c64bb4-8632-49e9-af16-047f7cabe99a%2Fab16008f-a6a0-466e-9193-e16e947261b0.png&w=1080&q=75" alt="Ngee Ann Polytechnic" className="h-12 sm:h-14 w-auto" />
       </motion.div>
 
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line bg-white/80 backdrop-blur text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-5">
@@ -23,15 +23,11 @@ export default function Intro({ onStart }) {
         <span>For Singapore FM teams</span>
       </div>
 
-      <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-4">
+      <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-8">
         Generative AI,
         <br />
         <span className="shimmer-text">made practical for FM.</span>
       </h1>
-
-      <p className="text-muted max-w-md mx-auto mb-6 text-[15.5px] leading-relaxed">
-        {totalLevels} bite-sized levels. <span className="font-semibold text-ink">Learn by doing.</span>
-      </p>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
@@ -89,13 +85,6 @@ export default function Intro({ onStart }) {
           })}
         </div>
 
-        <div className="flex items-center justify-center gap-5 sm:gap-7 mt-4 pt-3.5 border-t border-line/70 text-[12px] text-muted">
-          <span className="flex items-center gap-1.5"><span>💡</span><span className="font-semibold text-ink">Read</span></span>
-          <span className="text-soft">→</span>
-          <span className="flex items-center gap-1.5"><span>🎮</span><span className="font-semibold text-ink">Try</span></span>
-          <span className="text-soft">→</span>
-          <span className="flex items-center gap-1.5"><span>🎯</span><span className="font-semibold text-ink">Lock in</span></span>
-        </div>
       </motion.div>
 
       <motion.div

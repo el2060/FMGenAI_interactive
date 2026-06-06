@@ -150,9 +150,7 @@ export default function LevelContextAnchor({ onComplete }) {
         Three anchors turn an AI dump into a usable SOP.
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Vague on the left. Anchored on the right. Drag each tag into its slot.
-      </p>
+
 
       <div className="grid sm:grid-cols-2 gap-3 mb-4">
         <div className="card p-5 relative overflow-hidden">

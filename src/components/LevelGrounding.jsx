@@ -148,9 +148,7 @@ export default function LevelGrounding({ onComplete }) {
         docs so answers cite reality. But junk docs poison the answers.
       </ConceptCard>
 
-      <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Drag docs into the Knowledge Base. Watch the answer adapt. Try adding a wrong doc to see the damage.
-      </p>
+
 
       <div className="card-strong p-5 mb-5">
         <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-soft mb-2">❓ User question</div>
