@@ -83,9 +83,9 @@ export default function LevelPersona({ onComplete }) {
         Cast the role. <span className="text-L4">Watch the voice flip.</span>
       </h2>
 
-      <ConceptCard accent="L4" icon="🎭" title="Persona is a simple tweak with a huge impact.">
-        Tell AI <em>who</em> it should be. Same prompt, totally different tone. <strong>The cheapest prompting upgrade you can make.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Persona is a simple tweak with a huge impact.</strong> Tell AI <em>who</em> it should be. Same prompt, totally different tone. The cheapest prompting upgrade you can make.
+      </p>
 
       <div className="card-strong p-4 sm:p-5 mb-4">
         <div className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-2">📝 Same prompt every time</div>
@@ -186,18 +186,19 @@ export default function LevelPersona({ onComplete }) {
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <PrimaryButton onClick={onComplete} disabled={seen.size < 3} accent="L4">
-          {seen.size < 3 ? `Try ${3 - seen.size} more` : 'Next Level →'}
-        </PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L4"
-        application='Start every prompt with "Act as a [role]...". One sentence shifts tone, vocabulary, and structure.'
-      >
-        <strong>Persona before instruction.</strong> Cast the role on purpose.
-      </TakeawayCard>
+      {seen.size >= 3 && (
+        <>
+          <TakeawayCard
+            accent="L4"
+            application='Start every prompt with "Act as a [role]...". One sentence shifts tone, vocabulary, and structure.'
+          >
+            <strong>Persona before instruction.</strong> Cast the role on purpose.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L4">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

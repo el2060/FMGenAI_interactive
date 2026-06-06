@@ -53,9 +53,9 @@ export default function LevelPdpaGuardrails({ onComplete }) {
         AI prompts are not private. <span className="text-L9">Strip the sensitive bits first.</span>
       </h2>
 
-      <ConceptCard accent="L9" icon="🔒" title="PDPA applies when you talk to AI.">
-        Pasting NRICs into ChatGPT = data leak. But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>PDPA applies when you talk to AI.</strong> Pasting NRICs into ChatGPT = data leak. But over-redact and AI can't help. Strip identifiers, keep context.
+      </p>
 
 
 
@@ -149,15 +149,21 @@ export default function LevelPdpaGuardrails({ onComplete }) {
         >
           {sent ? '✓ Sent safely to AI' : '🔒 Send to AI'}
         </button>
-        <PrimaryButton onClick={onComplete} disabled={!sent} accent="L9">Next Level →</PrimaryButton>
       </div>
 
-      <TakeawayCard
-        accent="L9"
-        application="Replace NRIC with 'tenant', unit # with 'a unit'. When in doubt, use approved enterprise AI."
-      >
-        <strong>Identifiers go. Context stays.</strong> Feed AI only what it needs.
-      </TakeawayCard>
+      {sent && (
+        <>
+          <TakeawayCard
+            accent="L9"
+            application="Replace NRIC with 'tenant', unit # with 'a unit'. When in doubt, use approved enterprise AI."
+          >
+            <strong>Identifiers go. Context stays.</strong> Feed AI only what it needs.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L9">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

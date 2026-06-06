@@ -135,10 +135,9 @@ export default function LevelIterate({ onComplete }) {
         First draft is a starting point. <span className="text-L7">Refine, don't restart.</span>
       </h2>
 
-      <ConceptCard accent="L7" icon="🔁" title="Prompting is a conversation.">
-        New users accept the first draft and complain. Pros nudge the AI:
-        "shorter", "drop jargon", "add SLA". <strong>Refining is faster than starting over.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Prompting is a conversation.</strong> New users accept the first draft and complain. Pros nudge the AI: "shorter", "drop jargon", "add SLA". Refining is faster than starting over.
+      </p>
 
       <div className="text-[11.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-2 flex items-center gap-2">
         <span>💬 Chat with AI</span>
@@ -238,18 +237,19 @@ export default function LevelIterate({ onComplete }) {
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <PrimaryButton onClick={onComplete} disabled={usedCount < 3} accent="L7">
-          {usedCount < 3 ? `Try ${3 - usedCount} more` : 'Next Level →'}
-        </PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L7"
-        application='Stop rewriting. Send the draft back: "shorter", "direct", "no jargon".'
-      >
-        <strong>Iterate, don't restart.</strong> Five quick turns beats five fresh prompts.
-      </TakeawayCard>
+      {usedCount >= 3 && (
+        <>
+          <TakeawayCard
+            accent="L7"
+            application='Stop rewriting. Send the draft back: "shorter", "direct", "no jargon".'
+          >
+            <strong>Iterate, don't restart.</strong> Five quick turns beats five fresh prompts.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L7">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

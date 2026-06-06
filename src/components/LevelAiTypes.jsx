@@ -133,10 +133,9 @@ export default function LevelAiTypes({ onComplete }) {
         Not all AI is Gen AI. <span className="text-L1">Spot the mismatches.</span>
       </h2>
 
-      <ConceptCard accent="L1" icon="🧭" title="AI is a toolbox, not one magic button.">
-        Rules trigger. Predictive forecasts. Vision sees. Gen AI writes.
-        <strong> Wrong tool, wrong outcome.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>AI is a toolbox, not one magic button.</strong> Rules trigger. Predictive forecasts. Vision sees. Gen AI writes. Wrong tool, wrong outcome.
+      </p>
 
       {/* Compact type legend */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
@@ -365,18 +364,21 @@ export default function LevelAiTypes({ onComplete }) {
         </AnimatePresence>
       </div>
 
-      <div className="flex justify-end mt-5">
-        <PrimaryButton onClick={onComplete} disabled={!done} accent="L1">
-          Next Level →
-        </PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L1"
-        application="Predictive/vision/rules for ops data. Gen AI for text. Pick the right tool."
-      >
-        <strong>Gen AI isn't for everything.</strong> It writes and summarizes.
-      </TakeawayCard>
+      {done && (
+        <>
+          <TakeawayCard
+            accent="L1"
+            application="Predictive/vision/rules for ops data. Gen AI for text. Pick the right tool."
+          >
+            <strong>Gen AI isn't for everything.</strong> It writes and summarizes.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L1">
+              Next Level →
+            </PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

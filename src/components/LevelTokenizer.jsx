@@ -28,10 +28,9 @@ export default function LevelTokenizer({ onComplete }) {
         AI doesn't read words. <span className="text-L1">It reads tokens.</span>
       </h2>
 
-      <ConceptCard accent="L1" icon="🧠" title="Tokens are AI's reading blocks.">
-        AI breaks text into <strong>tokens</strong> (~4 chars each) to read. Every token
-        costs time and money. Lean prompts = faster, cheaper answers.
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Tokens are AI's reading blocks.</strong> AI breaks text into tokens (~4 chars each) to read. Every token costs time and money. Lean prompts = faster, cheaper answers.
+      </p>
 
 
 
@@ -126,15 +125,21 @@ export default function LevelTokenizer({ onComplete }) {
           )}
           {tokenCount === 0 && <div key="empty" />}
         </AnimatePresence>
-        <PrimaryButton onClick={onComplete} disabled={!done} accent="L1">Next Level →</PrimaryButton>
       </div>
 
-      <TakeawayCard
-        accent="L1"
-        application="Skip 'please' and 'kindly'. State the block, equipment, and action. Save the tokens."
-      >
-        <strong>Tokens = AI currency.</strong> Concise prompts save costs and time.
-      </TakeawayCard>
+      {done && (
+        <>
+          <TakeawayCard
+            accent="L1"
+            application="Skip 'please' and 'kindly'. State the block, equipment, and action. Save the tokens."
+          >
+            <strong>Tokens = AI currency.</strong> Concise prompts save costs and time.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L1">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -117,9 +117,9 @@ export default function LevelHumanInLoop({ onComplete }) {
         Speed of AI ≠ rightness of AI. <span className="text-L11">Some inboxes belong to humans.</span>
       </h2>
 
-      <ConceptCard accent="L11" icon="🛑" title="Triage every task. Not everything is for AI.">
-        AI accelerates routine work, but it also accelerates mistakes in high-stakes tasks (legal, life-safety, PDPA). <strong>Keep humans in the loop.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Triage every task. Not everything is for AI.</strong> AI accelerates routine work, but it also accelerates mistakes in high-stakes tasks (legal, life-safety, PDPA). Keep humans in the loop.
+      </p>
 
       <div className="flex items-center justify-between mb-3 px-1">
         <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted font-mono">
@@ -293,18 +293,19 @@ export default function LevelHumanInLoop({ onComplete }) {
         </AnimatePresence>
       </div>
 
-      <div className="flex justify-end mt-5">
-        <PrimaryButton onClick={onComplete} disabled={!done} accent="L11">
-          🎓 Complete Module →
-        </PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L11"
-        application="Ask: is this routine + low-stakes? If yes, draft with AI. If it's legal, life-safety, or PDPA-sensitive → human owns it."
-      >
-        <strong>AI accelerates. Humans authorise.</strong> Knowing the line is a crucial skill.
-      </TakeawayCard>
+      {done && (
+        <>
+          <TakeawayCard
+            accent="L11"
+            application="Ask: is this routine + low-stakes? If yes, draft with AI. If it's legal, life-safety, or PDPA-sensitive → human owns it."
+          >
+            <strong>AI accelerates. Humans authorise.</strong> Knowing the line is a crucial skill.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L11">🎓 Complete Module →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

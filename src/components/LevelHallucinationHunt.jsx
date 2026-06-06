@@ -41,10 +41,9 @@ export default function LevelHallucinationHunt({ onComplete }) {
         AI is confident. <span className="text-L10">Sometimes wrong.</span>
       </h2>
 
-      <ConceptCard accent="L10" icon="🎯" title="AI bluffs with full conviction.">
-        AI invents regulations and procedures that sound legit. Your only defence:
-        a <strong>human in the loop</strong>.
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>AI bluffs with full conviction.</strong> AI invents regulations and procedures that sound legit. Your only defence: a human in the loop.
+      </p>
 
 
 
@@ -121,15 +120,21 @@ export default function LevelHallucinationHunt({ onComplete }) {
             ))}
           </div>
         </div>
-        <PrimaryButton onClick={onComplete} disabled={!allFound} accent="L10">🏆 Next Level →</PrimaryButton>
       </div>
 
-      <TakeawayCard
-        accent="L10"
-        application="Cross-check AI procedures with vendor manuals and engineers. Fast ≠ right."
-      >
-        <strong>Confidence ≠ correctness.</strong> The reasonable-sounding ones bite hardest. Verify.
-      </TakeawayCard>
+      {allFound && (
+        <>
+          <TakeawayCard
+            accent="L10"
+            application="Cross-check AI procedures with vendor manuals and engineers. Fast ≠ right."
+          >
+            <strong>Confidence ≠ correctness.</strong> The reasonable-sounding ones bite hardest. Verify.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L10">🏆 Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

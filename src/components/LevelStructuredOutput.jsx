@@ -95,10 +95,9 @@ export default function LevelStructuredOutput({ onComplete }) {
         Don't just ask. <span className="text-L8">Tell AI the shape.</span>
       </h2>
 
-      <ConceptCard accent="L8" icon="📋" title="Shape is half the prompt.">
-        Same data, four shapes. Prose for managers, bullets for teams,
-        tables for trackers. <strong>Specify the format, don't just default.</strong>
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Shape is half the prompt.</strong> Same data, four shapes. Prose for managers, bullets for teams, tables for trackers. Specify the format, don't just default.
+      </p>
 
       {/* Source */}
       <div className="card p-4 mb-4">
@@ -208,18 +207,19 @@ export default function LevelStructuredOutput({ onComplete }) {
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <PrimaryButton onClick={onComplete} disabled={seen.size < FORMATS.length} accent="L8">
-          {seen.size < FORMATS.length ? `Try ${FORMATS.length - seen.size} more` : 'Next Level →'}
-        </PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L8"
-        application='Add format rules: "Table with these columns" or "5-bullet list".'
-      >
-        <strong>Specify the shape.</strong> Tables for tracking, bullets for teams.
-      </TakeawayCard>
+      {seen.size >= FORMATS.length && (
+        <>
+          <TakeawayCard
+            accent="L8"
+            application='Add format rules: "Table with these columns" or "5-bullet list".'
+          >
+            <strong>Specify the shape.</strong> Tables for tracking, bullets for teams.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L8">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

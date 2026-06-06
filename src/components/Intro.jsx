@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { PrimaryButton, LEVEL_META, CHAPTERS, BG_COLORS, TEXT_COLORS } from './Common';
-import { SgSkyline } from './SgVisuals';
 
 export default function Intro({ onStart }) {
   const totalLevels = CHAPTERS.reduce((sum, ch) => sum + ch.levels.length, 0);
@@ -12,24 +11,14 @@ export default function Intro({ onStart }) {
         transition={{ duration: 0.45 }}
         className="flex flex-col items-center mb-8"
       >
-        <img src="https://www.np.edu.sg/_next/image?url=https%3A%2F%2Fassets.app.optical.gov.sg%2Fnp%2Fproduction%2Fpublished%2Fcollections%2Fpages%2F17c64bb4-8632-49e9-af16-047f7cabe99a%2Fab16008f-a6a0-466e-9193-e16e947261b0.png&w=1080&q=75" alt="Ngee Ann Polytechnic" className="h-12 sm:h-14 w-auto" />
+        <img src="https://www.np.edu.sg/_next/image?url=https%3A%2F%2Fassets.app.optical.gov.sg%2Fnp%2Fproduction%2Fpublished%2Fcollections%2Fpages%2F17c64bb4-8632-49e9-af16-047f7cabe99a%2Fab16008f-a6a0-466e-9193-e16e947261b0.png&w=1080&q=75" alt="Ngee Ann Polytechnic" className="h-7 sm:h-9 w-auto opacity-80" />
       </motion.div>
 
-      <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-8">
-        Generative AI,
-        <br />
-        <span className="text-ink">made practical for FM.</span>
+      <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-8">
+        Intro to Gen AI
       </h1>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="relative mb-10 max-w-2xl mx-auto"
-      >
-        <SgSkyline className="w-full h-auto opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream to-transparent pointer-events-none" />
-      </motion.div>
+
 
       <motion.div
         initial={{ opacity: 0, y: 14 }}

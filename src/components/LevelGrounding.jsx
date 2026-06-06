@@ -143,10 +143,9 @@ export default function LevelGrounding({ onComplete }) {
         AI doesn't know your buildings. <span className="text-L6">Until you ground it.</span>
       </h2>
 
-      <ConceptCard accent="L6" icon="📚" title="Grounding (RAG) feeds AI your data.">
-        AI knows the internet, not your BMS logs. <strong>Grounding</strong> means feeding it your real
-        docs so answers cite reality. But junk docs poison the answers.
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Grounding (RAG) feeds AI your data.</strong> AI knows the internet, not your BMS logs. Grounding means feeding it your real docs so answers cite reality. But junk docs poison the answers.
+      </p>
 
 
 
@@ -192,15 +191,21 @@ export default function LevelGrounding({ onComplete }) {
             </motion.div>
           )}
         </AnimatePresence>
-        <PrimaryButton onClick={onComplete} disabled={!done} accent="L6">Next Level →</PrimaryButton>
       </div>
 
-      <TakeawayCard
-        accent="L6"
-        application="Curate what your bots read. A stale 2019 memo wrecks a 2026 answer."
-      >
-        <strong>Rubbish in = rubbish out.</strong> Grounding works, but only with clean docs.
-      </TakeawayCard>
+      {done && (
+        <>
+          <TakeawayCard
+            accent="L6"
+            application="Curate what your bots read. A stale 2019 memo wrecks a 2026 answer."
+          >
+            <strong>Rubbish in = rubbish out.</strong> Grounding works, but only with clean docs.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L6">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
 
       <DragOverlay dropAnimation={{ duration: 200 }}>
         {activeDoc ? (

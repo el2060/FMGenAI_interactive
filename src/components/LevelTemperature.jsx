@@ -71,10 +71,9 @@ export default function LevelTemperature({ onComplete }) {
         Same prompt. <span className="text-L2">Different vibes.</span>
       </h2>
 
-      <ConceptCard accent="L2" icon="🎲" title="Temperature is the creativity dial.">
-        Low (≈0): strict and repetitive. High (≈1): creative and wild. For FM docs,
-        use <strong>0.2–0.5</strong>.
-      </ConceptCard>
+      <p className="text-muted text-[15px] max-w-2xl mb-6">
+        <strong>Temperature is the creativity dial.</strong> Low (≈0): strict and repetitive. High (≈1): creative and wild. For FM docs, use 0.2–0.5.
+      </p>
 
 
 
@@ -157,16 +156,19 @@ export default function LevelTemperature({ onComplete }) {
         ))}
       </div>
 
-      <div className="flex justify-end">
-        <PrimaryButton onClick={onComplete} disabled={!locked} accent="L2">Next Level →</PrimaryButton>
-      </div>
-
-      <TakeawayCard
-        accent="L2"
-        application="In ChatGPT/Copilot, choose 'precise' for SOPs and circulars. Avoid 'creative' for tenant comms."
-      >
-        <strong>Match temperature to the task.</strong> Ops = cool. Brainstorm = warm.
-      </TakeawayCard>
+      {locked && (
+        <>
+          <TakeawayCard
+            accent="L2"
+            application="In ChatGPT/Copilot, choose 'precise' for SOPs and circulars. Avoid 'creative' for tenant comms."
+          >
+            <strong>Match temperature to the task.</strong> Ops = cool. Brainstorm = warm.
+          </TakeawayCard>
+          <div className="flex justify-end mt-5 mb-8">
+            <PrimaryButton onClick={onComplete} accent="L2">Next Level →</PrimaryButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

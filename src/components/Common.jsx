@@ -75,26 +75,6 @@ export function LevelHeader({ level }) {
   );
 }
 
-export function ConceptCard({ accent = 'L1', icon = '💡', title, children }) {
-  return (
-    <div className="card p-4 mb-5 relative overflow-hidden">
-      <div className={`absolute left-0 top-0 bottom-0 w-1 ${BG_COLORS[accent]}`} />
-      <div className="flex gap-3 pl-2">
-        <div className="text-xl shrink-0">{icon}</div>
-        <div className="flex-1">
-          <div className={`text-[10.5px] font-semibold uppercase tracking-[0.22em] ${TEXT_COLORS[accent]} mb-1.5`}>
-            The Concept
-          </div>
-          <div className="text-[14px] text-ink/85 leading-relaxed">
-            {title && <span className="font-semibold text-ink">{title} </span>}
-            {children}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function TakeawayCard({ accent = 'L1', application, children }) {
   return (
     <div className="card-strong p-5 mt-6 relative overflow-hidden">
