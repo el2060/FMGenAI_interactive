@@ -15,9 +15,14 @@ export default function Intro({ onStart, onJump, completed = [] }) {
         <img src={`${import.meta.env.BASE_URL}np-logo.png`} alt="Ngee Ann Polytechnic" className="h-7 sm:h-9 w-auto opacity-80" />
       </motion.div>
 
-      <h1 className="font-display text-5xl sm:text-6xl font-bold tracking-tight mb-10 text-zinc-900">
+      <h1 className="font-display text-5xl sm:text-6xl font-bold tracking-tight mb-6 text-zinc-900">
         Intro to Gen AI
       </h1>
+
+      <p className="text-zinc-500 text-[16px] sm:text-[17px] max-w-2xl mx-auto mb-10 leading-relaxed">
+        Equip yourself with practical skills to use AI safely and effectively in facility management. 
+        <strong> Work through the modules in sequence, or jump directly into any topic you need.</strong>
+      </p>
 
 
 
