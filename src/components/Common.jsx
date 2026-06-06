@@ -50,26 +50,15 @@ export function Eyebrow({ children, color = 'muted' }) {
 export function LevelHeader({ level }) {
   const m = LEVEL_META[level];
   return (
-    <div className="mb-5">
-      <ChapterIntro level={level} />
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-3 flex-wrap">
-        <span className={`${BG_COLORS[m.color]} text-white px-2 py-0.5 rounded-md font-mono tracking-normal`}>
-          CH {m.chapter}
-        </span>
-        <span className="text-ink/70">{m.chapterTitle}</span>
-        <span className="text-soft">·</span>
-        <span className="text-soft font-mono tracking-normal">L{level}/{TOTAL_LEVELS}</span>
-        <span className="ml-auto inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-cream border border-line text-[9.5px] font-semibold normal-case tracking-normal text-soft">
-          🏢 <span className="font-mono">{SITE.name}, {SITE.area}</span>
-        </span>
+    <div className="flex items-center gap-2 mb-6">
+      <div className={`w-8 h-8 rounded-xl ${BG_COLORS[m.color]} text-white flex items-center justify-center text-base`}>
+        {m.emoji}
       </div>
-      <div className="flex items-center gap-3 mb-1">
-        <div className={`w-11 h-11 rounded-2xl ${BG_COLORS[m.color]} text-white flex items-center justify-center text-xl`}>
-          {m.emoji}
-        </div>
-        <div>
-          <div className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${TEXT_COLORS[m.color]}`}>{m.name}</div>
-        </div>
+      <div className={`text-[12px] font-bold uppercase tracking-[0.15em] ${TEXT_COLORS[m.color]}`}>
+        LEVEL {level} · {m.name}
+      </div>
+      <div className="ml-auto">
+        <SiteChip />
       </div>
     </div>
   );
@@ -138,28 +127,6 @@ export function SiteChip({ floor }) {
       <span className="font-mono tracking-tight">{SITE.name}</span>
       {floor && <span className="text-soft font-mono">· {floor}</span>}
     </span>
-  );
-}
-
-// Tiny eyebrow that appears once at the top of every chapter's first level.
-// Reinforces narrative threading.
-export function ChapterIntro({ level }) {
-  const m = LEVEL_META[level];
-  if (!m) return null;
-  const chap = CHAPTERS.find((c) => c.n === m.chapter);
-  if (!chap || chap.levels[0] !== level) return null;
-  return (
-    <div className={`mb-4 rounded-xl border ${BORDER_COLORS[m.color]}/40 bg-gradient-to-r from-${m.color}/10 to-transparent p-3 flex items-center gap-3`}>
-      <div className={`shrink-0 w-9 h-9 rounded-lg ${BG_COLORS[m.color]} text-white flex items-center justify-center text-[13px] font-bold font-mono`}>
-        CH{chap.n}
-      </div>
-      <div className="min-w-0">
-        <div className={`text-[10px] font-semibold uppercase tracking-[0.22em] ${TEXT_COLORS[m.color]}`}>
-          Chapter {chap.n} · {chap.subtitle}
-        </div>
-        <div className="font-display font-bold text-[15px] text-ink leading-tight">{chap.title}</div>
-      </div>
-    </div>
   );
 }
 
