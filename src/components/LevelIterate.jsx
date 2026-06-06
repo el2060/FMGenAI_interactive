@@ -135,9 +135,9 @@ export default function LevelIterate({ onComplete }) {
         First draft is a starting point. <span className="text-L7">Refine, don't restart.</span>
       </h2>
 
-      <ConceptCard accent="L7" icon="🔁" title="Prompting is a conversation, not one-shot.">
-        New users send one prompt, take what comes back, then complain. Pros nudge:
-        "shorter", "more polite", "add SLA", "drop the jargon". <strong>Each turn beats writing from zero.</strong>
+      <ConceptCard accent="L7" icon="🔁" title="Prompting is a conversation.">
+        New users accept the first draft and complain. Pros nudge the AI:
+        "shorter", "drop jargon", "add SLA". <strong>Refining is faster than starting over.</strong>
       </ConceptCard>
 
       <div className="text-[11.5px] font-semibold uppercase tracking-[0.22em] text-muted mb-2 flex items-center gap-2">
@@ -246,9 +246,9 @@ export default function LevelIterate({ onComplete }) {
 
       <TakeawayCard
         accent="L7"
-        application='Stop rewriting from scratch. Send the draft back with: "shorter", "more direct", "remove jargon", "add SLA line". 30 seconds per refinement.'
+        application='Stop rewriting. Send the draft back: "shorter", "direct", "no jargon".'
       >
-        <strong>Iterate, don't restart.</strong> Each follow-up sharpens the previous draft. Five turns beats five separate prompts.
+        <strong>Iterate, don't restart.</strong> Five quick turns beats five fresh prompts.
       </TakeawayCard>
     </div>
   );

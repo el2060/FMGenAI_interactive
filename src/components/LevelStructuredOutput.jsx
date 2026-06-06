@@ -95,9 +95,9 @@ export default function LevelStructuredOutput({ onComplete }) {
         Don't just ask. <span className="text-L8">Tell AI the shape.</span>
       </h2>
 
-      <ConceptCard accent="L8" icon="📋" title="The shape of the output is half the prompt.">
-        Same source data, four shapes. Prose for your manager, bullets for your team,
-        a table for your tracker, a checklist for tomorrow. <strong>Specify, don't default.</strong>
+      <ConceptCard accent="L8" icon="📋" title="Shape is half the prompt.">
+        Same data, four shapes. Prose for managers, bullets for teams,
+        tables for trackers. <strong>Specify the format, don't just default.</strong>
       </ConceptCard>
 
       {/* Source */}
@@ -216,9 +216,9 @@ export default function LevelStructuredOutput({ onComplete }) {
 
       <TakeawayCard
         accent="L8"
-        application='Add to every serious prompt: "Format as a table with these columns…" or "Give me a 5-bullet checklist…". Pasting AI output straight into your registers becomes effortless.'
+        application='Add format rules: "Table with these columns" or "5-bullet list".'
       >
-        <strong>Specify the shape, not just the topic.</strong> Tables for tracking, bullets for teams, checklists for tomorrow.
+        <strong>Specify the shape.</strong> Tables for tracking, bullets for teams.
       </TakeawayCard>
     </div>
   );

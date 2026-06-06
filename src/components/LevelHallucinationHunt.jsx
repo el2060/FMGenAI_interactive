@@ -42,8 +42,8 @@ export default function LevelHallucinationHunt({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L10" icon="🎯" title="AI bluffs with full conviction.">
-        It invents regulations, part numbers, procedures — all sounding legit. Only defence:
-        a <strong>human in the loop</strong> who actually knows the domain.
+        AI invents regulations and procedures that sound legit. Your only defence:
+        a <strong>human in the loop</strong>.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
@@ -129,7 +129,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
 
       <TakeawayCard
         accent="L10"
-        application="AI SOPs and procedures? Cross-check vendor manuals, BCA/SS, and a senior engineer before acting. AI fast ≠ AI right."
+        application="Cross-check AI procedures with vendor manuals and engineers. Fast ≠ right."
       >
         <strong>Confidence ≠ correctness.</strong> The reasonable-sounding ones bite hardest. Verify.
       </TakeawayCard>

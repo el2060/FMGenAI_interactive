@@ -12,7 +12,7 @@ const PERSONAS = [
     icon: '🤷',
     emoji: '',
     output: `Hello everyone! Just a friendly heads-up that tomorrow, there will be a planned power shutdown at Block 71 for around 2 hours due to scheduled lift maintenance work. We sincerely apologise for any inconvenience this might cause and we truly appreciate your kind patience and understanding during this time. Should you have any further queries or concerns, please feel free to reach out to us at any time. Thank you!`,
-    critique: 'Default tone = wordy, generic, "thank you for your kind patience." Could be any building. Could be any topic.',
+    critique: 'Generic, wordy. Could be any building. Lacks specific actionable details.',
     tone: 'bg-line text-soft',
   },
   {
@@ -21,7 +21,7 @@ const PERSONAS = [
     sub: '"Act as a senior FM engineer briefing your duty team."',
     icon: '👷‍♂️',
     output: `FYI team — tomorrow 0900–1100, Block 71 lift maintenance, mains off. Pre-shut: secure UPS for fire alarm panel and CCTV NVR. Standby genset on auto. Brief Tower A reception to redirect tenants to stairs B/C. Lift vendor on-site by 0830.`,
-    critique: 'Operational. Bullets-of-the-mind voice. Specifies actions, times, equipment. This is what gets forwarded to a duty crew without edits.',
+    critique: 'Operational and action-oriented. Bulleted facts. Forwardable directly to a duty crew.',
     tone: 'bg-L4/10 text-L4',
   },
   {
@@ -30,7 +30,7 @@ const PERSONAS = [
     sub: '"Act as a corporate communications officer for JTC tenants."',
     icon: '🎙️',
     output: `Dear Tenants, please be informed that a 2-hour scheduled power shutdown will be carried out at Block 71 on Saturday, 0900–1100, for essential lift maintenance. We kindly request that you save your work and switch off sensitive equipment in advance. For urgent matters, contact the FM Helpdesk at 6XXX-XXXX. Thank you for your kind understanding.`,
-    critique: 'Polished, polite, agency-appropriate. The tone you would actually send to JTC tenants. Notice the action-oriented "save your work… switch off…" — directive but courteous.',
+    critique: 'Polished, polite, yet directive ("save your work... switch off"). Ideal for tenant communications.',
     tone: 'bg-L4/10 text-L4',
   },
   {
@@ -39,7 +39,7 @@ const PERSONAS = [
     sub: '"Act as a warm, plain-English building concierge."',
     icon: '🙂',
     output: `Hi all! Quick heads-up — the lifts at Block 71 will be down tomorrow (Sat) from 9 to 11am for a service. Power will be off in that window, so save your work and bring a coffee for the stairs 😄. Buzz the desk if you need anything.`,
-    critique: 'Conversational. Works for younger startups or casual co-working tenants. Not appropriate for a formal government recipient list, but perfect for a tenant Telegram group.',
+    critique: 'Conversational. Suitable for casual tenant group chats, not for formal notices.',
     tone: 'bg-L4/10 text-L4',
   },
 ];
@@ -83,9 +83,8 @@ export default function LevelPersona({ onComplete }) {
         Cast the role. <span className="text-L4">Watch the voice flip.</span>
       </h2>
 
-      <ConceptCard accent="L4" icon="🎭" title="Persona is a free knob with huge effect.">
-        Tell AI <em>who</em> it should be before you tell it what to do. Same prompt,
-        same facts, totally different tone. <strong>The cheapest prompting upgrade you can make.</strong>
+      <ConceptCard accent="L4" icon="🎭" title="Persona is a simple tweak with a huge impact.">
+        Tell AI <em>who</em> it should be. Same prompt, totally different tone. <strong>The cheapest prompting upgrade you can make.</strong>
       </ConceptCard>
 
       <div className="card-strong p-4 sm:p-5 mb-4">
@@ -195,9 +194,9 @@ export default function LevelPersona({ onComplete }) {
 
       <TakeawayCard
         accent="L4"
-        application='Start every serious prompt with "Act as a [role]…". One sentence shifts tone, vocabulary and structure for free.'
+        application='Start every prompt with "Act as a [role]...". One sentence shifts tone, vocabulary, and structure.'
       >
-        <strong>Persona before instruction.</strong> Same prompt, four voices. Cast it on purpose.
+        <strong>Persona before instruction.</strong> Cast the role on purpose.
       </TakeawayCard>
     </div>
   );

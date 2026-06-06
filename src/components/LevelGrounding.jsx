@@ -144,12 +144,12 @@ export default function LevelGrounding({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L6" icon="📚" title="Grounding (RAG) feeds AI your data.">
-        AI knows the internet, not your BMS logs. <strong>Grounding</strong> = handing it your real
-        docs at ask-time so answers cite reality. But junk docs poison answers just as fast.
+        AI knows the internet, not your BMS logs. <strong>Grounding</strong> means feeding it your real
+        docs so answers cite reality. But junk docs poison the answers.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Drag docs into the Knowledge Base. Watch the answer change. Try a wrong one — see the damage.
+        Drag docs into the Knowledge Base. Watch the answer adapt. Try adding a wrong doc to see the damage.
       </p>
 
       <div className="card-strong p-5 mb-5">
@@ -199,9 +199,9 @@ export default function LevelGrounding({ onComplete }) {
 
       <TakeawayCard
         accent="L6"
-        application="Copilot, custom GPTs, SharePoint bots — all grounded. Curate what they can read. A stale 2019 memo wrecks a 2026 answer."
+        application="Curate what your bots read. A stale 2019 memo wrecks a 2026 answer."
       >
-        <strong>Rubbish in = rubbish out.</strong> Grounding makes AI useful for FM — but only with clean, current docs.
+        <strong>Rubbish in = rubbish out.</strong> Grounding works, but only with clean docs.
       </TakeawayCard>
 
       <DragOverlay dropAnimation={{ duration: 200 }}>

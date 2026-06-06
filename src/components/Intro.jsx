@@ -20,7 +20,7 @@ export default function Intro({ onStart }) {
 
       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-line bg-white/80 backdrop-blur text-[11px] font-semibold uppercase tracking-[0.22em] text-muted mb-5">
         <span>🇸🇬</span>
-        <span>For FM teams · JTC & Singapore agencies</span>
+        <span>For Singapore FM teams</span>
       </div>
 
       <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-4">

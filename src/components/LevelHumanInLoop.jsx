@@ -23,8 +23,8 @@ const ITEMS = [
     from: 'BCA / regulator',
     subject: 'Sign-off required: fire-safety variation for new partition layout in #15-23',
     verdict: 'human',
-    why: 'Statutory sign-off. AI cannot bear legal responsibility. Specialist FSC + Qualified Person territory.',
-    nuance: 'AI may help summarise the variation request. It cannot approve it.',
+    why: 'Statutory sign-off. AI cannot bear legal responsibility.',
+    nuance: 'AI may help summarise the request. It cannot approve it.',
   },
   {
     id: 'i3',
@@ -59,8 +59,8 @@ const ITEMS = [
     from: 'Duty officer (after-hours)',
     subject: 'Authorise emergency shutdown of B1 chiller — coolant leak suspected',
     verdict: 'human',
-    why: 'Emergency operational decisions affecting life-safety, equipment integrity, or service continuity. AI gives advice, humans give authorisation.',
-    nuance: 'AI may help the duty officer interpret readings. The shutdown call is theirs.',
+    why: 'Emergency decisions. AI gives advice, humans authorise.',
+    nuance: 'AI may help interpret readings, but the shutdown call is yours.',
   },
   {
     id: 'i7',
@@ -118,8 +118,7 @@ export default function LevelHumanInLoop({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L11" icon="🛑" title="Triage every task. Not everything is for AI.">
-        AI accelerates routine work brilliantly. It also accelerates mistakes when the stakes are
-        statutory, legal, life-safety, or PDPA-sensitive. <strong>The human stays in the loop.</strong>
+        AI accelerates routine work, but it also accelerates mistakes in high-stakes tasks (legal, life-safety, PDPA). <strong>Keep humans in the loop.</strong>
       </ConceptCard>
 
       <div className="flex items-center justify-between mb-3 px-1">
@@ -302,9 +301,9 @@ export default function LevelHumanInLoop({ onComplete }) {
 
       <TakeawayCard
         accent="L11"
-        application={`Before opening ChatGPT, ask: is this routine + low-stakes + reviewable? If yes, draft with AI. If it's statutory, life-safety, legally-binding, or PDPA-sensitive → human owns it end-to-end.`}
+        application="Ask: is this routine + low-stakes? If yes, draft with AI. If it's legal, life-safety, or PDPA-sensitive → human owns it."
       >
-        <strong>AI accelerates. Humans authorise.</strong> Knowing where the line sits is the most senior skill of the workshop.
+        <strong>AI accelerates. Humans authorise.</strong> Knowing the line is a crucial skill.
       </TakeawayCard>
     </div>
   );

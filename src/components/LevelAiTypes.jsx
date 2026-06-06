@@ -23,7 +23,7 @@ const TICKETS = [
     job: 'Forecast tomorrow\'s chilled-water demand from weather and occupancy patterns.',
     verdict: false,
     realAnswer: 'predictive',
-    why: 'Gen AI invents prose — it doesn\'t do numerical forecasting. This is pattern-spotting from history → Predictive AI.',
+    why: 'Gen AI writes text, not forecasts. Historical numbers = Predictive AI.',
   },
   {
     id: 't2',
@@ -32,7 +32,7 @@ const TICKETS = [
     proposed: 'vision',
     job: 'Scan CCTV frames to flag overflowing bins and corridor obstructions.',
     verdict: true,
-    why: 'Yup. Pixels in, alerts out. Eyes on-site without 200 eyeballs on payroll.',
+    why: 'Correct. Camera analysis for physical objects = Vision AI.',
   },
   {
     id: 't3',
@@ -42,7 +42,7 @@ const TICKETS = [
     job: 'Draft a polite tenant circular for tomorrow\'s scheduled lift maintenance.',
     verdict: false,
     realAnswer: 'genai',
-    why: 'Rules can\'t write prose — they only trigger actions on conditions. Writing words = Gen AI.',
+    why: 'Rules trigger actions, they don\'t draft messages. Writing = Gen AI.',
   },
   {
     id: 't4',
@@ -51,7 +51,7 @@ const TICKETS = [
     proposed: 'rules',
     job: 'Auto-escalate to a technician when the AHU room crosses 30°C for 10 minutes.',
     verdict: true,
-    why: 'Classic threshold trigger. Like a very strict auntie — no debate, just action.',
+    why: 'Simple threshold trigger. If X happens, do Y = Rule-Based.',
   },
   {
     id: 't5',
@@ -61,7 +61,7 @@ const TICKETS = [
     job: 'Detect rust spots on chiller pipework from monthly inspection photos.',
     verdict: false,
     realAnswer: 'vision',
-    why: 'Gen AI doesn\'t see. Image analysis = Vision AI.',
+    why: 'Gen AI cannot process photos. Image analysis = Vision AI.',
   },
   {
     id: 't6',
@@ -80,7 +80,7 @@ const TICKETS = [
     job: 'Reply to a tenant\'s polite query about Saturday\'s lift maintenance window.',
     verdict: false,
     realAnswer: 'genai',
-    why: 'Predictive crunches numbers, not language. Writing a tenant reply = Gen AI.',
+    why: 'Predictive finds patterns in numbers, not language. Writing a reply = Gen AI.',
   },
   {
     id: 't8',
@@ -90,7 +90,7 @@ const TICKETS = [
     job: 'Trigger fire-zone lockdown the moment smoke detector reads above threshold.',
     verdict: false,
     realAnswer: 'rules',
-    why: 'No image involved — just a sensor value. Threshold + action = Rules. (And keep this one hard-coded, not AI-trendy.)',
+    why: 'No images involved. Threshold + action = Rules. Keep this hard-coded.',
   },
 ];
 
@@ -343,10 +343,10 @@ export default function LevelAiTypes({ onComplete }) {
               </div>
               <div className="text-muted text-[14px] mb-4 max-w-sm mx-auto">
                 {correctSoFar === TICKETS.length
-                  ? 'Flawless. You can smell a mismatched AI a block away.'
+                  ? 'Flawless. You know your tools.'
                   : correctSoFar >= TICKETS.length - 2
-                  ? 'Strong. A couple of sneaky ones got past, but the pattern is clear.'
-                  : 'Got the basics. The wrong-tool examples are the ones to remember.'}
+                  ? 'Good job. A few sneaked by, but you get the idea.'
+                  : 'Basics covered. Remember: use the right tool for the job.'}
               </div>
               <div className="flex flex-wrap items-center justify-center gap-1.5">
                 {history.map((h) => (
@@ -373,9 +373,9 @@ export default function LevelAiTypes({ onComplete }) {
 
       <TakeawayCard
         accent="L1"
-        application="Predictive/vision/rules for ops decisions. Gen AI for words. Don't use a chainsaw to butter toast."
+        application="Predictive/vision/rules for ops data. Gen AI for text. Pick the right tool."
       >
-        <strong>Gen AI is one slice of the AI pie.</strong> Right brain, right job.
+        <strong>Gen AI isn't for everything.</strong> It writes and summarizes.
       </TakeawayCard>
     </div>
   );

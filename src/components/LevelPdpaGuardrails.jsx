@@ -53,9 +53,8 @@ export default function LevelPdpaGuardrails({ onComplete }) {
         AI prompts are not private. <span className="text-L9">Strip the sensitive bits first.</span>
       </h2>
 
-      <ConceptCard accent="L9" icon="🔒" title="PDPA applies when you talk to AI too.">
-        Pasting NRICs or unit numbers into ChatGPT = data outside your agency. Possible notifiable breach.
-        But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
+      <ConceptCard accent="L9" icon="🔒" title="PDPA applies when you talk to AI.">
+        Pasting NRICs into ChatGPT = data leak. But over-redact and AI can't help. Strip identifiers, <strong>keep context.</strong>
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
@@ -157,9 +156,9 @@ export default function LevelPdpaGuardrails({ onComplete }) {
 
       <TakeawayCard
         accent="L9"
-        application="Replace NRIC with 'tenant', mobile with 'phone on file', #15-23 with 'a unit on floor 15'. When in doubt, use the enterprise AI your agency cleared — not public chat."
+        application="Replace NRIC with 'tenant', unit # with 'a unit'. When in doubt, use approved enterprise AI."
       >
-        <strong>Identifiers go. Business problem stays.</strong> PDPA with AI = feed only what's needed.
+        <strong>Identifiers go. Context stays.</strong> Feed AI only what it needs.
       </TakeawayCard>
     </div>
   );

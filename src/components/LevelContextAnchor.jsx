@@ -146,8 +146,8 @@ export default function LevelContextAnchor({ onComplete }) {
       </h2>
 
       <ConceptCard accent="L5" icon="⚓" title="Prompts need anchors.">
-        Without specifics, AI defaults to flowery filler. Tell it <strong>who, what tone, about what</strong>.
-        Three anchors turn AI dump into usable SOP.
+        Without specifics, AI writes flowery filler. Specify <strong>who, tone, and what</strong>.
+        Three anchors turn an AI dump into a usable SOP.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
@@ -164,9 +164,7 @@ export default function LevelContextAnchor({ onComplete }) {
             "Write an email about a power shutdown."
           </div>
           <div className="text-[13px] text-soft italic leading-relaxed">
-            "Dear valued reader, in the bustling tapestry of modern Singaporean
-            life, we sometimes face the inevitable interruptions that remind us
-            of our shared interconnectedness…"
+            "Dear valued reader, in the bustling tapestry of modern Singaporean life..."
           </div>
         </div>
 
@@ -229,9 +227,9 @@ export default function LevelContextAnchor({ onComplete }) {
 
       <TakeawayCard
         accent="L5"
-        application="Before hitting send to ChatGPT: who reads it, what tone, what details? Three anchors save you three rewrites."
+        application="Before generating, specify: who reads it, what tone, what details? Three anchors save three rewrites."
       >
-        <strong>Anchor with audience, tone, details.</strong> Generic in → generic out. Anchored in → ready-to-send out.
+        <strong>Anchor with audience, tone, details.</strong> Vague in = vague out. Anchored in = ready to use.
       </TakeawayCard>
 
       <DragOverlay dropAnimation={{ duration: 200, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }}>

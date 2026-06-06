@@ -28,14 +28,14 @@ export default function LevelTokenizer({ onComplete }) {
         AI doesn't read words. <span className="text-L1">It reads tokens.</span>
       </h2>
 
-      <ConceptCard accent="L1" icon="🧠" title="Tokens are AI's units of thought.">
-        AI chops your text into <strong>tokens</strong> (~4 chars each) before reading. Every token
-        burns time and money. Leaner prompts → faster, cheaper, sharper replies.
+      <ConceptCard accent="L1" icon="🧠" title="Tokens are AI's reading blocks.">
+        AI breaks text into <strong>tokens</strong> (~4 chars each) to read. Every token
+        costs time and money. Lean prompts = faster, cheaper answers.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
-        Type an FM update below. Aim for{' '}
-        <span className="font-semibold text-ink">exactly {TARGET} tokens</span>. Watch them snap apart.
+        Type an FM update below. Try to hit{' '}
+        <span className="font-semibold text-ink">exactly {TARGET} tokens</span>.
       </p>
 
       <div className="card-strong p-5 sm:p-6 mb-3">
@@ -134,9 +134,9 @@ export default function LevelTokenizer({ onComplete }) {
 
       <TakeawayCard
         accent="L1"
-        application="Skip 'please' and 'kindly.' Lead with the block, equipment and action. AI doesn't have feelings — save the tokens."
+        application="Skip 'please' and 'kindly'. State the block, equipment, and action. Save the tokens."
       >
-        <strong>Tokens = AI currency.</strong> Concise prompts = cheaper, faster, better answers.
+        <strong>Tokens = AI currency.</strong> Concise prompts save costs and time.
       </TakeawayCard>
     </div>
   );

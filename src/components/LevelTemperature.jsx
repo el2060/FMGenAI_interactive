@@ -71,9 +71,9 @@ export default function LevelTemperature({ onComplete }) {
         Same prompt. <span className="text-L2">Different vibes.</span>
       </h2>
 
-      <ConceptCard accent="L2" icon="🎲" title="Temperature = AI's chill dial.">
-        Low (≈0): boring but predictable. High (≈1): creative but cuckoo. For FM circulars,
-        stay <strong>0.2–0.5</strong>. Save the wild stuff for marketing slogans.
+      <ConceptCard accent="L2" icon="🎲" title="Temperature is the creativity dial.">
+        Low (≈0): strict and repetitive. High (≈1): creative and wild. For FM docs,
+        use <strong>0.2–0.5</strong>.
       </ConceptCard>
 
       <p className="text-muted mb-5 text-[14.5px] leading-relaxed">
@@ -136,7 +136,7 @@ export default function LevelTemperature({ onComplete }) {
           {locked && (
             <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-3 flex items-center gap-2 text-[13px] text-win font-semibold">
               <span className="w-6 h-6 rounded-full bg-win text-white text-xs flex items-center justify-center">✓</span>
-              Locked in — that's a great professional setting
+              Locked in — perfect professional setting.
             </motion.div>
           )}
         </AnimatePresence>
@@ -165,9 +165,9 @@ export default function LevelTemperature({ onComplete }) {
 
       <TakeawayCard
         accent="L2"
-        application="In ChatGPT / Copilot, pick 'precise' or 'balanced' for SOPs and circulars. 'Creative' is for brainstorming, not tenant comms."
+        application="In ChatGPT/Copilot, choose 'precise' for SOPs and circulars. Avoid 'creative' for tenant comms."
       >
-        <strong>Match temperature to the task.</strong> Ops writing = cool. Brainstorm = warm.
+        <strong>Match temperature to the task.</strong> Ops = cool. Brainstorm = warm.
       </TakeawayCard>
     </div>
   );
