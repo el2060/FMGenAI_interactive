@@ -137,9 +137,9 @@ export default function LevelPersona({ onComplete }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />live
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1 rounded-md bg-zinc-50 border border-zinc-200 p-6">
-                <div className="text-[13.5px] leading-relaxed text-zinc-900 whitespace-pre-wrap min-h-[80px] caret">
+            <div className="flex flex-col p-4 sm:p-5 gap-0">
+              <div className="rounded-md bg-zinc-50 border border-zinc-200 p-4 sm:p-5">
+                <div className="text-[14px] leading-relaxed text-zinc-900 whitespace-pre-wrap min-h-[80px] caret">
                   {streamed}
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function LevelPersona({ onComplete }) {
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="mt-3 pt-3 border-t border-zinc-200 text-[12.5px] text-zinc-600 leading-relaxed flex gap-2"
+                  className="mt-4 pt-4 border-t border-zinc-200 text-[13px] text-zinc-600 leading-relaxed flex gap-2"
                 >
                   <span className="font-semibold text-zinc-900 shrink-0">Notice: </span>
                   <span>{current.critique}</span>
