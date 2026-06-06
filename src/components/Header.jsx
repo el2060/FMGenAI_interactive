@@ -25,7 +25,7 @@ export default function Header({ level, onHome, onJump }) {
           className="group flex items-center gap-2 shrink-0 rounded-md px-1.5 py-1 -ml-1.5 hover:bg-zinc-50 active:bg-zinc-100 transition"
           title={confirming ? 'Click again to confirm — restart module' : 'Restart module'}
         >
-          <img src="/np-logo.png" alt="NP" className="h-5 w-auto opacity-75 grayscale" />
+          <img src={`${import.meta.env.BASE_URL}np-logo.png`} alt="NP" className="h-5 w-auto opacity-75 grayscale" />
           <div className="hidden sm:block h-3.5 w-px bg-zinc-200" />
           <span className="hidden sm:inline font-semibold text-[13.5px] tracking-tight text-zinc-800 group-hover:text-zinc-500 transition">
             Gen AI for FM

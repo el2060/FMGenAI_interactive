@@ -11,7 +11,7 @@ export default function Intro({ onStart }) {
         transition={{ duration: 0.45 }}
         className="flex flex-col items-center mb-8"
       >
-        <img src="https://www.np.edu.sg/_next/image?url=https%3A%2F%2Fassets.app.optical.gov.sg%2Fnp%2Fproduction%2Fpublished%2Fcollections%2Fpages%2F17c64bb4-8632-49e9-af16-047f7cabe99a%2Fab16008f-a6a0-466e-9193-e16e947261b0.png&w=1080&q=75" alt="Ngee Ann Polytechnic" className="h-7 sm:h-9 w-auto opacity-80" />
+        <img src={`${import.meta.env.BASE_URL}np-logo.png`} alt="Ngee Ann Polytechnic" className="h-7 sm:h-9 w-auto opacity-80" />
       </motion.div>
 
       <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-8">
