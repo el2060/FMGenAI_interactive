@@ -18,7 +18,7 @@ export default function Intro({ onStart }) {
       <h1 className="font-display text-[40px] leading-[1.04] sm:text-6xl font-bold tracking-tight mb-8">
         Generative AI,
         <br />
-        <span className="shimmer-text">made practical for FM.</span>
+        <span className="text-ink">made practical for FM.</span>
       </h1>
 
       <motion.div

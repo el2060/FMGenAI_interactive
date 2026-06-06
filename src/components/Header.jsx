@@ -23,7 +23,7 @@ export default function Header({ level, onHome, onJump }) {
         <button
           onClick={handleHome}
           className="group flex items-center gap-2 shrink-0 rounded-lg px-1.5 py-1 -ml-1.5 hover:bg-ink/[0.04] active:bg-ink/[0.07] transition"
-          title={confirming ? 'Click again to confirm — restart workshop' : 'Restart workshop'}
+          title={confirming ? 'Click again to confirm — restart module' : 'Restart module'}
         >
           <img src="/np-logo.png" alt="NP" className="h-6 w-auto" />
           <div className="hidden sm:block h-4 w-px bg-line" />

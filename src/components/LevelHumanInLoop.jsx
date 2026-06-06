@@ -295,7 +295,7 @@ export default function LevelHumanInLoop({ onComplete }) {
 
       <div className="flex justify-end mt-5">
         <PrimaryButton onClick={onComplete} disabled={!done} accent="L11">
-          🎓 Complete Workshop →
+          🎓 Complete Module →
         </PrimaryButton>
       </div>
 

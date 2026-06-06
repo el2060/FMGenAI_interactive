@@ -56,14 +56,14 @@ export default function Victory({ onRestart }) {
 
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
         className="inline-block px-3 py-1.5 rounded-full border border-line bg-white/80 backdrop-blur text-[11px] font-semibold uppercase tracking-[0.25em] text-muted mb-4">
-        ✨ Workshop Complete ✨
+        ✨ Module Complete ✨
       </motion.div>
 
       <motion.h1 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
         className="font-display text-3xl sm:text-5xl font-bold tracking-tight mb-3 leading-[1.04]">
         You've covered all
         <br />
-        <span className="shimmer-text">eleven Gen AI levels</span>
+        <span className="text-ink">eleven Gen AI levels</span>
       </motion.h1>
 
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
@@ -133,14 +133,8 @@ export default function Victory({ onRestart }) {
         </button>
         <span className="text-line">·</span>
         <button onClick={onRestart} className="text-[13px] text-muted hover:text-ink transition underline underline-offset-4 decoration-line hover:decoration-ink">
-          ↺ Restart workshop
+          ↺ Restart module
         </button>
-      </motion.div>
-
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}
-        className="pt-8 border-t border-line/70 flex flex-col items-center">
-        <div className="text-[10px] font-semibold uppercase tracking-[0.28em] text-soft mb-3">Workshop by</div>
-        <img src="/np-logo.png" alt="Ngee Ann Polytechnic" className="h-10 w-auto opacity-90" />
       </motion.div>
     </div>
   );

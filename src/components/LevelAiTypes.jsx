@@ -216,7 +216,7 @@ export default function LevelAiTypes({ onComplete }) {
                   FM Ticket #{ticket.id.toUpperCase()}
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-cream border border-line text-muted font-semibold">
-                  🇸🇬 {ticket.location}
+                  {ticket.location}
                 </span>
                 <span className="ml-auto text-[10px] font-mono text-soft flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-win animate-pulse" />

@@ -33,10 +33,10 @@ const BG_COLORS      = { L1:'bg-L1',   L2:'bg-L2',   L3:'bg-L3',   L4:'bg-L4',  
 const BORDER_COLORS  = { L1:'border-L1', L2:'border-L2', L3:'border-L3', L4:'border-L4', L5:'border-L5', L6:'border-L6', L7:'border-L7', L8:'border-L8', L9:'border-L9', L10:'border-L10', L11:'border-L11' };
 const RING_PULSE     = { L1:'ring-pulse-L1', L2:'ring-pulse-L2', L3:'ring-pulse-L3', L4:'ring-pulse-L4', L5:'ring-pulse-L5', L6:'ring-pulse-L6', L7:'ring-pulse-L7', L8:'ring-pulse-L8', L9:'ring-pulse-L9', L10:'ring-pulse-L10', L11:'ring-pulse-L11' };
 const HOVER_BG = {
-  L1:'hover:bg-[#6D28D9]', L2:'hover:bg-[#DB2777]', L3:'hover:bg-[#4338CA]',
-  L4:'hover:bg-[#D97706]', L5:'hover:bg-[#EA580C]', L6:'hover:bg-[#0D9488]',
-  L7:'hover:bg-[#2563EB]', L8:'hover:bg-[#059669]', L9:'hover:bg-[#334155]',
-  L10:'hover:bg-[#BE123C]', L11:'hover:bg-[#4C1D95]', win:'hover:bg-[#4D7C0F]', ink:'hover:bg-black',
+  L1:'hover:bg-black', L2:'hover:bg-black', L3:'hover:bg-black',
+  L4:'hover:bg-black', L5:'hover:bg-black', L6:'hover:bg-black',
+  L7:'hover:bg-black', L8:'hover:bg-black', L9:'hover:bg-black',
+  L10:'hover:bg-black', L11:'hover:bg-black', win:'hover:bg-black', ink:'hover:bg-black',
 };
 
 export function Eyebrow({ children, color = 'muted' }) {
@@ -64,7 +64,7 @@ export function LevelHeader({ level }) {
         </span>
       </div>
       <div className="flex items-center gap-3 mb-1">
-        <div className={`w-11 h-11 rounded-2xl ${BG_COLORS[m.color]} text-white flex items-center justify-center text-xl shadow-pop`}>
+        <div className={`w-11 h-11 rounded-2xl ${BG_COLORS[m.color]} text-white flex items-center justify-center text-xl`}>
           {m.emoji}
         </div>
         <div>
@@ -100,7 +100,7 @@ export function TakeawayCard({ accent = 'L1', application, children }) {
     <div className="card-strong p-5 mt-6 relative overflow-hidden">
       <div className={`absolute top-0 left-0 right-0 h-1 ${BG_COLORS[accent]}`} />
       <div className="flex gap-4">
-        <div className={`shrink-0 w-10 h-10 rounded-xl ${BG_COLORS[accent]} text-white flex items-center justify-center text-lg shadow-pop`}>
+        <div className={`shrink-0 w-10 h-10 rounded-xl ${BG_COLORS[accent]} text-white flex items-center justify-center text-lg`}>
           ✨
         </div>
         <div className="flex-1">
@@ -133,7 +133,7 @@ export function PrimaryButton({ children, disabled, onClick, accent = 'ink', cla
       onClick={onClick}
       disabled={disabled}
       className={`px-5 py-3 rounded-xl font-semibold text-[15px] transition-all ${
-        disabled ? 'bg-line text-soft cursor-not-allowed' : `${accents[accent]} ${HOVER_BG[accent]} shadow-pop active:scale-[0.98]`
+        disabled ? 'bg-line text-soft cursor-not-allowed' : `${accents[accent]} ${HOVER_BG[accent]} active:scale-[0.98]`
       } ${className}`}
     >
       {children}
@@ -145,9 +145,6 @@ export function Background() {
   return (
     <>
       <div className="grid-bg fixed inset-0 pointer-events-none opacity-50 z-0" />
-      <div className="bg-blob blob-a" style={{ background: '#C7B2FF', width: 520, height: 520, top: -180, left: -120 }} />
-      <div className="bg-blob blob-b" style={{ background: '#FFC9A3', width: 460, height: 460, top: 160, right: -160 }} />
-      <div className="bg-blob blob-c" style={{ background: '#A7E9DF', width: 420, height: 420, bottom: -180, left: '30%' }} />
     </>
   );
 }

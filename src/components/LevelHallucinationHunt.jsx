@@ -121,7 +121,7 @@ export default function LevelHallucinationHunt({ onComplete }) {
             ))}
           </div>
         </div>
-        <PrimaryButton onClick={onComplete} disabled={!allFound} accent="L10">🏆 Complete Workshop →</PrimaryButton>
+        <PrimaryButton onClick={onComplete} disabled={!allFound} accent="L10">🏆 Next Level →</PrimaryButton>
       </div>
 
       <TakeawayCard
