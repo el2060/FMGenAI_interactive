@@ -34,12 +34,20 @@ export default function App() {
   }
 
   function handleComplete(currentLevel, nextLevel) {
-    if (!completed.includes(currentLevel)) {
-      const newCompleted = [...completed, currentLevel];
+    const isNew = !completed.includes(currentLevel);
+    let newCompleted = completed;
+    
+    if (isNew) {
+      newCompleted = [...completed, currentLevel];
       setCompleted(newCompleted);
       localStorage.setItem('fmgenai_completed', JSON.stringify(newCompleted));
     }
-    go(nextLevel);
+
+    if (isNew && newCompleted.length === TOTAL_LEVELS) {
+      go(12); // Victory
+    } else {
+      go(nextLevel);
+    }
   }
 
   useEffect(() => {
